@@ -1,2 +1,7 @@
-﻿  Main.cpp
+﻿  Actor.cpp
+  Component.cpp
+  Game.cpp
+  Main.cpp
+  Vector2.cpp
+  Generating Code...
   GameEngine.vcxproj -> D:\rocherLeo\GameEngine\x64\Debug\GameEngine.exe
