@@ -1,7 +1,17 @@
 ﻿  Actor.cpp
+  AnimSpriteComponent.cpp
+  Assets.cpp
+  Astroid.cpp
+  BackgroundSpriteComponent.cpp
+  CircleCollisionComponent.cpp
   Component.cpp
   Game.cpp
+  Laser.cpp
   Main.cpp
-  Vector2.cpp
+  MoveComponent.cpp
+  Renderer.cpp
+  Ship.cpp
+  SpriteComponent.cpp
+  Texture.cpp
   Generating Code...
   GameEngine.vcxproj -> D:\rocherLeo\GameEngine\x64\Debug\GameEngine.exe

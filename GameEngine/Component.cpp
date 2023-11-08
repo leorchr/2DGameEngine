@@ -13,6 +13,10 @@ Component::~Component()
 	owner.removeComponent(this);
 }
 
+void Component::processInput(const Uint8* keyState)
+{
+}
+
 void Component::update(float dt)
 {
 }
