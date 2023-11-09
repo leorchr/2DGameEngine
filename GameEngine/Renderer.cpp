@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Maths.h"
 #include "SpriteComponent.h"
+#include "RectangleComponent.h"
 
 #include <SDL_image.h>
 
@@ -39,6 +40,7 @@ void Renderer::beginDraw()
 void Renderer::draw()
 {
 	drawSprites();
+	drawRectangles();
 }
 
 void Renderer::endDraw()
@@ -46,7 +48,26 @@ void Renderer::endDraw()
 	SDL_RenderPresent(SDLRenderer);
 }
 
-void Renderer::drawRect(const Rectangle& rect) const
+void Renderer::addRectangle(RectangleComponent* rectangle)
+{
+	rectangles.push_back(rectangle);
+}
+
+void Renderer::removeRectangle(RectangleComponent* rectangle)
+{
+	auto iter = std::find(begin(rectangles), end(rectangles), rectangle);
+	rectangles.erase(iter);
+}
+
+void Renderer::drawRectangles()
+{
+	for (auto rectangle : rectangles)
+	{
+		rectangle->draw(*this);
+	}
+}
+
+void Renderer::drawRectangle(const Rectangle& rect) const
 {
 	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
 	SDL_Rect SDLRect = rect.toSDLRect();

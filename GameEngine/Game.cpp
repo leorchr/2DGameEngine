@@ -5,8 +5,7 @@
 #include "Timer.h"
 #include "Assets.h"
 #include "BackgroundSpriteComponent.h"
-#include "Astroid.h"
-#include "Ship.h"
+#include "RectangleComponent.h"
 
 bool Game::initialize()
 {
@@ -30,11 +29,15 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
 
 	// Single sprite
-	/*
+	
 	Actor* actor = new Actor();
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
 	actor->setPosition(Vector2{ 100, 100 });
-	*/
+
+
+	Actor* actor2 = new Actor();
+	RectangleComponent* rectangle = new RectangleComponent(actor2, 100, 100);
+	actor2->setPosition(Vector2{ 400, 400 });
 
 	// Animated sprite
 	/*
@@ -50,33 +53,31 @@ void Game::load()
 	*/
 
 	// Controlled ship
-	Ship* ship = new Ship();
-	ship->setPosition(Vector2{ 100, 300 });
 
 	// Background
 	// Create the "far back" background
-	vector<Texture*> bgTexsFar {
-		&Assets::getTexture("Farback01"),
-			& Assets::getTexture("Farback02")
-	};
-	Actor* bgFar = new Actor();
-	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTexsFar);
-	bgSpritesFar->setScrollSpeed(-100.0f);
+	//vector<Texture*> bgTexsFar {
+	//	&Assets::getTexture("Farback01"),
+	//		& Assets::getTexture("Farback02")
+	//};
+	//Actor* bgFar = new Actor();
+	//BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTexsFar);
+	//bgSpritesFar->setScrollSpeed(-100.0f);
 
-	// Create the closer background
-	Actor* bgClose = new Actor();
-	std::vector<Texture*> bgTexsClose {
-		&Assets::getTexture("Stars"),
-			& Assets::getTexture("Stars")
-	};
-	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 50);
-	bgSpritesClose->setScrollSpeed(-200.0f);
+	//// Create the closer background
+	//Actor* bgClose = new Actor();
+	//std::vector<Texture*> bgTexsClose {
+	//	&Assets::getTexture("Stars"),
+	//		& Assets::getTexture("Stars")
+	//};
+	//BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 50);
+	//bgSpritesClose->setScrollSpeed(-200.0f);
 
-	const int astroidNumber = 20;
-	for (int i = 0; i < astroidNumber; ++i)
-	{
-		new Astroid();
-	}
+	//const int astroidNumber = 20;
+	//for (int i = 0; i < astroidNumber; ++i)
+	//{
+	//	new Astroid();
+	//}
 }
 
 void Game::processInput()
@@ -145,25 +146,6 @@ void Game::render()
 	renderer.beginDraw();
 	renderer.draw();
 	renderer.endDraw();
-}
-
-vector<Astroid*>& Game::getAstroids()
-{
-	return astroids;
-}
-
-void Game::addAstroid(Astroid* astroid)
-{
-	astroids.emplace_back(astroid);
-}
-
-void Game::removeAstroid(Astroid* astroid)
-{
-	auto iter = std::find(begin(astroids), end(astroids), astroid);
-	if (iter != astroids.end())
-	{
-		astroids.erase(iter);
-	}
 }
 
 void Game::loop()

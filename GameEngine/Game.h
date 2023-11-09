@@ -5,7 +5,6 @@
 #include "Window.h"
 #include "Renderer.h"
 #include "Vector2.h"
-#include "Astroid.h"
 using std::vector;
 
 class Game
@@ -36,10 +35,6 @@ public:
 	void removeActor(Actor* actor);
 
 	Renderer& getRenderer() { return renderer; }
-	// Game specific
-	vector<Astroid*>& getAstroids();
-	void addAstroid(Astroid* astroid);
-	void removeAstroid(Astroid* astroid);
 
 private:
 	void processInput();
@@ -53,7 +48,4 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
-
-	// Game specific
-	vector<Astroid*> astroids;
 };

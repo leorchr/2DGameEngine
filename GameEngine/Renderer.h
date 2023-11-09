@@ -26,7 +26,11 @@ public:
 	void draw();
 	void endDraw();
 
-	void drawRect(const Rectangle& rect) const;
+	void addRectangle(class RectangleComponent* rectangle);
+	void removeRectangle(class RectangleComponent* rectangle);
+	void drawRectangles();
+	void drawRectangle(const Rectangle& rect) const;
+
 	void addSprite(class SpriteComponent* sprite);
 	void removeSprite(class SpriteComponent* sprite);
 	void drawSprites();
@@ -38,4 +42,6 @@ public:
 private:
 	SDL_Renderer* SDLRenderer = nullptr;
 	std::vector<SpriteComponent*> sprites;
+	std::vector<RectangleComponent*> rectangles;
+
 };
