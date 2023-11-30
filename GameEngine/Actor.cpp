@@ -50,6 +50,11 @@ Vector2 Actor::getForward() const
 	return Vector2(Maths::cos(rotation), -Maths::sin(rotation));
 }
 
+Vector2 Actor::getUpward() const
+{
+	return Vector2(Maths::sin(rotation), -Maths::cos(rotation));
+}
+
 void Actor::processInput(const Uint8* keyState)
 {
 	if (state == Actor::ActorState::Active)

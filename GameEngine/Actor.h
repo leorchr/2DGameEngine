@@ -33,6 +33,7 @@ public:
 	void setState(ActorState stateP);
 
 	Vector2 getForward() const;
+	Vector2 getUpward() const;
 
 	void processInput(const Uint8* keyState);
 	virtual void actorInput(const Uint8* keyState);

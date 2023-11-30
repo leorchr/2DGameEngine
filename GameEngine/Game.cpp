@@ -6,6 +6,7 @@
 #include "Assets.h"
 #include "BackgroundSpriteComponent.h"
 #include "RectangleComponent.h"
+#include "Ball.h"
 
 bool Game::initialize()
 {
@@ -37,7 +38,10 @@ void Game::load()
 
 	Actor* actor2 = new Actor();
 	RectangleComponent* rectangle = new RectangleComponent(actor2, 100, 100);
-	actor2->setPosition(Vector2{ 400, 400 });
+	actor2->setPosition(Vector2{ 800, 500 });
+
+	Ball* ball = new Ball();
+	ball->setPosition(Vector2{ 400, 400 });
 
 	// Animated sprite
 	/*
