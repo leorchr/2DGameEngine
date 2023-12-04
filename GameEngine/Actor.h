@@ -24,10 +24,14 @@ public:
 	Game& getGame() const { return game; }
 	const ActorState getState() const { return state; }
 	const Vector2 getPosition() const { return position; }
+	const float getSizeX() const { return sizeX; }
+	const float getSizeY() const { return sizeY; }
 	const float getScale() const { return scale; }
 	const float getRotation() const { return rotation; }
 
 	void setPosition(Vector2 positionP);
+	void setSizeX(float sizeXP);
+	void setSizeY(float sizeYP);
 	void setScale(float scaleP);
 	void setRotation(float rotationP);
 	void setState(ActorState stateP);
@@ -47,6 +51,8 @@ private:
 	Game& game;
 	ActorState state;
 	Vector2 position;
+	float sizeX;
+	float sizeY;
 	float scale;
 	float rotation;	// Rotation in radians
 

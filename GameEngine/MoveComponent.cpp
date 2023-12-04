@@ -42,10 +42,10 @@ void MoveComponent::update(float dt)
 
 
 		// Screen wrapping (for asteroids)
-		if (newPosition.x < 0) { forwardSpeed = -forwardSpeed; }
-		else if (newPosition.x > WINDOW_WIDTH) { forwardSpeed = -forwardSpeed; }
-		if (newPosition.y < 0) { upwardSpeed = -upwardSpeed; }
-		else if (newPosition.y > WINDOW_HEIGHT) { upwardSpeed = -upwardSpeed; }
+		//if (newPosition.x < 0) { forwardSpeed = -forwardSpeed; }
+		//else if (newPosition.x > WINDOW_WIDTH) { forwardSpeed = -forwardSpeed; }
+		//if (newPosition.y < 0) { upwardSpeed = -upwardSpeed; }
+		//else if (newPosition.y > WINDOW_HEIGHT) { upwardSpeed = -upwardSpeed; }
 
 		owner.setPosition(newPosition);
 	}

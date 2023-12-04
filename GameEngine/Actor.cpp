@@ -7,6 +7,8 @@
 Actor::Actor() :
 	state(Actor::ActorState::Active),
 	position(Vector2::zero),
+	sizeX(0.0f),
+	sizeY(0.0f),
 	scale(1.0f),
 	rotation(0.0f),
 	game(Game::instance())
@@ -28,6 +30,16 @@ Actor::~Actor()
 void Actor::setPosition(Vector2 positionP)
 {
 	position = positionP;
+}
+
+void Actor::setSizeX(float sizeXP)
+{
+	sizeX = sizeXP;
+}
+
+void Actor::setSizeY(float sizeYP)
+{
+	sizeY = sizeYP;
 }
 
 void Actor::setScale(float scaleP)

@@ -16,10 +16,10 @@ public:
 	void setUpwardSpeed(float upwardSpeedP);
 	void setAngularSpeed(float angularSpeedP);
 
-	void update(float dt) override;
+	virtual void update(float dt) override;
 
 
-private:
+protected:
 	float forwardSpeed;
 	float upwardSpeed;
 	float angularSpeed;

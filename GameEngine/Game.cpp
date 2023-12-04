@@ -40,7 +40,7 @@ void Game::load()
 	RectangleComponent* rectangle = new RectangleComponent(actor2, 100, 100);
 	actor2->setPosition(Vector2{ 800, 500 });
 
-	Ball* ball = new Ball();
+	Ball* ball = new Ball(50,50);
 	ball->setPosition(Vector2{ 400, 400 });
 
 	// Animated sprite
