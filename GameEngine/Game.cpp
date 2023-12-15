@@ -42,7 +42,7 @@ void Game::load()
 	// Création de la balle
 	Ball* ball = new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
 	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"), 1);
-	ball->setPosition(Vector2{ 0, 0 });
+	ball->setPosition(Vector2{ 400, 400 });
 
 	// Création de la raquette
 	new Paddle(100, 20);

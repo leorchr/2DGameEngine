@@ -28,4 +28,30 @@ void Ball::updateActor(float dt)
 			}
 		}
 	}
+
+	auto bricks = getGame().getBricks();
+	for (auto brick : bricks)
+	{
+		if (Intersect(*rcc, brick->getCollision()))
+		{
+			brick->setState(ActorState::Dead);
+			if (bricks.size() == 0) getGame().close();
+
+			if (rcc->getPosition().y + rcc->getSizeY() - 10 < paddle->getPosition().y)
+			{
+				if (mc->getUpwardSpeed() < 0) {
+					mc->setUpwardSpeed(-mc->getUpwardSpeed());
+				}
+			}
+
+			if (rcc->getPosition().y - 10 > paddle->getPosition().y + paddle->getSizeY())
+			{
+				if (mc->getUpwardSpeed() > 0) {
+					mc->setUpwardSpeed(-mc->getUpwardSpeed());
+				}
+			}
+
+			break;
+		}
+	}
 }
