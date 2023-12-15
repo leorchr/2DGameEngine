@@ -4,6 +4,8 @@
 #include "SpriteComponent.h"
 #include "Window.h"
 #include "Renderer.h"
+#include "Brick.h"
+#include "Paddle.h"
 #include "Vector2.h"
 using std::vector;
 
@@ -35,6 +37,15 @@ public:
 	void removeActor(Actor* actor);
 
 	Renderer& getRenderer() { return renderer; }
+	// Game Specific
+
+	vector<Brick*>& getBricks();
+	void addBrick(Brick* brick);
+	void removeBrick(Brick* brick);
+
+	Paddle* getPaddle();
+	void setPaddle(Paddle* paddle);
+
 
 private:
 	void processInput();
@@ -48,4 +59,9 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
+
+	// Game Specific
+	
+	vector<Brick*> bricks;
+	Paddle* paddle = nullptr;
 };

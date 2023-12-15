@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "RectangleComponent.h"
 #include "MoveBall.h"
+#include "RectangleCollisionComponent.h"
 
 class Ball : public Actor
 {
@@ -12,4 +13,5 @@ public:
 protected:
 	RectangleComponent* rc;
 	MoveBall* mc;
+	RectangleCollisionComponent* rcc;
 };

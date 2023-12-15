@@ -1,6 +1,4 @@
 ﻿  Game.cpp
-  InputComponent.cpp
-  InputPaddle.cpp
-  Paddle.cpp
-  Génération de code en cours...
+D:\GitHub\GameEngine\GameEngine\Game.cpp(44,109): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\GitHub\GameEngine\GameEngine\Game.cpp(44,64): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   GameEngine.vcxproj -> D:\GitHub\GameEngine\x64\Debug\GameEngine.exe

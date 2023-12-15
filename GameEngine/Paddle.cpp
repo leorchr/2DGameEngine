@@ -2,6 +2,7 @@
 #include "Maths.h"
 #include "Window.h"
 #include "Actor.h"
+#include "Game.h"
 
 #include <iostream>
 using namespace std;
@@ -14,6 +15,9 @@ Paddle::Paddle(float mSizeX, float mSizeY) : Actor()
 	ic = new InputPaddle(this);
 	ic->setMaxForwardSpeed(300.0f);
 	ic->setMaxAngularSpeed(0);
+	rcc = new RectangleCollisionComponent(this);
+
+	getGame().setPaddle(this);
 }
 
 void Paddle::updateActor(float dt)

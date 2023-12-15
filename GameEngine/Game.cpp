@@ -30,23 +30,43 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Ship.png", "Ship");
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
 
-	// Single sprite
-	
+	// Tests :	
 	Actor* actor = new Actor();
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
-	actor->setPosition(Vector2{ 100, 100 });
-
+	actor->setPosition(Vector2{ 0, 0});
 
 	Actor* actor2 = new Actor();
 	RectangleComponent* rectangle = new RectangleComponent(actor2, 100, 100);
 	actor2->setPosition(Vector2{ 800, 500 });
 
-	Ball* ball = new Ball(Assets::getTexture("Ship").getWidth(), Assets::getTexture("Ship").getHeight());
+	// Création de la balle
+	Ball* ball = new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
 	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"), 1);
-	ball->setPosition(Vector2{ 400, 400 });
+	ball->setPosition(Vector2{ 0, 0 });
 
-	Paddle* paddle = new Paddle(100, 20);
+	// Création de la raquette
+	new Paddle(100, 20);
 	paddle->setPosition(Vector2{ 450, 700 });
+
+
+	// Création des briques
+	const int horizontalBricks = 6;
+	const int verticalBricks = 4;
+	const int brickSizeX = 165;
+	const int brickSizeY = 40;
+	const int offsetX = 5;
+	const int offsetY = 5;
+
+	float xPos = 5;
+	for (int i = 0; i < horizontalBricks; ++i)
+	{
+		float yPos = 70;
+		for (int i = 0; i < verticalBricks; ++i) {
+			(new Brick(brickSizeX, brickSizeY))->setPosition(Vector2{ xPos, yPos });
+			yPos += brickSizeY + offsetY;
+		}
+		xPos += brickSizeX + offsetX;
+	}
 
 	// Animated sprite
 	/*
@@ -87,6 +107,35 @@ void Game::load()
 	//{
 	//	new Astroid();
 	//}
+}
+
+vector<Brick*>& Game::getBricks()
+{
+	return bricks;
+}
+
+void Game::addBrick(Brick* brick)
+{
+	bricks.emplace_back(brick);
+}
+
+void Game::removeBrick(Brick* brick)
+{
+	auto iter = std::find(begin(bricks), end(bricks), brick);
+	if (iter != bricks.end())
+	{
+		bricks.erase(iter);
+	}
+}
+
+Paddle* Game::getPaddle()
+{
+	return paddle;
+}
+
+void Game::setPaddle(Paddle* paddleP)
+{
+	paddle = paddleP;
 }
 
 void Game::processInput()

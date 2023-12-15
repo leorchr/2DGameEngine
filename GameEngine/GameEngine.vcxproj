@@ -137,6 +137,7 @@
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="RectangleCollisionComponent.cpp" />
     <ClCompile Include="RectangleComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
@@ -163,6 +165,7 @@
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="CircleCollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
@@ -175,6 +178,7 @@
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="RectangleCollisionComponent.h" />
     <ClInclude Include="RectangleComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SpriteComponent.h" />
