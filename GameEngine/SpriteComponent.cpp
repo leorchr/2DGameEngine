@@ -25,6 +25,7 @@ void SpriteComponent::setTexture(const Texture& textureP)
 
 void SpriteComponent::draw(Renderer& renderer)
 {
-	Vector2 origin{ texWidth / 2.f, texHeight / 2.f };
+	//Vector2 origin{ texWidth / 2.f, texHeight / 2.f };
+	Vector2 origin{ 0.0f, 0.0f };
 	renderer.drawSprite(owner, texture, Rectangle::nullRect, origin, Renderer::Flip::None);
 }

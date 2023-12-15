@@ -39,8 +39,8 @@ void Renderer::beginDraw()
 
 void Renderer::draw()
 {
-	drawSprites();
 	drawRectangles();
+	drawSprites();
 }
 
 void Renderer::endDraw()

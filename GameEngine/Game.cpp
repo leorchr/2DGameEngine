@@ -41,7 +41,8 @@ void Game::load()
 	RectangleComponent* rectangle = new RectangleComponent(actor2, 100, 100);
 	actor2->setPosition(Vector2{ 800, 500 });
 
-	Ball* ball = new Ball(50,50);
+	Ball* ball = new Ball(Assets::getTexture("Ship").getWidth(), Assets::getTexture("Ship").getHeight());
+	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"), 1);
 	ball->setPosition(Vector2{ 400, 400 });
 
 	Paddle* paddle = new Paddle(100, 20);
