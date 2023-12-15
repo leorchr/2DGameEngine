@@ -49,6 +49,6 @@ float MoveBall::getForwardSpeed()
 
 float MoveBall::getUpwardSpeed()
 {
-	return forwardSpeed;
+	return upwardSpeed;
 }
 

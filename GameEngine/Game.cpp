@@ -7,6 +7,7 @@
 #include "BackgroundSpriteComponent.h"
 #include "RectangleComponent.h"
 #include "Ball.h"
+#include "Paddle.h"
 
 bool Game::initialize()
 {
@@ -42,6 +43,9 @@ void Game::load()
 
 	Ball* ball = new Ball(50,50);
 	ball->setPosition(Vector2{ 400, 400 });
+
+	Paddle* paddle = new Paddle(100, 20);
+	paddle->setPosition(Vector2{ 450, 700 });
 
 	// Animated sprite
 	/*

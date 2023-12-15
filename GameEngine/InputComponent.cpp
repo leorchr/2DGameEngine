@@ -5,10 +5,12 @@ InputComponent::InputComponent(Actor* ownerP) :
 	MoveComponent(ownerP),
 	maxForwardSpeed(100.0f),
 	maxAngularSpeed(1.0f),
-	forwardKey(SDL_SCANCODE_W),
-	backKey(SDL_SCANCODE_S),
-	clockwiseKey(SDL_SCANCODE_D),
-	counterClockwiseKey(SDL_SCANCODE_A)
+	forwardKey(SDL_SCANCODE_D),
+	backKey(SDL_SCANCODE_A),
+	forwardKey2(SDL_SCANCODE_RIGHT),
+	backKey2(SDL_SCANCODE_LEFT),
+	clockwiseKey(SDL_SCANCODE_E),
+	counterClockwiseKey(SDL_SCANCODE_Q)
 {
 }
 

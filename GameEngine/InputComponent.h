@@ -10,7 +10,7 @@ public:
 	InputComponent(const InputComponent&) = delete;
 	InputComponent& operator=(const InputComponent&) = delete;
 
-	void processInput(const Uint8* keyState);
+	virtual void processInput(const Uint8* keyState);
 
 	void setMaxForwardSpeed(float maxForwardSpeedP);
 	void setMaxAngularSpeed(float maxAngularSpeedP);
@@ -20,12 +20,14 @@ public:
 	void setCounterClockwiseKey(int key);
 
 
-private:
+protected:
 	float maxForwardSpeed;
 	float maxAngularSpeed;
 
 	int forwardKey;
 	int backKey;
+	int forwardKey2;
+	int backKey2;
 	int clockwiseKey;
 	int counterClockwiseKey;
 };

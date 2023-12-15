@@ -141,10 +141,12 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="InputPaddle.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveBall.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RectangleComponent.cpp" />
@@ -165,10 +167,12 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InputPaddle.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="MoveBall.h" />
     <ClInclude Include="MoveComponent.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RectangleComponent.h" />

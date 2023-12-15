@@ -1,4 +1,6 @@
-﻿  Ball.cpp
-  Game.cpp
+﻿  Game.cpp
+  InputComponent.cpp
+  InputPaddle.cpp
+  Paddle.cpp
   Génération de code en cours...
   GameEngine.vcxproj -> D:\GitHub\GameEngine\x64\Debug\GameEngine.exe
