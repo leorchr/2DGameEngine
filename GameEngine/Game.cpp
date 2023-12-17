@@ -46,7 +46,7 @@ void Game::load()
 	ball->setLives(5);
 
 	// Création de la raquette
-	new Paddle(100, 20);
+	new Paddle(150, 20);
 	paddle->setPosition(Vector2{ 450, 700 });
 
 

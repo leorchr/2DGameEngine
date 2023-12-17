@@ -3,6 +3,7 @@
 #include "RectangleComponent.h"
 #include "MoveBall.h"
 #include "RectangleCollisionComponent.h"
+#include "Vector2.h"
 
 class Ball : public Actor
 {
@@ -17,4 +18,5 @@ protected:
 	MoveBall* mc;
 	RectangleCollisionComponent* rcc;
 	int lives = 3;
+	Vector2 positionLastFrame;
 };

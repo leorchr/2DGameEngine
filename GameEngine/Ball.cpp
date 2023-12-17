@@ -3,7 +3,6 @@
 #include "Window.h"
 #include "Actor.h"
 #include "Game.h"
-
 #include <iostream>
 using namespace std;
 
@@ -26,11 +25,9 @@ void Ball::updateActor(float dt)
 	auto paddle = getGame().getPaddle();
 	if (Intersect(*rcc, paddle->getCollision()))
 	{
-		if(rcc->getPosition().y + rcc->getSizeY() - 10 < paddle->getPosition().y)
+		if (positionLastFrame.y + rcc->getSizeY() <= paddle->getPosition().y)
 		{
-			if (mc->getUpwardSpeed() < 0) {
-				mc->setUpwardSpeed(-mc->getUpwardSpeed());
-			}
+			mc->setUpwardSpeed(-mc->getUpwardSpeed());
 		}
 	}
 
@@ -44,25 +41,18 @@ void Ball::updateActor(float dt)
 	{
 		if (Intersect(*rcc, brick->getCollision()))
 		{
+			if (positionLastFrame.y + rcc->getSizeY() <= brick->getPosition().y || positionLastFrame.y >= brick->getPosition().y + brick->getSizeY())
+			{
+				mc->setUpwardSpeed(-mc->getUpwardSpeed());
+			}
+			else {
+				mc->setForwardSpeed(-mc->getForwardSpeed());
+			}
 			brick->setState(ActorState::Dead);
-
-			if (rcc->getPosition().y + rcc->getSizeY() - 10 < paddle->getPosition().y)
-			{
-				if (mc->getUpwardSpeed() < 0) {
-					mc->setUpwardSpeed(-mc->getUpwardSpeed());
-				}
-			}
-
-			if (rcc->getPosition().y - 10 > paddle->getPosition().y + paddle->getSizeY())
-			{
-				if (mc->getUpwardSpeed() > 0) {
-					mc->setUpwardSpeed(-mc->getUpwardSpeed());
-				}
-			}
-
 			break;
 		}
 	}
+	positionLastFrame = rcc->getPosition();
 }
 
 void Ball::setLives(int livesP)
