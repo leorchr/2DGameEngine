@@ -6,6 +6,7 @@
 #include "Renderer.h"
 #include "Brick.h"
 #include "Paddle.h"
+#include "Ball.h"
 #include "Vector2.h"
 using std::vector;
 
@@ -37,8 +38,8 @@ public:
 	void removeActor(Actor* actor);
 
 	Renderer& getRenderer() { return renderer; }
-	// Game Specific
 
+	// Game Specific
 	vector<Brick*>& getBricks();
 	void addBrick(Brick* brick);
 	void removeBrick(Brick* brick);
@@ -46,6 +47,10 @@ public:
 	Paddle* getPaddle();
 	void setPaddle(Paddle* paddle);
 
+	Ball* getBall();
+	void setBall(Ball* ball);
+
+	void endGame();
 
 private:
 	void processInput();
@@ -64,4 +69,5 @@ private:
 	
 	vector<Brick*> bricks;
 	Paddle* paddle = nullptr;
+	Ball* ball = nullptr;
 };

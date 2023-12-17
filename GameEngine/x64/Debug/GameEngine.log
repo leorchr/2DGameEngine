@@ -1,2 +1,24 @@
-﻿  Ball.cpp
+﻿  Actor.cpp
+  Ball.cpp
+  Brick.cpp
+  Game.cpp
+D:\GitHub\GameEngine\GameEngine\Game.cpp(43,96): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\GitHub\GameEngine\GameEngine\Game.cpp(43,51): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  Main.cpp
+  MoveBall.cpp
+  Paddle.cpp
+  RectangleComponent.cpp
+  SpriteComponent.cpp
+  Génération de code en cours...
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
   GameEngine.vcxproj -> D:\GitHub\GameEngine\x64\Debug\GameEngine.exe

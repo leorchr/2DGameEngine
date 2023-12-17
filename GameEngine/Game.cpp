@@ -40,9 +40,10 @@ void Game::load()
 	actor2->setPosition(Vector2{ 800, 500 });
 
 	// Création de la balle
-	Ball* ball = new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
+	new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
 	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"), 1);
 	ball->setPosition(Vector2{ 400, 400 });
+	ball->setLives(5);
 
 	// Création de la raquette
 	new Paddle(100, 20);
@@ -136,6 +137,22 @@ Paddle* Game::getPaddle()
 void Game::setPaddle(Paddle* paddleP)
 {
 	paddle = paddleP;
+}
+
+Ball* Game::getBall()
+{
+	return ball;
+}
+
+void Game::setBall(Ball* ballP)
+{
+	ball = ballP;
+}
+
+void Game::endGame()
+{
+	isRunning = false;
+	close();
 }
 
 void Game::processInput()

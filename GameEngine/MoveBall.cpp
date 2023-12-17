@@ -1,6 +1,7 @@
 #include "MoveBall.h"
 #include "Maths.h"
 #include "Actor.h"
+#include "Game.h"
 #include "Window.h"
 #include "RectangleComponent.h"
 #include <SDL_scancode.h>
@@ -27,14 +28,14 @@ void MoveBall::update(float dt)
 			setForwardSpeed(abs(getForwardSpeed()));
 		}
 		else if (owner.getPosition().x + owner.getSizeX() > WINDOW_WIDTH){
-				setForwardSpeed(-abs(getForwardSpeed()));
+			setForwardSpeed(-abs(getForwardSpeed()));
 		}
 
 		if (owner.getPosition().y < 0) {
 			setUpwardSpeed(-abs(getUpwardSpeed()));
 		}
 		else if (owner.getPosition().y + owner.getSizeY() > WINDOW_HEIGHT) {
-			setUpwardSpeed(abs(getUpwardSpeed()));
+			owner.getGame().getBall()->TouchScreenBottom();
 		}
 
 		Vector2 newPosition = owner.getPosition() + owner.getForward() * forwardSpeed * dt + owner.getUpward() * upwardSpeed * dt;

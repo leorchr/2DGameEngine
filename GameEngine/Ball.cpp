@@ -4,6 +4,9 @@
 #include "Actor.h"
 #include "Game.h"
 
+#include <iostream>
+using namespace std;
+
 Ball::Ball(float mSizeX, float mSizeY) : Actor()
 {
 	setSizeX(mSizeX);
@@ -14,6 +17,8 @@ Ball::Ball(float mSizeX, float mSizeY) : Actor()
 	mc->setUpwardSpeed(500.0f);
 	mc->setAngularSpeed(0.0f);
 	rcc = new RectangleCollisionComponent(this);
+
+	getGame().setBall(this);
 }
 
 void Ball::updateActor(float dt)
@@ -30,12 +35,16 @@ void Ball::updateActor(float dt)
 	}
 
 	auto bricks = getGame().getBricks();
+	if (bricks.size() <= 0)
+	{
+		cout << "GG WP" << endl;
+		getGame().endGame();
+	}
 	for (auto brick : bricks)
 	{
 		if (Intersect(*rcc, brick->getCollision()))
 		{
 			brick->setState(ActorState::Dead);
-			if (bricks.size() == 0) getGame().close();
 
 			if (rcc->getPosition().y + rcc->getSizeY() - 10 < paddle->getPosition().y)
 			{
@@ -53,5 +62,25 @@ void Ball::updateActor(float dt)
 
 			break;
 		}
+	}
+}
+
+void Ball::setLives(int livesP)
+{
+	lives = livesP;
+}
+
+void Ball::TouchScreenBottom()
+{
+	if (lives >= 1)
+	{
+		mc->setUpwardSpeed(abs(mc->getUpwardSpeed()));
+		setPosition(Vector2{ 400,400 });
+		lives--;
+		cout << "Vies restantes : " << lives << endl;
+	}
+	else
+	{
+		getGame().endGame();
 	}
 }
