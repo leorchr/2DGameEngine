@@ -30,20 +30,34 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Ship.png", "Ship");
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
 
-	// Tests :	
-	Actor* actor = new Actor();
-	SpriteComponent* sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
-	actor->setPosition(Vector2{ 0, 0});
 
-	Actor* actor2 = new Actor();
-	RectangleComponent* rectangle = new RectangleComponent(actor2, 100, 100);
-	actor2->setPosition(Vector2{ 800, 500 });
+	/*// Background
+	// Create the "far back" background
+	vector<Texture*> bgTexsFar {
+		&Assets::getTexture("Farback01"),
+			& Assets::getTexture("Farback02")
+	};
+	Actor* bgFar = new Actor();
+	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTexsFar);
+	bgSpritesFar->setScrollSpeed(-100.0f);
+
+	// Create the closer background
+	Actor* bgClose = new Actor();
+	std::vector<Texture*> bgTexsClose {
+		&Assets::getTexture("Stars"),
+			& Assets::getTexture("Stars")
+	};
+	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 0);
+	bgSpritesClose->setScrollSpeed(-200.0f);*/
+
 
 	// Création de la balle
-	new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
-	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"), 1);
+	//new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
+	new Ball(16,16);
+	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"));
 	ball->setPosition(Vector2{ 400, 400 });
 	ball->setLives(5);
+
 
 	// Création de la raquette
 	new Paddle(150, 20);
@@ -51,14 +65,14 @@ void Game::load()
 
 
 	// Création des briques
-	const int horizontalBricks = 6;
-	const int verticalBricks = 4;
-	const int brickSizeX = 165;
-	const int brickSizeY = 40;
-	const int offsetX = 5;
-	const int offsetY = 5;
+	const int horizontalBricks = 8;
+	const int verticalBricks = 5;
+	const int brickSizeX = 128;
+	const int brickSizeY = 32;
+	const int offsetX = 1;
+	const int offsetY = 1;
 
-	float xPos = 5;
+	float xPos = 0;
 	for (int i = 0; i < horizontalBricks; ++i)
 	{
 		float yPos = 70;
@@ -81,33 +95,6 @@ void Game::load()
 	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ship, animTextures);
 	ship->setPosition(Vector2{ 100, 300 });
 	*/
-
-	// Controlled ship
-
-	// Background
-	// Create the "far back" background
-	//vector<Texture*> bgTexsFar {
-	//	&Assets::getTexture("Farback01"),
-	//		& Assets::getTexture("Farback02")
-	//};
-	//Actor* bgFar = new Actor();
-	//BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTexsFar);
-	//bgSpritesFar->setScrollSpeed(-100.0f);
-
-	//// Create the closer background
-	//Actor* bgClose = new Actor();
-	//std::vector<Texture*> bgTexsClose {
-	//	&Assets::getTexture("Stars"),
-	//		& Assets::getTexture("Stars")
-	//};
-	//BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 50);
-	//bgSpritesClose->setScrollSpeed(-200.0f);
-
-	//const int astroidNumber = 20;
-	//for (int i = 0; i < astroidNumber; ++i)
-	//{
-	//	new Astroid();
-	//}
 }
 
 vector<Brick*>& Game::getBricks()
