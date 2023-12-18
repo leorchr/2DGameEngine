@@ -1,4 +1,2 @@
-﻿  Game.cpp
-D:\GitHub\GameEngine\GameEngine\Game.cpp(57,98): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\GitHub\GameEngine\GameEngine\Game.cpp(57,52): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  GameEngine.vcxproj -> D:\GitHub\GameEngine\x64\Debug\GameEngine.exe
+﻿  Ball.cpp
+  GameEngine.vcxproj -> D:\rocher.leo\GameEngine\x64\Debug\GameEngine.exe

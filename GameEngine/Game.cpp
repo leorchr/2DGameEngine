@@ -31,6 +31,7 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
 	Assets::loadTexture(renderer, "Res\\Strawberry2.png", "Strawberry");
 	Assets::loadTexture(renderer, "Res\\Apple.png", "Apple");
+	Assets::loadTexture(renderer, "Res\\Brique.png", "Brique");
 
 
 	// Background
@@ -79,7 +80,9 @@ void Game::load()
 	{
 		float yPos = 70;
 		for (int i = 0; i < verticalBricks; ++i) {
-			(new Brick(brickSizeX, brickSizeY))->setPosition(Vector2{ xPos, yPos });
+			Brick* brick = new Brick(Assets::getTexture("Brique").getWidth(), (int)Assets::getTexture("Brique").getHeight());
+			brick->setPosition(Vector2{ xPos, yPos });
+			SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Brique"));
 			yPos += brickSizeY + offsetY;
 		}
 		xPos += brickSizeX + offsetX;
