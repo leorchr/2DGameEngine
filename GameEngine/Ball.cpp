@@ -10,7 +10,7 @@ Ball::Ball(float mSizeX, float mSizeY) : Actor()
 {
 	setSizeX(mSizeX);
 	setSizeY(mSizeY);
-	rc = new RectangleComponent(this, mSizeX, mSizeY);
+	//rc = new RectangleComponent(this, mSizeX, mSizeY);
 	mc = new MoveBall(this);
 	mc->setForwardSpeed(500.0f);
 	mc->setUpwardSpeed(500.0f);

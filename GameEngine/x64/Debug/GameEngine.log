@@ -1,28 +1,4 @@
 ﻿  Game.cpp
-MoveComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-MoveComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-MoveBall.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-MoveBall.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Main.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputPaddle.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputPaddle.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-InputComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Game.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Game.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Component.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Component.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Component.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-CircleCollisionComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Brick.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Brick.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-Ball.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-BackgroundSpriteComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-BackgroundSpriteComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-AnimSpriteComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-AnimSpriteComponent.obj : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-LINK : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
+D:\GitHub\GameEngine\GameEngine\Game.cpp(57,98): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\GitHub\GameEngine\GameEngine\Game.cpp(57,52): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   GameEngine.vcxproj -> D:\GitHub\GameEngine\x64\Debug\GameEngine.exe

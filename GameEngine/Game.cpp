@@ -29,11 +29,13 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Astroid.png", "Astroid");
 	Assets::loadTexture(renderer, "Res\\Ship.png", "Ship");
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
+	Assets::loadTexture(renderer, "Res\\Strawberry2.png", "Strawberry");
+	Assets::loadTexture(renderer, "Res\\Apple.png", "Apple");
 
 
-	/*// Background
+	// Background
 	// Create the "far back" background
-	vector<Texture*> bgTexsFar {
+	/*vector<Texture*> bgTexsFar{
 		&Assets::getTexture("Farback01"),
 			& Assets::getTexture("Farback02")
 	};
@@ -47,20 +49,20 @@ void Game::load()
 		&Assets::getTexture("Stars"),
 			& Assets::getTexture("Stars")
 	};
-	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 0);
+	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose);
 	bgSpritesClose->setScrollSpeed(-200.0f);*/
 
 
 	// Création de la balle
-	//new Ball((int)Assets::getTexture("Ship").getWidth(), (int)Assets::getTexture("Ship").getHeight());
-	new Ball(16,16);
-	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Ship"));
+	new Ball((int)Assets::getTexture("Apple").getWidth(), (int)Assets::getTexture("Apple").getHeight());
+	//new Ball(10,13);
+	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Apple"));
 	ball->setPosition(Vector2{ 400, 400 });
 	ball->setLives(5);
 
 
 	// Création de la raquette
-	new Paddle(150, 20);
+	new Paddle(128, 16);
 	paddle->setPosition(Vector2{ 450, 700 });
 
 
