@@ -8,6 +8,8 @@
 #include "RectangleComponent.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include <stdlib.h>
+#include <time.h>
 
 bool Game::initialize()
 {
@@ -32,6 +34,9 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Strawberry2.png", "Strawberry");
 	Assets::loadTexture(renderer, "Res\\Apple.png", "Apple");
 	Assets::loadTexture(renderer, "Res\\Brique.png", "Brique");
+	Assets::loadTexture(renderer, "Res\\Wood.png", "Wood");
+	Assets::loadTexture(renderer, "Res\\Wood2.png", "Wood2");
+	Assets::loadTexture(renderer, "Res\\Wood3.png", "Wood3");
 
 
 	// Background
@@ -59,7 +64,8 @@ void Game::load()
 	//new Ball(10,13);
 	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Apple"));
 	ball->setPosition(Vector2{ 400, 400 });
-	ball->setLives(5);
+	int lives = 5;
+	ball->setLives(lives);
 
 
 	// Création de la raquette
@@ -68,24 +74,45 @@ void Game::load()
 
 
 	// Création des briques
+	srand(time(NULL));
 	const int horizontalBricks = 8;
 	const int verticalBricks = 5;
 	const int brickSizeX = 128;
 	const int brickSizeY = 32;
-	const int offsetX = 1;
-	const int offsetY = 1;
-
+	int offsetX = 1;
+	int offsetY = 1;
 	float xPos = 0;
+
 	for (int i = 0; i < horizontalBricks; ++i)
 	{
 		float yPos = 70;
 		for (int i = 0; i < verticalBricks; ++i) {
 			Brick* brick = new Brick(Assets::getTexture("Brique").getWidth(), (int)Assets::getTexture("Brique").getHeight());
 			brick->setPosition(Vector2{ xPos, yPos });
-			SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Brique"));
+
+			int randWood = rand() % 3 + 1;
+			if (randWood == 1) SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood"));
+			else if (randWood == 2) SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood2"));
+			else SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood3"));
 			yPos += brickSizeY + offsetY;
 		}
 		xPos += brickSizeX + offsetX;
+	}
+
+
+	// Création des vies
+
+	float liveSizeX = Assets::getTexture("Apple").getWidth();
+	float liveSizeY = Assets::getTexture("Apple").getHeight();
+	xPos = 20;
+	float yPos = 730;
+	offsetX = 10;
+
+	for (int i = 0; i < lives; ++i) {
+		Live* live = new Live(Assets::getTexture("Apple").getWidth(), (int)Assets::getTexture("Apple").getHeight());
+		live->setPosition(Vector2{ xPos, yPos });
+		SpriteComponent* spriteBrick = new SpriteComponent(live, Assets::getTexture("Apple"));
+		xPos += liveSizeX + offsetX;
 	}
 
 	// Animated sprite
@@ -139,6 +166,25 @@ Ball* Game::getBall()
 void Game::setBall(Ball* ballP)
 {
 	ball = ballP;
+}
+
+vector<Live*>& Game::getLives()
+{
+	return lives;
+}
+
+void Game::addLive(Live* live)
+{
+	lives.emplace_back(live);
+}
+
+void Game::removeLive(Live* live)
+{
+	auto iter = std::find(begin(lives), end(lives), live);
+	if (iter != lives.end())
+	{
+		lives.erase(iter);
+	}
 }
 
 void Game::endGame()

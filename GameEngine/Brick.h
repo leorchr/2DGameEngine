@@ -16,4 +16,3 @@ protected:
 	RectangleComponent* rc;
 	RectangleCollisionComponent* rcc;
 };
-

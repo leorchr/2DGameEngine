@@ -7,6 +7,7 @@
 #include "Brick.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "Live.h"
 #include "Vector2.h"
 using std::vector;
 
@@ -50,6 +51,10 @@ public:
 	Ball* getBall();
 	void setBall(Ball* ball);
 
+	vector<Live*>& getLives();
+	void addLive(Live* live);
+	void removeLive(Live* live);
+
 	void endGame();
 
 private:
@@ -70,4 +75,5 @@ private:
 	vector<Brick*> bricks;
 	Paddle* paddle = nullptr;
 	Ball* ball = nullptr;
+	vector<Live*> lives;
 };

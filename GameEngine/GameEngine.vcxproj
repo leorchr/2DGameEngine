@@ -143,6 +143,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="InputPaddle.cpp" />
+    <ClCompile Include="Live.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveBall.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputPaddle.h" />
+    <ClInclude Include="Live.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="MoveBall.h" />

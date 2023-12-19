@@ -1,8 +1,10 @@
+#include <vector>
 #include "Ball.h"
 #include "Maths.h"
 #include "Window.h"
 #include "Actor.h"
 #include "Game.h"
+#include "Live.h"
 #include <iostream>
 using namespace std;
 
@@ -64,6 +66,10 @@ void Ball::TouchScreenBottom()
 {
 	if (lives >= 1)
 	{
+		if (getGame().getLives().size() != 0) {
+			auto visualLives = getGame().getLives();
+			visualLives.back()->setState((ActorState::Dead));
+		}
 		mc->setUpwardSpeed(abs(mc->getUpwardSpeed()));
 		setPosition(Vector2{ 400,400 });
 		lives--;

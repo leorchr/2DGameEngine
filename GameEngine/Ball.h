@@ -14,7 +14,6 @@ public:
 	void TouchScreenBottom();
 
 protected:
-	RectangleComponent* rc;
 	MoveBall* mc;
 	RectangleCollisionComponent* rcc;
 	int lives = 3;
