@@ -5,6 +5,8 @@
 #include "Actor.h"
 #include "Game.h"
 #include "Live.h"
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 using namespace std;
 
@@ -24,12 +26,24 @@ Ball::Ball(float mSizeX, float mSizeY) : Actor()
 
 void Ball::updateActor(float dt)
 {
+	srand(time(NULL));
 	auto paddle = getGame().getPaddle();
 	if (Intersect(*rcc, paddle->getCollision()))
 	{
 		if (positionLastFrame.y + rcc->getSizeY() <= paddle->getPosition().y)
 		{
 			mc->setUpwardSpeed(-mc->getUpwardSpeed());
+
+			int forwardSpeedRand = mc->getForwardSpeed();
+			int randSpeed;
+			if (forwardSpeedRand > 0) {
+				cout << "oui" << endl;
+				randSpeed = -((rand() % forwardSpeedRand - 100) + (forwardSpeedRand - 100));
+			}
+			else {
+				randSpeed = (rand() % forwardSpeedRand - 100) + (forwardSpeedRand - 100);
+			}
+			mc->setForwardSpeed(randSpeed);
 		}
 	}
 
