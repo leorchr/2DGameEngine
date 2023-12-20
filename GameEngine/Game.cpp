@@ -21,18 +21,13 @@ bool Game::initialize()
 void Game::load()
 {
 	// Load textures
-	Assets::loadTexture(renderer, "Res\\Ship01.png", "Ship01");
-	Assets::loadTexture(renderer, "Res\\Ship02.png", "Ship02");
-	Assets::loadTexture(renderer, "Res\\Ship03.png", "Ship03");
-	Assets::loadTexture(renderer, "Res\\Ship04.png", "Ship04");
 	Assets::loadTexture(renderer, "Res\\Farback01.png", "Farback01");
 	Assets::loadTexture(renderer, "Res\\Farback02.png", "Farback02");
 	Assets::loadTexture(renderer, "Res\\Stars.png", "Stars");
-	Assets::loadTexture(renderer, "Res\\Astroid.png", "Astroid");
-	Assets::loadTexture(renderer, "Res\\Ship.png", "Ship");
-	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
-	Assets::loadTexture(renderer, "Res\\Strawberry2.png", "Strawberry");
 	Assets::loadTexture(renderer, "Res\\Apple.png", "Apple");
+	Assets::loadTexture(renderer, "Res\\Apple2.png", "Apple2");
+	Assets::loadTexture(renderer, "Res\\Apple3.png", "Apple3");
+	Assets::loadTexture(renderer, "Res\\Apple4.png", "Apple4");
 	Assets::loadTexture(renderer, "Res\\Brique.png", "Brique");
 	Assets::loadTexture(renderer, "Res\\Wood.png", "Wood");
 	Assets::loadTexture(renderer, "Res\\Wood2.png", "Wood2");
@@ -62,8 +57,15 @@ void Game::load()
 
 	// Création de la balle
 	new Ball((int)Assets::getTexture("Apple").getWidth(), (int)Assets::getTexture("Apple").getHeight());
-	//new Ball(10,13);
-	SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Apple"));
+	// Animated sprite
+	vector<Texture*> animTextures {
+		&Assets::getTexture("Apple"),
+			& Assets::getTexture("Apple2"),
+			& Assets::getTexture("Apple3"),
+			& Assets::getTexture("Apple4"),
+	};
+	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ball, animTextures);
+	//SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Apple"));
 	ball->setPosition(Vector2{ 400, 400 });
 	int lives = 5;
 	ball->setLives(lives);
@@ -116,19 +118,6 @@ void Game::load()
 		SpriteComponent* spriteBrick = new SpriteComponent(live, Assets::getTexture("Apple"));
 		xPos += liveSizeX + offsetX;
 	}
-
-	// Animated sprite
-	/*
-	vector<Texture*> animTextures {
-		&Assets::getTexture("Ship01"),
-		&Assets::getTexture("Ship02"),
-		&Assets::getTexture("Ship03"),
-		&Assets::getTexture("Ship04"),
-	};
-	Actor* ship = new Actor();
-	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ship, animTextures);
-	ship->setPosition(Vector2{ 100, 300 });
-	*/
 }
 
 vector<Brick*>& Game::getBricks()

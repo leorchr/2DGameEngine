@@ -43,6 +43,18 @@ void Ball::updateActor(float dt)
 				mc->setForwardSpeed(-randSpeed);
 			}
 		}
+		else {
+			setPosition(Vector2{ getPosition().x,paddle->getPosition().y - rcc->getSizeY()});
+			mc->setUpwardSpeed(-mc->getUpwardSpeed());
+
+			int randSpeed = rand() % 150 + (baseForwardSpeed - 150);
+			if (mc->getForwardSpeed() > 0) {
+				mc->setForwardSpeed(randSpeed);
+			}
+			else {
+				mc->setForwardSpeed(-randSpeed);
+			}
+		}
 	}
 
 	auto bricks = getGame().getBricks();
