@@ -57,6 +57,7 @@ void Game::load()
 
 	// Création de la balle
 	new Ball((int)Assets::getTexture("Apple").getWidth(), (int)Assets::getTexture("Apple").getHeight());
+
 	// Animated sprite
 	vector<Texture*> animTextures {
 		&Assets::getTexture("Apple"),
@@ -65,7 +66,6 @@ void Game::load()
 			& Assets::getTexture("Apple4"),
 	};
 	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ball, animTextures);
-	//SpriteComponent* spriteBall = new SpriteComponent(ball, Assets::getTexture("Apple"));
 	ball->setPosition(Vector2{ 400, 400 });
 	int lives = 5;
 	ball->setLives(lives);
