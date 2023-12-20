@@ -18,4 +18,5 @@ protected:
 	RectangleCollisionComponent* rcc;
 	int lives = 3;
 	Vector2 positionLastFrame;
+	int baseForwardSpeed;
 };

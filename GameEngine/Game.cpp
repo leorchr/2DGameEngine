@@ -37,11 +37,12 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Wood.png", "Wood");
 	Assets::loadTexture(renderer, "Res\\Wood2.png", "Wood2");
 	Assets::loadTexture(renderer, "Res\\Wood3.png", "Wood3");
+	Assets::loadTexture(renderer, "Res\\Wood4.png", "Wood4");
 
 
 	// Background
 	// Create the "far back" background
-	/*vector<Texture*> bgTexsFar{
+	vector<Texture*> bgTexsFar{
 		&Assets::getTexture("Farback01"),
 			& Assets::getTexture("Farback02")
 	};
@@ -56,7 +57,7 @@ void Game::load()
 			& Assets::getTexture("Stars")
 	};
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose);
-	bgSpritesClose->setScrollSpeed(-200.0f);*/
+	bgSpritesClose->setScrollSpeed(-200.0f);
 
 
 	// Création de la balle
@@ -69,7 +70,8 @@ void Game::load()
 
 
 	// Création de la raquette
-	new Paddle(128, 16);
+	new Paddle((int)Assets::getTexture("Wood4").getWidth(), (int)Assets::getTexture("Wood4").getHeight());
+	SpriteComponent* spritePaddle = new SpriteComponent(paddle, Assets::getTexture("Wood4"));
 	paddle->setPosition(Vector2{ 450, 700 });
 
 
@@ -85,7 +87,7 @@ void Game::load()
 
 	for (int i = 0; i < horizontalBricks; ++i)
 	{
-		float yPos = 70;
+		float yPos = 100;
 		for (int i = 0; i < verticalBricks; ++i) {
 			Brick* brick = new Brick(Assets::getTexture("Brique").getWidth(), (int)Assets::getTexture("Brique").getHeight());
 			brick->setPosition(Vector2{ xPos, yPos });

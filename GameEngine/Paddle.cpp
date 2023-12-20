@@ -13,7 +13,7 @@ Paddle::Paddle(float mSizeX, float mSizeY) : Actor()
 	setSizeY(mSizeY);
 	rc = new RectangleComponent(this, mSizeX, mSizeY);
 	ic = new InputPaddle(this);
-	ic->setMaxForwardSpeed(500.0f);
+	ic->setMaxForwardSpeed(800.0f);
 	ic->setMaxAngularSpeed(0);
 	rcc = new RectangleCollisionComponent(this);
 

@@ -1,5 +1,13 @@
-﻿  Ball.cpp
-D:\rocherLeo\GameEngine\GameEngine\Ball.cpp(29,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Ball.cpp(37,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Ball.cpp(46,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Game.cpp
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(64,98): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(64,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(73,100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(73,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(79,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(92,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(92,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(107,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(108,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(114,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(114,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   GameEngine.vcxproj -> D:\rocherLeo\GameEngine\x64\Debug\GameEngine.exe

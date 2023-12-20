@@ -15,18 +15,19 @@ Ball::Ball(float mSizeX, float mSizeY) : Actor()
 	setSizeX(mSizeX);
 	setSizeY(mSizeY);
 	//rc = new RectangleComponent(this, mSizeX, mSizeY);
+	baseForwardSpeed = 500;
 	mc = new MoveBall(this);
-	mc->setForwardSpeed(500.0f);
+	mc->setForwardSpeed(baseForwardSpeed);
 	mc->setUpwardSpeed(500.0f);
 	mc->setAngularSpeed(0.0f);
 	rcc = new RectangleCollisionComponent(this);
 
 	getGame().setBall(this);
+	srand(time(NULL));
 }
 
 void Ball::updateActor(float dt)
 {
-	srand(time(NULL));
 	auto paddle = getGame().getPaddle();
 	if (Intersect(*rcc, paddle->getCollision()))
 	{
@@ -34,16 +35,13 @@ void Ball::updateActor(float dt)
 		{
 			mc->setUpwardSpeed(-mc->getUpwardSpeed());
 
-			int forwardSpeedRand = mc->getForwardSpeed();
-			int randSpeed;
-			if (forwardSpeedRand > 0) {
-				cout << "oui" << endl;
-				randSpeed = -((rand() % forwardSpeedRand - 100) + (forwardSpeedRand - 100));
+			int randSpeed = rand() % 150 + (baseForwardSpeed-150);
+			if (mc->getForwardSpeed() > 0) {
+				mc->setForwardSpeed(randSpeed);
 			}
 			else {
-				randSpeed = (rand() % forwardSpeedRand - 100) + (forwardSpeedRand - 100);
+				mc->setForwardSpeed(-randSpeed);
 			}
-			mc->setForwardSpeed(randSpeed);
 		}
 	}
 
