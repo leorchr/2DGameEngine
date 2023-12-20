@@ -24,15 +24,14 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Farback01.png", "Farback01");
 	Assets::loadTexture(renderer, "Res\\Farback02.png", "Farback02");
 	Assets::loadTexture(renderer, "Res\\Stars.png", "Stars");
-	Assets::loadTexture(renderer, "Res\\Apple.png", "Apple");
-	Assets::loadTexture(renderer, "Res\\Apple2.png", "Apple2");
-	Assets::loadTexture(renderer, "Res\\Apple3.png", "Apple3");
-	Assets::loadTexture(renderer, "Res\\Apple4.png", "Apple4");
-	Assets::loadTexture(renderer, "Res\\Brique.png", "Brique");
-	Assets::loadTexture(renderer, "Res\\Wood.png", "Wood");
-	Assets::loadTexture(renderer, "Res\\Wood2.png", "Wood2");
-	Assets::loadTexture(renderer, "Res\\Wood3.png", "Wood3");
-	Assets::loadTexture(renderer, "Res\\Wood4.png", "Wood4");
+	Assets::loadTexture(renderer, "Res\\Apple01.png", "Apple01");
+	Assets::loadTexture(renderer, "Res\\Apple02.png", "Apple02");
+	Assets::loadTexture(renderer, "Res\\Apple03.png", "Apple03");
+	Assets::loadTexture(renderer, "Res\\Apple04.png", "Apple04");
+	Assets::loadTexture(renderer, "Res\\Wood01.png", "Wood01");
+	Assets::loadTexture(renderer, "Res\\Wood02.png", "Wood02");
+	Assets::loadTexture(renderer, "Res\\Wood03.png", "Wood03");
+	Assets::loadTexture(renderer, "Res\\Wood04.png", "Wood04");
 
 
 	// Background
@@ -56,14 +55,14 @@ void Game::load()
 
 
 	// Création de la balle
-	new Ball((int)Assets::getTexture("Apple").getWidth(), (int)Assets::getTexture("Apple").getHeight());
+	new Ball((int)Assets::getTexture("Apple01").getWidth(), (int)Assets::getTexture("Apple01").getHeight());
 
 	// Animated sprite
 	vector<Texture*> animTextures {
-		&Assets::getTexture("Apple"),
-			& Assets::getTexture("Apple2"),
-			& Assets::getTexture("Apple3"),
-			& Assets::getTexture("Apple4"),
+		&Assets::getTexture("Apple01"),
+			& Assets::getTexture("Apple02"),
+			& Assets::getTexture("Apple03"),
+			& Assets::getTexture("Apple04"),
 	};
 	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ball, animTextures);
 	ball->setPosition(Vector2{ 400, 400 });
@@ -72,8 +71,8 @@ void Game::load()
 
 
 	// Création de la raquette
-	new Paddle((int)Assets::getTexture("Wood4").getWidth(), (int)Assets::getTexture("Wood4").getHeight());
-	SpriteComponent* spritePaddle = new SpriteComponent(paddle, Assets::getTexture("Wood4"));
+	new Paddle((int)Assets::getTexture("Wood04").getWidth(), (int)Assets::getTexture("Wood04").getHeight());
+	SpriteComponent* spritePaddle = new SpriteComponent(paddle, Assets::getTexture("Wood04"));
 	paddle->setPosition(Vector2{ 450, 700 });
 
 
@@ -91,13 +90,13 @@ void Game::load()
 	{
 		float yPos = 100;
 		for (int i = 0; i < verticalBricks; ++i) {
-			Brick* brick = new Brick(Assets::getTexture("Brique").getWidth(), (int)Assets::getTexture("Brique").getHeight());
+			Brick* brick = new Brick(Assets::getTexture("Wood01").getWidth(), (int)Assets::getTexture("Wood01").getHeight());
 			brick->setPosition(Vector2{ xPos, yPos });
 
 			int randWood = rand() % 3 + 1;
-			if (randWood == 1) SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood"));
-			else if (randWood == 2) SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood2"));
-			else SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood3"));
+			if (randWood == 1) SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood01"));
+			else if (randWood == 2) SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood02"));
+			else SpriteComponent* spriteBrick = new SpriteComponent(brick, Assets::getTexture("Wood03"));
 			yPos += brickSizeY + offsetY;
 		}
 		xPos += brickSizeX + offsetX;
@@ -106,16 +105,16 @@ void Game::load()
 
 	// Création des vies
 
-	float liveSizeX = Assets::getTexture("Apple").getWidth();
-	float liveSizeY = Assets::getTexture("Apple").getHeight();
+	float liveSizeX = Assets::getTexture("Apple01").getWidth();
+	float liveSizeY = Assets::getTexture("Apple01").getHeight();
 	xPos = 20;
 	float yPos = 730;
 	offsetX = 10;
 
 	for (int i = 0; i < lives; ++i) {
-		Live* live = new Live(Assets::getTexture("Apple").getWidth(), (int)Assets::getTexture("Apple").getHeight());
+		Live* live = new Live(Assets::getTexture("Apple01").getWidth(), (int)Assets::getTexture("Apple01").getHeight());
 		live->setPosition(Vector2{ xPos, yPos });
-		SpriteComponent* spriteBrick = new SpriteComponent(live, Assets::getTexture("Apple"));
+		SpriteComponent* spriteBrick = new SpriteComponent(live, Assets::getTexture("Apple01"));
 		xPos += liveSizeX + offsetX;
 	}
 }

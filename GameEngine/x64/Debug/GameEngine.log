@@ -1,13 +1,14 @@
 ﻿  Game.cpp
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(59,98): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(59,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(75,100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(75,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(81,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(94,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(94,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(58,102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(58,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(74,102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(74,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(80,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(93,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(93,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(108,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 D:\rocherLeo\GameEngine\GameEngine\Game.cpp(109,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(110,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(116,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\rocherLeo\GameEngine\GameEngine\Game.cpp(116,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(115,111): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\rocherLeo\GameEngine\GameEngine\Game.cpp(115,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  LINK : D:\rocherLeo\GameEngine\x64\Debug\GameEngine.exe not found or not built by the last incremental link; performing full link
   GameEngine.vcxproj -> D:\rocherLeo\GameEngine\x64\Debug\GameEngine.exe
