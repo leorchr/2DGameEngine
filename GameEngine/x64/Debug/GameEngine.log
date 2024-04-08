@@ -1,1 +1,48 @@
-﻿  GameEngine.vcxproj -> D:\GitHub\GameEngine\x64\Debug\GameEngine.exe
+﻿  Actor.cpp
+  AnimSpriteComponent.cpp
+  Assets.cpp
+  BackgroundSpriteComponent.cpp
+  Ball.cpp
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Ball.cpp(20,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Ball.cpp(26,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Ball.cpp(40,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Ball.cpp(43,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Ball.cpp(52,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Ball.cpp(55,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Brick.cpp
+  CircleCollisionComponent.cpp
+  Component.cpp
+  Game.cpp
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(59,102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(59,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(75,102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(75,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(81,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(94,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(94,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(109,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(110,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(116,111): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME3\rocherLeo\GameEngine\GameEngine\Game.cpp(116,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  InputComponent.cpp
+  InputPaddle.cpp
+  Live.cpp
+  Log.cpp
+  Main.cpp
+  MoveBall.cpp
+  MoveComponent.cpp
+  Paddle.cpp
+  Random.cpp
+  Rectangle.cpp
+  RectangleCollisionComponent.cpp
+  Generating Code...
+  Compiling...
+  RectangleComponent.cpp
+  Renderer.cpp
+  SpriteComponent.cpp
+  Texture.cpp
+  Timer.cpp
+  Vector2.cpp
+  Window.cpp
+  Generating Code...
+  GameEngine.vcxproj -> D:\GAME3\rocherLeo\GameEngine\x64\Debug\GameEngine.exe

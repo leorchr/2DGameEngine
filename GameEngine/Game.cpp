@@ -10,6 +10,7 @@
 #include "Paddle.h"
 #include <stdlib.h>
 #include <time.h>
+#include <algorithm>
 
 bool Game::initialize()
 {
