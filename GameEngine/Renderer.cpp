@@ -17,6 +17,7 @@ Renderer::~Renderer()
 bool Renderer::initialize(Window& window)
 {
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
 	if (!SDLRenderer)
 	{
 		Log::error(LogCategory::Video, "Failed to create renderer");
@@ -32,7 +33,7 @@ bool Renderer::initialize(Window& window)
 
 void Renderer::beginDraw()
 {
-	SDL_SetRenderDrawColor(SDLRenderer, 120, 120, 255, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(SDLRenderer);
 }
 
