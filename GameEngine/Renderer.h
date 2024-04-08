@@ -27,9 +27,13 @@ public:
 	void endDraw();
 
 	void drawRect(const Rectangle& rect) const;
+	void drawCircle(Vector2 positionP, float radiusP) const;
 	void addSprite(class SpriteComponent* sprite);
 	void removeSprite(class SpriteComponent* sprite);
+	void addCircle(class CircleComponent* circle);
+	void removeCircle(class CircleComponent* circle);
 	void drawSprites();
+	void drawCircles();
 	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
 
 	SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }
@@ -38,4 +42,5 @@ public:
 private:
 	SDL_Renderer* SDLRenderer = nullptr;
 	std::vector<SpriteComponent*> sprites;
+	std::vector<CircleComponent*> circles;
 };

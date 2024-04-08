@@ -2,6 +2,9 @@
 #include "Actor.h"
 #include "Timer.h"
 #include "Assets.h"
+#include "Actor.h"
+#include "CircleComponent.h"
+#include "CircleMoveComponent.h"
 #include <algorithm>
 
 bool Game::initialize()
@@ -12,7 +15,11 @@ bool Game::initialize()
 }
 
 void Game::load()
-{
+{ 
+	Actor* actor = new Actor();
+	actor->setPosition(Vector2(512, 384));
+	CircleComponent* circleComponent = new CircleComponent(actor, 50);
+	CircleMoveComponent* circleMoveComponent = new CircleMoveComponent(actor, 0, 150);
 }
 
 void Game::processInput()

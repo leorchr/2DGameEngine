@@ -136,8 +136,9 @@
     <ClCompile Include="AnimSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
-    <ClCompile Include="CircleActor.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
+    <ClCompile Include="CircleComponent.cpp" />
+    <ClCompile Include="CircleMoveComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputComponent.cpp" />
@@ -158,8 +159,9 @@
     <ClInclude Include="AnimSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
-    <ClInclude Include="CircleActor.h" />
     <ClInclude Include="CircleCollisionComponent.h" />
+    <ClInclude Include="CircleComponent.h" />
+    <ClInclude Include="CircleMoveComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputComponent.h" />

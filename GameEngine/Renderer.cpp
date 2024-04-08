@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Maths.h"
 #include "SpriteComponent.h"
+#include "CircleComponent.h"
 
 #include <SDL_image.h>
 
@@ -17,7 +18,7 @@ Renderer::~Renderer()
 bool Renderer::initialize(Window& window)
 {
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
+	//SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
 	if (!SDLRenderer)
 	{
 		Log::error(LogCategory::Video, "Failed to create renderer");
@@ -40,6 +41,7 @@ void Renderer::beginDraw()
 void Renderer::draw()
 {
 	drawSprites();
+	drawCircles();
 }
 
 void Renderer::endDraw()
@@ -54,11 +56,59 @@ void Renderer::drawRect(const Rectangle& rect) const
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
 
+void Renderer::drawCircle(Vector2 positionP, float radiusP) const
+{
+	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
+
+	float offsetx, offsety, d;
+	int status;
+
+	offsetx = 0;
+	offsety = radiusP;
+	d = radiusP - 1;
+	status = 0;
+
+	while (offsety >= offsetx) {
+
+		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsety, positionP.y + offsetx, positionP.x + offsety, positionP.y + offsetx);
+		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsetx, positionP.y + offsety, positionP.x + offsetx, positionP.y + offsety);
+		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsetx, positionP.y - offsety, positionP.x + offsetx, positionP.y - offsety);
+		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsety, positionP.y - offsetx, positionP.x + offsety, positionP.y - offsetx);
+
+		if (status < 0) {
+			status = -1;
+			break;
+		}
+
+		if (d >= 2 * offsetx) {
+			d -= 2 * offsetx + 1;
+			offsetx += 1;
+		}
+		else if (d < 2 * (radiusP - offsety)) {
+			d += 2 * offsety - 1;
+			offsety -= 1;
+		}
+		else {
+			d += 2 * (offsety - offsetx - 1);
+			offsety -= 1;
+			offsetx += 1;
+		}
+	}
+}
+
 void Renderer::drawSprites()
 {
 	for (auto sprite : sprites)
 	{
 		sprite->draw(*this);
+	}
+}
+
+void Renderer::drawCircles()
+{
+	for (auto circle : circles)
+	{
+		circle->draw(*this);
 	}
 }
 
@@ -119,4 +169,22 @@ void Renderer::removeSprite(SpriteComponent* sprite)
 {
 	auto iter = std::find(begin(sprites), end(sprites), sprite);
 	sprites.erase(iter);
+}
+
+void Renderer::addCircle(CircleComponent* circle)
+{
+	// Insert the sprite at the right place in function of drawOrder
+	int circleDrawOrder = circle->getDrawOrder();
+	auto iter = begin(circles);
+	for (; iter != end(circles); ++iter)
+	{
+		if (circleDrawOrder < (*iter)->getDrawOrder()) break;
+	}
+	circles.insert(iter, circle);
+}
+
+void Renderer::removeCircle(CircleComponent* circle)
+{
+	auto iter = std::find(begin(circles), end(circles), circle);
+	circles.erase(iter);
 }
