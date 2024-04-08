@@ -7,6 +7,7 @@
 #include "BackgroundSpriteComponent.h"
 #include "Astroid.h"
 #include "Ship.h"
+#include <algorithm>
 
 bool Game::initialize()
 {
