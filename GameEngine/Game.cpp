@@ -3,8 +3,6 @@
 #include "Timer.h"
 #include "Assets.h"
 #include "Actor.h"
-#include "CircleComponent.h"
-#include "CircleMoveComponent.h"
 #include <algorithm>
 
 bool Game::initialize()
@@ -15,11 +13,7 @@ bool Game::initialize()
 }
 
 void Game::load()
-{ 
-	Actor* actor = new Actor();
-	actor->setPosition(Vector2(512, 50));
-	CircleComponent* circleComponent = new CircleComponent(actor, 20);
-	CircleMoveComponent* circleMoveComponent = new CircleMoveComponent(actor);
+{
 }
 
 void Game::processInput()
@@ -33,6 +27,12 @@ void Game::processInput()
 		case SDL_QUIT:
 			isRunning = false;
 			break;
+		case SDL_MOUSEBUTTONDOWN:
+			int mouseX, mouseY;
+			Uint32 mouseState = SDL_GetMouseState(&mouseX, &mouseY);
+			addCircle(new CircleActor(Vector2(mouseX, mouseY), (rand() % 35 + 15), Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100))));
+
+		break;
 		}
 	}
 	// Keyboard state
@@ -42,6 +42,8 @@ void Game::processInput()
 	{
 		isRunning = false;
 	}
+
+	if(SDL_BUTTON_LEFT)
 	// Actor input
 	isUpdatingActors = true;
 	for (auto actor : actors)
@@ -152,4 +154,15 @@ void Game::removeActor(Actor* actor)
 		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
+}
+
+void Game::addCircle(CircleActor* circle)
+{
+	circles.emplace_back(circle);
+}
+
+void Game::removeCircle(CircleActor* circle)
+{
+	auto iter = std::find(begin(circles), end(circles), circle);
+	circles.erase(iter);
 }

@@ -5,6 +5,8 @@
 #include "Window.h"
 #include "Renderer.h"
 #include "Vector2.h"
+#include "Vector3.h"
+#include "CircleActor.h"
 using std::vector;
 
 class Game
@@ -36,6 +38,11 @@ public:
 
 	Renderer& getRenderer() { return renderer; }
 
+	void addCircle(class CircleActor* circle);
+	void removeCircle(class CircleActor* circle);
+	vector<CircleActor*>& getCircles() { return circles; }
+
+
 private:
 	void processInput();
 	void update(float dt);
@@ -48,4 +55,6 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
+
+	vector<CircleActor*> circles;
 };

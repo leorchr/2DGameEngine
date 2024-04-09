@@ -68,6 +68,11 @@ struct Vector2
 		return Vector2(vec.x * scalar, vec.y * scalar);
 	}
 
+	friend Vector2 operator/(const Vector2& vec, float scalar)
+	{
+		return Vector2(vec.x / scalar, vec.y / scalar);
+	}
+
 	friend Vector2 operator*(float scalar, const Vector2& vec)
 	{
 		return Vector2(vec.x * scalar, vec.y * scalar);

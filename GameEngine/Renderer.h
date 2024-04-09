@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include "Window.h"
 #include "Vector2.h"
+#include "Vector3.h"
 #include "Actor.h"
 
 class Renderer
@@ -27,7 +28,7 @@ public:
 	void endDraw();
 
 	void drawRect(const Rectangle& rect) const;
-	void drawCircle(Vector2 positionP, float radiusP) const;
+	void drawCircle(Vector2 positionP, float radiusP, Vector3 colorP) const;
 	void addSprite(class SpriteComponent* sprite);
 	void removeSprite(class SpriteComponent* sprite);
 	void addCircle(class CircleComponent* circle);

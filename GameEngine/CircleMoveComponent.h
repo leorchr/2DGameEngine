@@ -11,7 +11,9 @@ public:
 	CircleMoveComponent& operator=(const CircleMoveComponent&) = delete;
 
 	void update(float dt);
+	void updatePosition(float dt);
 	void accelerate(Vector2 accelerationP);
+	void applyConstraint();
 
 protected:
 	Vector2 acceleration;

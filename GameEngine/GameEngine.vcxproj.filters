@@ -66,19 +66,22 @@
     <ClCompile Include="MoveComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Astroid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InputComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CircleCollisionComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Laser.cpp">
+    <ClCompile Include="CircleComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleMoveComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleActor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,19 +137,25 @@
     <ClInclude Include="MoveComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Astroid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="InputComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CircleCollisionComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Laser.h">
+    <ClInclude Include="CircleComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleMoveComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleActor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

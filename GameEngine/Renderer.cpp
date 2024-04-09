@@ -4,6 +4,7 @@
 #include "Maths.h"
 #include "SpriteComponent.h"
 #include "CircleComponent.h"
+#include "Color.h"
 
 #include <SDL_image.h>
 
@@ -56,9 +57,9 @@ void Renderer::drawRect(const Rectangle& rect) const
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
 
-void Renderer::drawCircle(Vector2 positionP, float radiusP) const
+void Renderer::drawCircle(Vector2 positionP, float radiusP, Vector3 colorP) const
 {
-	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, colorP.x, colorP.y, colorP.z, 1);
 
 	float offsetx, offsety, d;
 	int status;

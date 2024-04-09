@@ -136,6 +136,7 @@
     <ClCompile Include="AnimSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
+    <ClCompile Include="CircleActor.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="CircleMoveComponent.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,9 +161,11 @@
     <ClInclude Include="AnimSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
+    <ClInclude Include="CircleActor.h" />
     <ClInclude Include="CircleCollisionComponent.h" />
     <ClInclude Include="CircleComponent.h" />
     <ClInclude Include="CircleMoveComponent.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputComponent.h" />
@@ -175,6 +179,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Vector3.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
