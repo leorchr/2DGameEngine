@@ -10,15 +10,13 @@ public:
 	CircleMoveComponent(const CircleMoveComponent&) = delete;
 	CircleMoveComponent& operator=(const CircleMoveComponent&) = delete;
 
-	void update(float dt);
 	void updatePosition(float dt);
 	void accelerate(Vector2 accelerationP);
-	void applyConstraint();
+	Vector2 getCurrentPosition() const { return currentPosition; }
+	void setCurrentPosition(Vector2 positionP);
 
 protected:
 	Vector2 acceleration;
 	Vector2 currentPosition;
 	Vector2 lastPosition;
-
-	const Vector2 gravity = Vector2(0.0f, 1000.0f);
 };

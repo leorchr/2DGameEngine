@@ -30,8 +30,7 @@ void Game::processInput()
 		case SDL_MOUSEBUTTONDOWN:
 			int mouseX, mouseY;
 			Uint32 mouseState = SDL_GetMouseState(&mouseX, &mouseY);
-			addCircle(new CircleActor(Vector2(mouseX, mouseY), (rand() % 35 + 15), Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100))));
-
+			new CircleActor(Vector2(mouseX, mouseY), 25, Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100)));
 		break;
 		}
 	}
@@ -55,6 +54,7 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
+	physics.computePhysics(dt);
 	// Update actors 
 	isUpdatingActors = true;
 	for (auto actor : actors)
@@ -154,15 +154,4 @@ void Game::removeActor(Actor* actor)
 		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
-}
-
-void Game::addCircle(CircleActor* circle)
-{
-	circles.emplace_back(circle);
-}
-
-void Game::removeCircle(CircleActor* circle)
-{
-	auto iter = std::find(begin(circles), end(circles), circle);
-	circles.erase(iter);
 }

@@ -7,6 +7,7 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "CircleActor.h"
+#include "Physics.h"
 using std::vector;
 
 class Game
@@ -37,11 +38,7 @@ public:
 	void removeActor(Actor* actor);
 
 	Renderer& getRenderer() { return renderer; }
-
-	void addCircle(class CircleActor* circle);
-	void removeCircle(class CircleActor* circle);
-	vector<CircleActor*>& getCircles() { return circles; }
-
+	Physics& getPhysics() { return physics; }
 
 private:
 	void processInput();
@@ -51,10 +48,9 @@ private:
 	bool isRunning;
 	Window window;
 	Renderer renderer;
+	Physics physics;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
-
-	vector<CircleActor*> circles;
 };
