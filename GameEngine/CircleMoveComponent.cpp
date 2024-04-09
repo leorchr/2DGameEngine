@@ -2,31 +2,30 @@
 #include "Maths.h"
 #include "Actor.h"
 
-CircleMoveComponent::CircleMoveComponent(Actor* ownerP, float speedXP, float speedYP, int updateOrderP)
-	:Component(ownerP, updateOrderP), speedX(speedXP), speedY(speedYP)
+CircleMoveComponent::CircleMoveComponent(Actor* ownerP, int updateOrderP)
+	:Component(ownerP, updateOrderP)
 {
+	lastPosition = owner.getPosition();
+	currentPosition = owner.getPosition();
 }
 
-void CircleMoveComponent::setSpeedX(float speedXP)
+void CircleMoveComponent::accelerate(Vector2 accelerationP)
 {
-	speedX = speedXP;
-}
-
-void CircleMoveComponent::setSpeedY(float speedYP)
-{
-	speedY = speedYP;
+	acceleration += accelerationP;
 }
 
 void CircleMoveComponent::update(float dt)
 {
-	if (!Maths::nearZero(speedX))
-	{
-		Vector2 newPosition = Vector2(owner.getPosition().x + speedX * dt, owner.getPosition().y);
-		owner.setPosition(newPosition);
-	}
-	if (!Maths::nearZero(speedY))
-	{
-		Vector2 newPosition = Vector2(owner.getPosition().x, owner.getPosition().y + speedY * dt);
-		owner.setPosition(newPosition);
-	}
+	accelerate(gravity);
+
+
+	const Vector2 velocity = currentPosition - lastPosition;
+
+	lastPosition = currentPosition;
+
+	currentPosition += velocity + acceleration * dt * dt;
+
+	acceleration = Vector2::zero;
+
+	owner.setPosition(currentPosition);
 }

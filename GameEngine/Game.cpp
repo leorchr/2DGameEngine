@@ -17,9 +17,9 @@ bool Game::initialize()
 void Game::load()
 { 
 	Actor* actor = new Actor();
-	actor->setPosition(Vector2(512, 384));
-	CircleComponent* circleComponent = new CircleComponent(actor, 50);
-	CircleMoveComponent* circleMoveComponent = new CircleMoveComponent(actor, 0, 150);
+	actor->setPosition(Vector2(512, 50));
+	CircleComponent* circleComponent = new CircleComponent(actor, 20);
+	CircleMoveComponent* circleMoveComponent = new CircleMoveComponent(actor);
 }
 
 void Game::processInput()
