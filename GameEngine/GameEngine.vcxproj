@@ -177,6 +177,7 @@
     <ClInclude Include="ControllerInputComponent.h" />
     <ClInclude Include="ControllerMoveComponent.h" />
     <ClInclude Include="ControllerState.h" />
+    <ClInclude Include="Fruit.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputSystem.h" />

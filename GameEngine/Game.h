@@ -63,11 +63,8 @@ private:
 	//Simulation variables
 	ControllerActor* controller;
 	vector<CircleActor*> circles;
-	float time;
 	float timeBetweenSpawn;
 	float baseTimeBetweenSpawn;
 	float spawnSpeed;
 	Vector2 spawnPos;
-	int maxCircles;
-	float minRadius, maxRadius;
 };

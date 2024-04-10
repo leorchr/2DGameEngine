@@ -4,6 +4,8 @@
 #include "Assets.h"
 #include "Actor.h"
 #include "Rectangle.h"
+#include "CircleActor.h"
+#include "Color.h"
 #include <algorithm>
 
 bool Game::initialize()
@@ -19,13 +21,9 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
 
 	controller = new ControllerActor(200.0f, 100.0f);
-	time = 0.0f;
 	baseTimeBetweenSpawn = 1.0f;
 	timeBetweenSpawn = 1.0f;
 	spawnSpeed = 30.0f;
-	maxCircles = 50;
-	minRadius = 50.0f;
-	maxRadius = 80.0f;
 	getPhysics().setLeftBorder(WINDOW_WIDTH/2 - 350.0f);
 	getPhysics().setRightBorder(WINDOW_WIDTH / 2 + 350.0f);
 	getPhysics().setBottomBorder(WINDOW_HEIGHT - 80.0f);
@@ -63,21 +61,14 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	renderer.drawRect(Rectangle(controller->getPosition().x, controller->getPosition().y, 200.0f, 200.0f));
-
 	// Simulate physics
 	spawnPos = controller->getPosition();
-	time += dt;
-	if (maxCircles > 0 && timeBetweenSpawn < 0) {
-		float range = maxRadius - minRadius;
-		CircleActor* circle = new CircleActor(spawnPos, (rand() % (int)range + minRadius), Vector3(0.0f,0.0f,255.0f));
+	if (timeBetweenSpawn < 0) {
+		CircleActor* circle = new CircleActor(spawnPos, Fruits::cherry);
 
-		const float angle = sin(time) + Maths::pi * 0.5f;
-
-		getPhysics().setObjectVelocity(*circle->getMoveComponent(), spawnSpeed * Vector2(cos(angle), sin(angle)));
+		getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(0.0f, spawnSpeed));
 		addCircle(circle);
 		timeBetweenSpawn = baseTimeBetweenSpawn;
-		maxCircles--;
 	}
 	else timeBetweenSpawn -= dt;
 	physics.computePhysics(dt);

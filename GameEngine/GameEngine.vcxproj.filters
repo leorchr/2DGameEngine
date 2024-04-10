@@ -200,5 +200,8 @@
     <ClInclude Include="ControllerState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Fruit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
