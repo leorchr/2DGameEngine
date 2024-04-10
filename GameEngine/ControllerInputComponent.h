@@ -6,7 +6,7 @@
 class ControllerInputComponent : public ControllerMoveComponent
 {
 public:
-	ControllerInputComponent(Actor* ownerP, float speedXP);
+	ControllerInputComponent(Actor* ownerP, float speedXP, float offsetP);
 	ControllerInputComponent() = delete;
 	ControllerInputComponent(const ControllerInputComponent&) = delete;
 	ControllerInputComponent& operator=(const ControllerInputComponent&) = delete;
@@ -20,6 +20,7 @@ public:
 
 private:
 	float maxSpeedX;
+	float offset;
 	SDL_Scancode leftKey;
 	SDL_Scancode rightKey;
 };

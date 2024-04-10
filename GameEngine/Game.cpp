@@ -18,7 +18,7 @@ void Game::load()
 {
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
 
-	controller = new ControllerActor(200.0f);
+	controller = new ControllerActor(200.0f, 100.0f);
 	time = 0.0f;
 	baseTimeBetweenSpawn = 1.0f;
 	timeBetweenSpawn = 1.0f;

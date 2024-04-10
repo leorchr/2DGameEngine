@@ -5,9 +5,10 @@
 #include <iostream>
 using namespace std;
 
-ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP) :
+ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP, float offsetP) :
 	ControllerMoveComponent(ownerP),
 	maxSpeedX(speedXP),
+	offset(offsetP),
 	leftKey(SDL_SCANCODE_A),
 	rightKey(SDL_SCANCODE_D)
 {
@@ -19,20 +20,20 @@ void ControllerInputComponent::processInput(const struct InputState& inputState)
 	const float leftBorder = owner.getGame().getPhysics().getLeftBorder();
 	const float rightBorder = owner.getGame().getPhysics().getRightBorder();
 
-	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Pressed && owner.getPosition().x <= leftBorder)
+	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Pressed && owner.getPosition().x <= leftBorder + offset)
 	{
-		owner.setPosition(Vector2(rightBorder - 50.0f, owner.getPosition().y));
+		owner.setPosition(Vector2(rightBorder - offset, owner.getPosition().y));
 	}
-	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Pressed && owner.getPosition().x >= rightBorder)
+	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Pressed && owner.getPosition().x >= rightBorder - offset)
 	{
-		owner.setPosition(Vector2(leftBorder + 50.0f, owner.getPosition().y));
+		owner.setPosition(Vector2(leftBorder + offset, owner.getPosition().y));
 	}
 
-	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Held && owner.getPosition().x > owner.getGame().getPhysics().getLeftBorder())
+	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Held && owner.getPosition().x > leftBorder + offset)
 	{
 		currentSpeedX -= maxSpeedX;
 	}
-	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Held && owner.getPosition().x < owner.getGame().getPhysics().getRightBorder())
+	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Held && owner.getPosition().x < rightBorder - offset)
 	{
 		currentSpeedX += maxSpeedX;
 	}

@@ -7,7 +7,7 @@
 class ControllerActor : public Actor
 {
 public:
-	ControllerActor(float speedXP);
+	ControllerActor(float speedXP, float offsetP);
 	~ControllerActor();
 
 private:
