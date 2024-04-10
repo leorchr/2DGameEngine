@@ -1,5 +1,7 @@
 #pragma once
-#include "CircleActor.h"
+#include "CircleMoveComponent.h"
+#include <vector>
+using std::vector;
 
 class Physics
 {
@@ -16,12 +18,13 @@ public:
     void updatePositions(float dt);
     void applyGravity();
     void applyConstraint();
+    void solveCollisions();
 
-    void addCircle(class CircleActor* circle);
-    void removeCircle(class CircleActor* circle);
-    vector<CircleActor*>& getCircles() { return circles; }
+    void addCircle(class CircleMoveComponent* circle);
+    void removeCircle(class CircleMoveComponent* circle);
+    vector<CircleMoveComponent*>& getCircles() { return circles; }
 
 private:
-    vector<CircleActor*> circles;
+    vector<CircleMoveComponent*> circles;
     const Vector2 gravity = Vector2(0.0f, 1000.0f);
 };

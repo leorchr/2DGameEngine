@@ -1,7 +1,4 @@
 #include "CircleActor.h"
-#include "CircleComponent.h"
-#include "CircleMoveComponent.h"
-#include "Physics.h"
 #include "Game.h"
 
 CircleActor::CircleActor(Vector2 positionP, float radiusP, Vector3 colorP) :
@@ -12,8 +9,8 @@ CircleActor::CircleActor(Vector2 positionP, float radiusP, Vector3 colorP) :
 	radius = radiusP;
 	setPosition(positionP);
 	circleComponent = new CircleComponent(this, radiusP, colorP);
-	moveComponent = new CircleMoveComponent(this);
-	getGame().getPhysics().addCircle(this);
+	moveComponent = new CircleMoveComponent(this, radiusP);
+	getGame().getPhysics().addCircle(moveComponent);
 }
 
 CircleActor::~CircleActor(){}

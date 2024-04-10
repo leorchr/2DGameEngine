@@ -1,9 +1,10 @@
 #include "CircleMoveComponent.h"
 #include "Actor.h"
 
-CircleMoveComponent::CircleMoveComponent(Actor* ownerP, int updateOrderP)
+CircleMoveComponent::CircleMoveComponent(Actor* ownerP, float radiusP, int updateOrderP)
 	:Component(ownerP, updateOrderP)
 {
+	radius = radiusP;
 	lastPosition = owner.getPosition();
 	currentPosition = owner.getPosition();
 }
