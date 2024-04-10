@@ -8,6 +8,7 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "CircleActor.h"
+#include "ControllerActor.h"
 #include "Physics.h"
 using std::vector;
 
@@ -58,6 +59,7 @@ private:
 	vector<Actor*> pendingActors;
 
 	//Simulation variables
+	ControllerActor* controller;
 	vector<CircleActor*> circles;
 	float time;
 	float timeBetweenSpawn;

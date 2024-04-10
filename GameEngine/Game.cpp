@@ -3,6 +3,7 @@
 #include "Timer.h"
 #include "Assets.h"
 #include "Actor.h"
+#include "Rectangle.h"
 #include <algorithm>
 
 bool Game::initialize()
@@ -14,14 +15,20 @@ bool Game::initialize()
 
 void Game::load()
 {
+	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
+
+	controller = new ControllerActor(200.0f);
 	time = 0.0f;
-	baseTimeBetweenSpawn = 0.02f;
-	timeBetweenSpawn = 0.02f;
-	spawnSpeed = 2000.0f;
-	spawnPos = (Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100.0f));
-	maxCircles = 2000;
-	minRadius = 5.0f;
-	maxRadius = 10.0f;
+	baseTimeBetweenSpawn = 1.0f;
+	timeBetweenSpawn = 1.0f;
+	spawnSpeed = 30.0f;
+	maxCircles = 50;
+	minRadius = 50.0f;
+	maxRadius = 80.0f;
+	getPhysics().setLeftBorder(WINDOW_WIDTH/2 - 350.0f);
+	getPhysics().setRightBorder(WINDOW_WIDTH / 2 + 350.0f);
+	getPhysics().setBottomBorder(WINDOW_HEIGHT - 80.0f);
+	getPhysics().setTopBorder(80.0f);
 }
 
 void Game::processInput()
@@ -62,11 +69,14 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
+	renderer.drawRect(Rectangle(controller->getPosition().x, controller->getPosition().y, 200.0f, 200.0f));
+
 	// Simulate physics
+	spawnPos = controller->getPosition();
 	time += dt;
 	if (maxCircles > 0 && timeBetweenSpawn < 0) {
 		float range = maxRadius - minRadius;
-		CircleActor* circle = new CircleActor(spawnPos, (rand() % (int)range + minRadius), Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100)));
+		CircleActor* circle = new CircleActor(spawnPos, (rand() % (int)range + minRadius), Vector3(0.0f,0.0f,255.0f));
 
 		const float angle = sin(time) + Maths::pi * 0.5f;
 

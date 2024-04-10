@@ -8,6 +8,9 @@ struct Rectangle
 	float width;
 	float height;
 
+	Rectangle(float xP, float yP, float widthP, float heightP);
+	~Rectangle();
+
 	SDL_Rect toSDLRect() const
 	{
 		return SDL_Rect{

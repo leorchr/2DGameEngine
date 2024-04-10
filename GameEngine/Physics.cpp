@@ -12,6 +12,26 @@ void Physics::removeCircle(CircleMoveComponent* circle)
 	circles.erase(iter);
 }
 
+void Physics::setBottomBorder(float bottomBorderP)
+{
+	bottomBorder = bottomBorderP;
+}
+
+void Physics::setLeftBorder(float leftBorderP)
+{
+	leftBorder = leftBorderP;
+}
+
+void Physics::setRightBorder(float rightBorderP)
+{
+	rightBorder = rightBorderP;
+}
+
+void Physics::setTopBorder(float topBorderP)
+{
+	topBorder = topBorderP;
+}
+
 void Physics::computePhysics(float dt)
 {
 	deltaTime = dt;
@@ -50,20 +70,26 @@ void Physics::applyGravity()
 
 void Physics::applyConstraint()
 {
-
 	for (auto circle : circles)
 	{
-		float actorRadius = circle->getRadius();
+		if (circle->getCurrentPosition().y > bottomBorder - circle->getRadius())
+		{
+			circle->setCurrentPosition(Vector2(circle->getCurrentPosition().x, bottomBorder - circle->getRadius()));
+		}
 
-		const Vector2 position = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-		const float radius = 350.0f;
+		if (circle->getCurrentPosition().y < topBorder + circle->getRadius())
+		{
+			//circle->setCurrentPosition(Vector2(circle->getCurrentPosition().x, bottomBorder + circle->getRadius()));
+		}
 
-		const Vector2 toObject = circle->getCurrentPosition() - position;
-		const float distance = toObject.length();
+		if (circle->getCurrentPosition().x < leftBorder + circle->getRadius())
+		{
+			circle->setCurrentPosition(Vector2(leftBorder + circle->getRadius(), circle->getCurrentPosition().y));
+		}
 
-		if (distance > radius - actorRadius) {
-			const Vector2 normal = toObject / distance;
-			circle->setCurrentPosition(position + normal * (radius - actorRadius));
+		if (circle->getCurrentPosition().x > rightBorder - circle->getRadius())
+		{
+			circle->setCurrentPosition(Vector2(rightBorder - circle->getRadius(), circle->getCurrentPosition().y));
 		}
 	}
 }

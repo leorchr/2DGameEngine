@@ -19,7 +19,7 @@ Renderer::~Renderer()
 bool Renderer::initialize(Window& window)
 {
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	//SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
+	SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
 	if (!SDLRenderer)
 	{
 		Log::error(LogCategory::Video, "Failed to create renderer");
@@ -41,9 +41,9 @@ void Renderer::beginDraw()
 
 void Renderer::draw()
 {
-	drawSprites();
-	drawCircle(Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), 350, Vector3(0, 0, 0));
+	drawRect(Rectangle(WINDOW_WIDTH/2 - 350.0f, 80.0f, 700.0f, 920.0f));
 	drawCircles();
+	drawSprites();
 }
 
 void Renderer::endDraw()
