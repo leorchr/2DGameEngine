@@ -11,6 +11,7 @@
 #include "ControllerActor.h"
 #include "Physics.h"
 #include "InputSystem.h"
+#include "Fruit.h"
 using std::vector;
 
 class Game
@@ -67,4 +68,5 @@ private:
 	float baseTimeBetweenSpawn;
 	float spawnSpeed;
 	Vector2 spawnPos;
+	vector<Fruit> fruits;
 };

@@ -18,6 +18,11 @@ bool Game::initialize()
 
 void Game::load()
 {
+	fruits.push_back(Fruits::cherry);
+	fruits.push_back(Fruits::strawberrry);
+	fruits.push_back(Fruits::grape);
+	fruits.push_back(Fruits::dekopon);
+	fruits.push_back(Fruits::orange);
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
 
 	controller = new ControllerActor(200.0f, 100.0f);
@@ -64,9 +69,11 @@ void Game::update(float dt)
 	// Simulate physics
 	spawnPos = controller->getPosition();
 	if (timeBetweenSpawn < 0) {
-		CircleActor* circle = new CircleActor(spawnPos, Fruits::cherry);
 
-		getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(0.0f, spawnSpeed));
+		Fruit fruit = fruits[rand() % fruits.size()];
+		CircleActor* circle = new CircleActor(spawnPos, fruit);
+
+		getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(rand() % 5, spawnSpeed));
 		addCircle(circle);
 		timeBetweenSpawn = baseTimeBetweenSpawn;
 	}

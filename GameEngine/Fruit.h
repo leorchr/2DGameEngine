@@ -15,15 +15,15 @@ private:
 
 namespace Fruits
 {
-	static const Fruit cherry(Color::cherry, 10.0f);
-	static const Fruit strawberrry(Color::strawberrry, 10.0f);
-	static const Fruit grape(Color::grape, 10.0f);
-	static const Fruit dekopon(Color::dekopon, 10.0f);
-	static const Fruit orange(Color::orange, 10.0f);
-	static const Fruit apple(Color::apple, 10.0f);
-	static const Fruit pear(Color::pear, 10.0f);
-	static const Fruit peach(Color::peach, 10.0f);
-	static const Fruit pineapple(Color::pineapple, 10.0f);
-	static const Fruit melon(Color::melon, 10.0f);
-	static const Fruit watermelon(Color::watermelon, 10.0f);
+	static const Fruit cherry(Color::cherry, 15.0f);
+	static const Fruit strawberrry(Color::strawberrry, 20.0f);
+	static const Fruit grape(Color::grape, 40.0f);
+	static const Fruit dekopon(Color::dekopon, 55.0f);
+	static const Fruit orange(Color::orange, 65.0f);
+	static const Fruit apple(Color::apple, 80.0f);
+	static const Fruit pear(Color::pear, 90.0f);
+	static const Fruit peach(Color::peach, 120.0f);
+	static const Fruit pineapple(Color::pineapple, 130.0f);
+	static const Fruit melon(Color::melon, 150.0f);
+	static const Fruit watermelon(Color::watermelon, 170.0f);
 };
