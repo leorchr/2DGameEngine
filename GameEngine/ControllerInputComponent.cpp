@@ -13,26 +13,26 @@ ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP)
 {
 }
 
-void ControllerInputComponent::processInput(const Uint8* keyState)
+void ControllerInputComponent::processInput(const struct InputState& inputState)
 {
 	float currentSpeedX = 0.0f;
 	const float leftBorder = owner.getGame().getPhysics().getLeftBorder();
 	const float rightBorder = owner.getGame().getPhysics().getRightBorder();
 
-	if (owner.getPosition().x <= leftBorder)
+	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Pressed && owner.getPosition().x <= leftBorder)
 	{
 		owner.setPosition(Vector2(rightBorder - 50.0f, owner.getPosition().y));
 	}
-	if (owner.getPosition().x >= rightBorder)
+	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Pressed && owner.getPosition().x >= rightBorder)
 	{
 		owner.setPosition(Vector2(leftBorder + 50.0f, owner.getPosition().y));
 	}
 
-	if (keyState[leftKey] && owner.getPosition().x > owner.getGame().getPhysics().getLeftBorder())
+	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Held && owner.getPosition().x > owner.getGame().getPhysics().getLeftBorder())
 	{
 		currentSpeedX -= maxSpeedX;
 	}
-	if (keyState[rightKey] && owner.getPosition().x < owner.getGame().getPhysics().getRightBorder())
+	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Held && owner.getPosition().x < owner.getGame().getPhysics().getRightBorder())
 	{
 		currentSpeedX += maxSpeedX;
 	}
@@ -44,12 +44,12 @@ void ControllerInputComponent::setMaxSpeedX(float maxSpeedXP)
 	maxSpeedX = maxSpeedXP;
 }
 
-void ControllerInputComponent::setLeftKey(int key)
+void ControllerInputComponent::setLeftKey(SDL_Scancode key)
 {
 	leftKey = key;
 }
 
-void ControllerInputComponent::setRightKey(int key)
+void ControllerInputComponent::setRightKey(SDL_Scancode key)
 {
 	rightKey = key;
 }

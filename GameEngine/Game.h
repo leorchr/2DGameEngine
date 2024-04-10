@@ -10,6 +10,7 @@
 #include "CircleActor.h"
 #include "ControllerActor.h"
 #include "Physics.h"
+#include "InputSystem.h"
 using std::vector;
 
 class Game
@@ -53,6 +54,7 @@ private:
 	Window window;
 	Renderer renderer;
 	Physics physics;
+	InputSystem inputSystem;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;

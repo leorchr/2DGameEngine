@@ -2,7 +2,7 @@
 #include "Log.h"
 
 bool Window::initialize() {
-	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO);
+	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO || SDL_INIT_GAMECONTROLLER);
 	if (sdlInitResult != 0) {
 		Log::error(LogCategory::Video, "Unable to initialize SDL");
 		return false;

@@ -5,7 +5,6 @@
 #include "SpriteComponent.h"
 #include "CircleComponent.h"
 #include "Color.h"
-
 #include <SDL_image.h>
 
 Renderer::Renderer() : SDLRenderer(nullptr)
