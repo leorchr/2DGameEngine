@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Actor.h"
+#include "CircleActor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
 #include "Renderer.h"
@@ -36,6 +37,8 @@ public:
 
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
+	void addCircle(CircleActor* circle);
+	void removeCircle(CircleActor* circle);
 
 	Renderer& getRenderer() { return renderer; }
 	Physics& getPhysics() { return physics; }
@@ -53,4 +56,14 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
+
+	//Simulation variables
+	vector<CircleActor*> circles;
+	float time;
+	float timeBetweenSpawn;
+	float baseTimeBetweenSpawn;
+	float spawnSpeed;
+	Vector2 spawnPos;
+	int maxCircles;
+	float minRadius, maxRadius;
 };

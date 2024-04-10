@@ -14,10 +14,22 @@ void Physics::removeCircle(CircleMoveComponent* circle)
 
 void Physics::computePhysics(float dt)
 {
-	applyGravity();
-	applyConstraint();
-	solveCollisions();
-	updatePositions(dt);
+	deltaTime = dt;
+	const float substepDt = getStepDeltaTime();
+	for (size_t i = substeps; i > 0; i--)
+	{
+		// Apply gravity to circles
+		applyGravity();
+
+		// Apply constraints to circles
+		applyConstraint();
+
+		// Solve collisions between circles
+		solveCollisions();
+
+		// Update positions of circles
+		updatePositions(substepDt);
+	}
 }
 
 void Physics::updatePositions(float dt)
@@ -44,7 +56,7 @@ void Physics::applyConstraint()
 		float actorRadius = circle->getRadius();
 
 		const Vector2 position = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-		const float radius = 300.0f;
+		const float radius = 350.0f;
 
 		const Vector2 toObject = circle->getCurrentPosition() - position;
 		const float distance = toObject.length();
@@ -79,4 +91,10 @@ void Physics::solveCollisions()
 			}
 		}
 	}
+
+}
+
+void Physics::setObjectVelocity(CircleMoveComponent& circle, Vector2 velocityP) const
+{
+	circle.setVelocity(velocityP, getStepDeltaTime());
 }

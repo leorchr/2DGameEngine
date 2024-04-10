@@ -14,6 +14,14 @@ bool Game::initialize()
 
 void Game::load()
 {
+	time = 0.0f;
+	baseTimeBetweenSpawn = 0.02f;
+	timeBetweenSpawn = 0.02f;
+	spawnSpeed = 2000.0f;
+	spawnPos = (Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100.0f));
+	maxCircles = 2000;
+	minRadius = 5.0f;
+	maxRadius = 10.0f;
 }
 
 void Game::processInput()
@@ -27,11 +35,11 @@ void Game::processInput()
 		case SDL_QUIT:
 			isRunning = false;
 			break;
-		case SDL_MOUSEBUTTONDOWN:
+		/*case SDL_MOUSEBUTTONDOWN:
 			int mouseX, mouseY;
 			Uint32 mouseState = SDL_GetMouseState(&mouseX, &mouseY);
-			new CircleActor(Vector2(mouseX, mouseY), 25, Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100)));
-		break;
+			new CircleActor(Vector2(mouseX, mouseY), 15, Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100)));
+			break;*/
 		}
 	}
 	// Keyboard state
@@ -54,7 +62,22 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
+	// Simulate physics
+	time += dt;
+	if (maxCircles > 0 && timeBetweenSpawn < 0) {
+		float range = maxRadius - minRadius;
+		CircleActor* circle = new CircleActor(spawnPos, (rand() % (int)range + minRadius), Vector3((rand() % 155 + 100), (rand() % 155 + 100), (rand() % 155 + 100)));
+
+		const float angle = sin(time) + Maths::pi * 0.5f;
+
+		getPhysics().setObjectVelocity(*circle->getMoveComponent(), spawnSpeed * Vector2(cos(angle), sin(angle)));
+		addCircle(circle);
+		timeBetweenSpawn = baseTimeBetweenSpawn;
+		maxCircles--;
+	}
+	else timeBetweenSpawn -= dt;
 	physics.computePhysics(dt);
+
 	// Update actors 
 	isUpdatingActors = true;
 	for (auto actor : actors)
@@ -154,4 +177,15 @@ void Game::removeActor(Actor* actor)
 		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
+}
+
+void Game::addCircle(CircleActor* circle)
+{
+	circles.emplace_back(circle);
+}
+
+void Game::removeCircle(CircleActor* circle)
+{
+	auto iter = std::find(begin(circles), end(circles), circle);
+	circles.erase(iter);
 }

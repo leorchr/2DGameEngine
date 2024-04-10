@@ -35,13 +35,14 @@ bool Renderer::initialize(Window& window)
 
 void Renderer::beginDraw()
 {
-	SDL_SetRenderDrawColor(SDLRenderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, 100, 100, 100, 255);
 	SDL_RenderClear(SDLRenderer);
 }
 
 void Renderer::draw()
 {
 	drawSprites();
+	drawCircle(Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), 350, Vector3(0, 0, 0));
 	drawCircles();
 }
 
@@ -61,20 +62,23 @@ void Renderer::drawCircle(Vector2 positionP, float radiusP, Vector3 colorP) cons
 {
 	SDL_SetRenderDrawColor(SDLRenderer, colorP.x, colorP.y, colorP.z, 1);
 
-	float offsetx, offsety, d;
+	int offsetx, offsety, d;
 	int status;
 
 	offsetx = 0;
-	offsety = radiusP;
+	offsety = (int)radiusP;
 	d = radiusP - 1;
 	status = 0;
 
+	const int positionX = (int)positionP.x;
+	const int positionY = (int)positionP.y;
+
 	while (offsety >= offsetx) {
 
-		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsety, positionP.y + offsetx, positionP.x + offsety, positionP.y + offsetx);
-		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsetx, positionP.y + offsety, positionP.x + offsetx, positionP.y + offsety);
-		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsetx, positionP.y - offsety, positionP.x + offsetx, positionP.y - offsety);
-		status += SDL_RenderDrawLine(SDLRenderer, positionP.x - offsety, positionP.y - offsetx, positionP.x + offsety, positionP.y - offsetx);
+		status += SDL_RenderDrawLine(SDLRenderer, positionX - offsety, positionY+ offsetx, positionX + offsety, positionY + offsetx);
+		status += SDL_RenderDrawLine(SDLRenderer, positionX - offsetx, positionY+ offsety, positionX + offsetx, positionY + offsety);
+		status += SDL_RenderDrawLine(SDLRenderer, positionX - offsetx, positionY- offsety, positionX + offsetx, positionY - offsety);
+		status += SDL_RenderDrawLine(SDLRenderer, positionX - offsety, positionY- offsetx, positionX + offsety, positionY - offsetx);
 
 		if (status < 0) {
 			status = -1;

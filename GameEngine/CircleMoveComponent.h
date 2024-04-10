@@ -15,6 +15,8 @@ public:
 	void accelerate(Vector2 accelerationP);
 	Vector2 getCurrentPosition() const { return currentPosition; }
 	void setCurrentPosition(Vector2 positionP);
+	void addVelocity(Vector2 velocityP, float dt);
+	void setVelocity(Vector2 velocityP, float dt);
 
 protected:
 	float radius;

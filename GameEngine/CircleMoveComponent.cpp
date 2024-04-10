@@ -7,6 +7,7 @@ CircleMoveComponent::CircleMoveComponent(Actor* ownerP, float radiusP, int updat
 	radius = radiusP;
 	lastPosition = owner.getPosition();
 	currentPosition = owner.getPosition();
+	int angle = rand() % 360;
 }
 
 void CircleMoveComponent::updatePosition(float dt)
@@ -26,4 +27,14 @@ void CircleMoveComponent::accelerate(Vector2 accelerationP)
 void CircleMoveComponent::setCurrentPosition(Vector2 positionP)
 {
 	currentPosition = positionP;
+}
+
+void CircleMoveComponent::addVelocity(Vector2 velocityP, float dt)
+{
+	lastPosition -= velocityP * dt;
+}
+
+void CircleMoveComponent::setVelocity(Vector2 velocityP, float dt)
+{
+	lastPosition = currentPosition - (velocityP * dt);
 }
