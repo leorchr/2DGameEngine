@@ -45,6 +45,7 @@ public:
 
 	Renderer& getRenderer() { return renderer; }
 	Physics& getPhysics() { return physics; }
+	static vector<Fruit> fruits;
 
 private:
 	void processInput();
@@ -68,5 +69,4 @@ private:
 	float baseTimeBetweenSpawn;
 	float spawnSpeed;
 	Vector2 spawnPos;
-	vector<Fruit> fruits;
 };

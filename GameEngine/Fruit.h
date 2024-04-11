@@ -16,7 +16,7 @@ private:
 namespace Fruits
 {
 	static const Fruit cherry(Color::cherry, 15.0f);
-	static const Fruit strawberrry(Color::strawberrry, 20.0f);
+	static const Fruit strawberry(Color::strawberry, 20.0f);
 	static const Fruit grape(Color::grape, 40.0f);
 	static const Fruit dekopon(Color::dekopon, 55.0f);
 	static const Fruit orange(Color::orange, 65.0f);
@@ -26,4 +26,6 @@ namespace Fruits
 	static const Fruit pineapple(Color::pineapple, 130.0f);
 	static const Fruit melon(Color::melon, 150.0f);
 	static const Fruit watermelon(Color::watermelon, 170.0f);
+
+	static vector <Fruit> fruitList = { cherry, strawberry, grape, dekopon, orange, apple, pear, peach, pineapple, melon, watermelon };
 };

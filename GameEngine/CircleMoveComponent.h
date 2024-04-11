@@ -2,7 +2,7 @@
 #include "Component.h"
 #include "Vector2.h"
 
-class CircleMoveComponent : Component
+class CircleMoveComponent : public Component
 {
 public:
 	CircleMoveComponent(Actor* ownerP, float radiusP, int updateOrderP = 100); // By default, update before other components

@@ -1,7 +1,7 @@
 #include "ControllerInputComponent.h"
 #include <SDL_scancode.h>
 #include "Game.h"
-
+#include "Fruit.h"
 #include <iostream>
 using namespace std;
 
@@ -38,6 +38,14 @@ void ControllerInputComponent::processInput(const struct InputState& inputState)
 		currentSpeedX += maxSpeedX;
 	}
 	setSpeedX(currentSpeedX);
+
+	if(inputState.mouse.getButtonState(SDL_BUTTON_LEFT) == ButtonState::Pressed)
+	{
+		Fruit fruit = Game::fruits[rand() % Game::fruits.size()];
+		CircleActor* circle = new CircleActor(owner.getPosition(), fruit);
+		owner.getGame().getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(rand() % 5, 50.0f));
+		owner.getGame().addCircle(circle);
+	}
 }
 
 void ControllerInputComponent::setMaxSpeedX(float maxSpeedXP)

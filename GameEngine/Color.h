@@ -3,7 +3,7 @@
 namespace Color
 {
 	static const Vector3 cherry(255.0f, 0.0f, 0.0f);
-	static const Vector3 strawberrry(255.0f, 76.0f, 76.0f);
+	static const Vector3 strawberry(255.0f, 76.0f, 76.0f);
 	static const Vector3 grape(153.0f, 0.0f, 255.0f);
 	static const Vector3 dekopon(255.0f, 200.0f, 45.0f);
 	static const Vector3 orange(255.0f, 153.0f, 0.0f);

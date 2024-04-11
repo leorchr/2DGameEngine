@@ -13,6 +13,7 @@ public:
 	float getRadius() { return radius; }
 	CircleComponent* getCircleComponent() { return circleComponent; }
 	CircleMoveComponent* getMoveComponent() { return moveComponent; }
+	Fruit getFruit() const { return fruit; }
 
 private:
 	class CircleComponent* circleComponent;

@@ -1,9 +1,12 @@
 #include "Physics.h"
 #include "Window.h"
+#include "Actor.h"
+#include "CircleActor.h"
+#include "Game.h"
 
 void Physics::addCircle(CircleMoveComponent* circle)
 {
-	circles.emplace_back(circle);
+	circles.push_back(circle);
 }
 
 void Physics::removeCircle(CircleMoveComponent* circle)
@@ -96,6 +99,8 @@ void Physics::applyConstraint()
 
 void Physics::solveCollisions()
 {
+	vector <CircleMoveComponent*> circlesTemp;
+
 	const int size = circles.size();
 	for (size_t i = 0; i < size; i++)
 	{
@@ -114,10 +119,25 @@ void Physics::solveCollisions()
 
 				circle1->setCurrentPosition(circle1->getCurrentPosition() + normal * delta / 2);
 				circle2->setCurrentPosition(circle2->getCurrentPosition() - normal * delta / 2);
+
+				CircleActor* c1 = static_cast<CircleActor*>(&circle1->getOwner());
+				CircleActor* c2 = static_cast<CircleActor*>(&circle2->getOwner());
+
+				if (c1->getFruit().getRadius() == c2->getFruit().getRadius())
+				{
+					if (std::find(circlesTemp.begin(), circlesTemp.end(), circle1) == circlesTemp.end() && std::find(circlesTemp.begin(), circlesTemp.end(), circle2) == circlesTemp.end()){
+						circlesTemp.push_back(circle1);
+						circlesTemp.push_back(circle2);
+					}
+				}
 			}
 		}
 	}
-
+	for (size_t i = 0; i < circlesTemp.size(); i++)
+	{
+		circlesTemp[i]->getOwner().setState(Actor::ActorState::Dead);
+		removeCircle(circlesTemp[i]);
+	}
 }
 
 void Physics::setObjectVelocity(CircleMoveComponent& circle, Vector2 velocityP) const
