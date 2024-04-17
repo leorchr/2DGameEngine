@@ -4,10 +4,15 @@
 
 struct Fruit {
 public:
-	Fruit() : color(Color::cherry), radius(10.0f) {}
+	Fruit() : color(Color::cherry), radius(0.0f) {}
 	Fruit(Vector3 colorP, float radiusP) : color(colorP), radius(radiusP) {}
 	Vector3 getColor() { return color; }
 	float getRadius() { return radius; }
+
+	bool operator==(const Fruit& other) const {
+		return color == other.color && radius == other.radius;
+	}
+
 private:
 	Vector3 color;
 	float radius;

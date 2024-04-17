@@ -53,6 +53,11 @@ public:
 		return Vector3(vec.x * scalar, vec.y * scalar, vec.z * scalar);
 	}
 
+	bool operator==(const Vector3& vec) const
+	{
+		return x == vec.x && y == vec.y && z == vec.z;
+	}
+
 	// Scalar *=
 	Vector3& operator*=(float scalar)
 	{

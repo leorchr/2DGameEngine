@@ -29,7 +29,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false) {}
+	Game() : isRunning(true), isUpdatingActors(false){}
 
 public:
 	bool initialize();
@@ -40,11 +40,14 @@ public:
 
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
-	void addCircle(CircleActor* circle);
-	void removeCircle(CircleActor* circle);
 
 	Renderer& getRenderer() { return renderer; }
 	Physics& getPhysics() { return physics; }
+
+	//Game specific
+	void addCircle(CircleActor* circle);
+	void removeCircle(CircleActor* circle);
+	void spawnFruit(Fruit fruitP, Vector2 posP);
 	static vector<Fruit> fruits;
 
 private:

@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "CircleActor.h"
 #include "Game.h"
+#include <algorithm>
 
 void Physics::addCircle(CircleMoveComponent* circle)
 {
@@ -99,44 +100,68 @@ void Physics::applyConstraint()
 
 void Physics::solveCollisions()
 {
-	vector <CircleMoveComponent*> circlesTemp;
-
+    circlesToRemove.clear();
 	const int size = circles.size();
 	for (size_t i = 0; i < size; i++)
 	{
-		CircleMoveComponent* circle1 = circles[i];
+		CircleMoveComponent* lCircle = circles[i];
 		for (size_t k = i+1; k < size; k++)
 		{
-			CircleMoveComponent* circle2 = circles[k];
-			const Vector2 collisionDir = circle1->getCurrentPosition() - circle2->getCurrentPosition();
+			CircleMoveComponent* rCircle = circles[k];
+			const Vector2 collisionDir = lCircle->getCurrentPosition() - rCircle->getCurrentPosition();
 			const float distance = collisionDir.length();
 
-			const float radiusSum = circle1->getRadius() + circle2->getRadius();
+			const float radiusSum = lCircle->getRadius() + rCircle->getRadius();
 
 			if (distance < radiusSum) {
 				const Vector2 normal = collisionDir / distance;
 				const float delta = radiusSum - distance;
 
-				circle1->setCurrentPosition(circle1->getCurrentPosition() + normal * delta / 2);
-				circle2->setCurrentPosition(circle2->getCurrentPosition() - normal * delta / 2);
+				lCircle->setCurrentPosition(lCircle->getCurrentPosition() + normal * delta / 2);
+				rCircle->setCurrentPosition(rCircle->getCurrentPosition() - normal * delta / 2);
 
-				CircleActor* c1 = static_cast<CircleActor*>(&circle1->getOwner());
-				CircleActor* c2 = static_cast<CircleActor*>(&circle2->getOwner());
-
-				if (c1->getFruit().getRadius() == c2->getFruit().getRadius())
-				{
-					if (std::find(circlesTemp.begin(), circlesTemp.end(), circle1) == circlesTemp.end() && std::find(circlesTemp.begin(), circlesTemp.end(), circle2) == circlesTemp.end()){
-						circlesTemp.push_back(circle1);
-						circlesTemp.push_back(circle2);
-					}
-				}
+				checkSameFruits(lCircle, rCircle);
 			}
 		}
 	}
-	for (size_t i = 0; i < circlesTemp.size(); i++)
+	mergeFruits();
+}
+
+bool Physics::checkSameFruits(CircleMoveComponent* lCircle, CircleMoveComponent* rCircle)
+{
+	CircleActor* lCircleActor = static_cast<CircleActor*>(&lCircle->getOwner());
+	CircleActor* rCircleActor = static_cast<CircleActor*>(&rCircle->getOwner());
+	if (lCircleActor->getFruit().getRadius() == rCircleActor->getFruit().getRadius())
 	{
-		circlesTemp[i]->getOwner().setState(Actor::ActorState::Dead);
-		removeCircle(circlesTemp[i]);
+		if (std::find(circlesToRemove.begin(), circlesToRemove.end(), lCircle) == circlesToRemove.end() && std::find(circlesToRemove.begin(), circlesToRemove.end(), rCircle) == circlesToRemove.end()) {
+			circlesToRemove.push_back(lCircle);
+			circlesToRemove.push_back(rCircle);
+			return true;
+		}
+	}
+	return false;
+}
+
+void Physics::mergeFruits()
+{
+	if (circlesToRemove.size() == 0)return;
+
+	CircleActor* fruitActor = static_cast<CircleActor*>(&circlesToRemove[0]->getOwner());
+	Fruit fruit = fruitActor->getFruit();
+	Fruit nextFruit;
+	auto iter = std::find(Fruits::fruitList.begin(), Fruits::fruitList.end(), fruit);
+	if (iter != Fruits::fruitList.end() && std::next(iter) != Fruits::fruitList.end()) {
+		nextFruit = *(std::next(iter));
+	}
+
+	Game& game = circlesToRemove[0]->getOwner().getGame();
+	for (size_t i = 0; i < circlesToRemove.size(); i++)
+	{
+		circlesToRemove[i]->getOwner().setState(Actor::ActorState::Dead);
+		removeCircle(circlesToRemove[i]);
+	}
+	if (nextFruit.getRadius() != 0.0f) {
+		game.spawnFruit(Fruit(nextFruit), Vector2(0, 0));
 	}
 }
 

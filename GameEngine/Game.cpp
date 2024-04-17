@@ -33,6 +33,12 @@ void Game::load()
 	getPhysics().setTopBorder(80.0f);
 }
 
+void Game::spawnFruit(Fruit fruitP, Vector2 posP)
+{
+	CircleActor* circle = new CircleActor(posP, fruitP);
+	addCircle(circle);
+}
+
 void Game::processInput()
 {
 	inputSystem.preUpdate();

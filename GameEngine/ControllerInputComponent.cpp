@@ -5,13 +5,20 @@
 #include <iostream>
 using namespace std;
 
-ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP, float offsetP) :
+ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP, float offsetP, float timeNextInputP) :
 	ControllerMoveComponent(ownerP),
 	maxSpeedX(speedXP),
 	offset(offsetP),
+	timeNextInput(timeNextInputP),
 	leftKey(SDL_SCANCODE_A),
 	rightKey(SDL_SCANCODE_D)
 {
+	time = 0.0f;
+}
+
+void ControllerInputComponent::update(float dt) {
+	ControllerMoveComponent::update(dt);
+	time -= dt;
 }
 
 void ControllerInputComponent::processInput(const struct InputState& inputState)
@@ -41,10 +48,13 @@ void ControllerInputComponent::processInput(const struct InputState& inputState)
 
 	if(inputState.mouse.getButtonState(SDL_BUTTON_LEFT) == ButtonState::Pressed)
 	{
-		Fruit fruit = Game::fruits[rand() % Game::fruits.size()];
-		CircleActor* circle = new CircleActor(owner.getPosition(), fruit);
-		owner.getGame().getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(rand() % 5, 50.0f));
-		owner.getGame().addCircle(circle);
+		if(time <= 0){
+			Fruit fruit = Game::fruits[rand() % Game::fruits.size()];
+			CircleActor* circle = new CircleActor(owner.getPosition(), fruit);
+			owner.getGame().getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(rand() % 5, 50.0f));
+			owner.getGame().addCircle(circle);
+			time = timeNextInput;
+		}
 	}
 }
 
