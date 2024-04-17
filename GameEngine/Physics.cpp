@@ -89,23 +89,25 @@ void Physics::applyConstraint()
 		if (circle->getCurrentPosition().x < leftBorder + circle->getRadius())
 		{
 			circle->setCurrentPosition(Vector2(leftBorder + circle->getRadius(), circle->getCurrentPosition().y));
+			circle->setVelocity(Vector2(0.0f, circle->getVelocity().y), getStepDeltaTime());
 		}
 
 		if (circle->getCurrentPosition().x > rightBorder - circle->getRadius())
 		{
 			circle->setCurrentPosition(Vector2(rightBorder - circle->getRadius(), circle->getCurrentPosition().y));
+			circle->setVelocity(Vector2(0.0f, circle->getVelocity().y), getStepDeltaTime());
 		}
 	}
 }
 
 void Physics::solveCollisions()
 {
-    circlesToRemove.clear();
+	circlesToRemove.clear();
 	const int size = circles.size();
 	for (size_t i = 0; i < size; i++)
 	{
 		CircleMoveComponent* lCircle = circles[i];
-		for (size_t k = i+1; k < size; k++)
+		for (size_t k = i + 1; k < size; k++)
 		{
 			CircleMoveComponent* rCircle = circles[k];
 			const Vector2 collisionDir = lCircle->getCurrentPosition() - rCircle->getCurrentPosition();
@@ -113,12 +115,13 @@ void Physics::solveCollisions()
 
 			const float radiusSum = lCircle->getRadius() + rCircle->getRadius();
 
-			if (distance < radiusSum) {
+			if (distance < radiusSum)
+			{
 				const Vector2 normal = collisionDir / distance;
 				const float delta = radiusSum - distance;
 
-				lCircle->setCurrentPosition(lCircle->getCurrentPosition() + normal * delta / 2);
-				rCircle->setCurrentPosition(rCircle->getCurrentPosition() - normal * delta / 2);
+				lCircle->setCurrentPosition(lCircle->getCurrentPosition() + normal * delta / 2.0f);
+				rCircle->setCurrentPosition(rCircle->getCurrentPosition() - normal * delta / 2.0f);
 
 				checkSameFruits(lCircle, rCircle);
 			}
@@ -155,13 +158,19 @@ void Physics::mergeFruits()
 	}
 
 	Game& game = circlesToRemove[0]->getOwner().getGame();
+
+	Vector2 position = circlesToRemove[0]->getCurrentPosition();
+	Vector2 position2 = circlesToRemove[1]->getCurrentPosition();
+	Vector2 spawnPos = position + (position2 - position)/2;
+	spawnPos.y -= circlesToRemove[0]->getRadius();
+
 	for (size_t i = 0; i < circlesToRemove.size(); i++)
 	{
 		circlesToRemove[i]->getOwner().setState(Actor::ActorState::Dead);
 		removeCircle(circlesToRemove[i]);
 	}
 	if (nextFruit.getRadius() != 0.0f) {
-		game.spawnFruit(Fruit(nextFruit), Vector2(0, 0));
+		game.spawnFruit(Fruit(nextFruit), spawnPos);
 	}
 }
 

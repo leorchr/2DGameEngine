@@ -15,6 +15,7 @@ public:
 	void accelerate(Vector2 accelerationP);
 	Vector2 getCurrentPosition() const { return currentPosition; }
 	void setCurrentPosition(Vector2 positionP);
+	Vector2 getVelocity() { return currentPosition - lastPosition; }
 	void addVelocity(Vector2 velocityP, float dt);
 	void setVelocity(Vector2 velocityP, float dt);
 
