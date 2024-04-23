@@ -23,9 +23,9 @@ bool Game::initialize()
 
 void Game::load()
 {
-
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
 
+	setNextFruit();
 	controller = new ControllerActor(200.0f, 100.0f);
 	baseTimeBetweenSpawn = 1.0f;
 	timeBetweenSpawn = 1.0f;
@@ -46,6 +46,17 @@ void Game::gameOver()
 {
 	isRunning = false;
 }
+
+void Game::setNextFruit()
+{
+	nextFruit = fruits[rand() % fruits.size()];
+	if (nextFruitDisplay != nullptr) nextFruitDisplay->setState(Actor::ActorState::Dead);
+	nextFruit = fruits[rand() % fruits.size()];
+	nextFruitDisplay = new Actor();
+	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 300.0f));
+	CircleComponent* cc = new CircleComponent(nextFruitDisplay, nextFruit.getRadius(), nextFruit.getColor());
+}
+
 
 void Game::processInput()
 {

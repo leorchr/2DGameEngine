@@ -49,7 +49,8 @@ void ControllerInputComponent::processInput(const struct InputState& inputState)
 	if(inputState.mouse.getButtonState(SDL_BUTTON_LEFT) == ButtonState::Pressed)
 	{
 		if(time <= 0){
-			Fruit fruit = Game::fruits[rand() % Game::fruits.size()];
+			Fruit fruit = getOwner().getGame().getNextFruit();
+			getOwner().getGame().setNextFruit();
 			CircleActor* circle = new CircleActor(owner.getPosition(), fruit);
 			owner.getGame().getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(rand() % 5, 50.0f));
 			owner.getGame().addCircle(circle);

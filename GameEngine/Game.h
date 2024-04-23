@@ -50,6 +50,8 @@ public:
 	void spawnFruit(Fruit fruitP, Vector2 posP);
 	static vector<Fruit> fruits;
 	void gameOver();
+	Fruit getNextFruit() { return nextFruit; }
+	void setNextFruit();
 
 private:
 	void processInput();
@@ -73,4 +75,7 @@ private:
 	float baseTimeBetweenSpawn;
 	float spawnSpeed;
 	Vector2 spawnPos;
+
+	Fruit nextFruit;
+	Actor* nextFruitDisplay;
 };
