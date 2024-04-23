@@ -19,6 +19,8 @@ bool Renderer::initialize(Window& window)
 {
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
+	SDL_RenderSetLogicalSize(SDLRenderer, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 	if (!SDLRenderer)
 	{
 		Log::error(LogCategory::Video, "Failed to create renderer");
