@@ -16,17 +16,15 @@ void CircleMoveComponent::updatePosition(float dt)
 {
 	Vector2 velocity = currentPosition - lastPosition;
 	lastPosition = currentPosition;
-	if (velocity.length() > 3.0f) {
+	if (velocity.y < -0.2f) { // validייייייייי
+		velocity.y = 0.0f;
+	}
+	if (abs(velocity.x) > 0.7f) { 
+		velocity.x = 0.0f;
+	}
+	if (velocity.length() > 2.8f) { // validייייייייי
 		//cout << "Current Velocity: " << velocity.length() << endl;
 		velocity = Vector2::zero;
-	}
-	if (velocity.y < -0.4f) {
-		velocity = Vector2::zero;
-		cout << "oui" << endl;
-	}
-	if (abs(velocity.x) > 0.7f) {
-		velocity = Vector2::zero;
-		cout << "oui" << endl;
 	}
 	currentPosition += velocity + acceleration * dt * dt;
 	acceleration = Vector2::zero;
