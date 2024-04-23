@@ -11,7 +11,9 @@ ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP,
 	offset(offsetP),
 	timeNextInput(timeNextInputP),
 	leftKey(SDL_SCANCODE_A),
-	rightKey(SDL_SCANCODE_D)
+	rightKey(SDL_SCANCODE_D),
+	arrowLeftKey(SDL_SCANCODE_LEFT),
+	arrowRightKey(SDL_SCANCODE_RIGHT)
 {
 	time = 0.0f;
 }
@@ -27,20 +29,20 @@ void ControllerInputComponent::processInput(const struct InputState& inputState)
 	const float leftBorder = owner.getGame().getPhysics().getLeftBorder();
 	const float rightBorder = owner.getGame().getPhysics().getRightBorder();
 
-	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Pressed && owner.getPosition().x <= leftBorder + offset)
+	if ((inputState.keyboard.getKeyState(leftKey) == ButtonState::Pressed || inputState.keyboard.getKeyState(arrowLeftKey) == ButtonState::Pressed) && owner.getPosition().x <= leftBorder + offset)
 	{
 		owner.setPosition(Vector2(rightBorder - offset, owner.getPosition().y));
 	}
-	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Pressed && owner.getPosition().x >= rightBorder - offset)
+	if ((inputState.keyboard.getKeyState(rightKey) == ButtonState::Pressed || inputState.keyboard.getKeyState(arrowRightKey) == ButtonState::Pressed) && owner.getPosition().x >= rightBorder - offset)
 	{
 		owner.setPosition(Vector2(leftBorder + offset, owner.getPosition().y));
 	}
 
-	if (inputState.keyboard.getKeyState(leftKey) == ButtonState::Held && owner.getPosition().x > leftBorder + offset)
+	if ((inputState.keyboard.getKeyState(leftKey) == ButtonState::Held || inputState.keyboard.getKeyState(arrowLeftKey) == ButtonState::Held) && owner.getPosition().x > leftBorder + offset)
 	{
 		currentSpeedX -= maxSpeedX;
 	}
-	if (inputState.keyboard.getKeyState(rightKey) == ButtonState::Held && owner.getPosition().x < rightBorder - offset)
+	if ((inputState.keyboard.getKeyState(rightKey) == ButtonState::Held || inputState.keyboard.getKeyState(arrowRightKey) == ButtonState::Held) && owner.getPosition().x < rightBorder - offset)
 	{
 		currentSpeedX += maxSpeedX;
 	}
@@ -72,4 +74,14 @@ void ControllerInputComponent::setLeftKey(SDL_Scancode key)
 void ControllerInputComponent::setRightKey(SDL_Scancode key)
 {
 	rightKey = key;
+}
+
+void ControllerInputComponent::setArrowLeftKey(SDL_Scancode key)
+{
+	arrowLeftKey = key;
+}
+
+void ControllerInputComponent::setArrowRightKey(SDL_Scancode key)
+{
+	arrowRightKey = key;
 }

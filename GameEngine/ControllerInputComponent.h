@@ -18,6 +18,8 @@ public:
 	void setMaxSpeedX(float speedXP);
 	void setLeftKey(SDL_Scancode key);
 	void setRightKey(SDL_Scancode key);
+	void setArrowLeftKey(SDL_Scancode key);
+	void setArrowRightKey(SDL_Scancode key);
 
 
 private:
@@ -27,4 +29,6 @@ private:
 	float timeNextInput;
 	SDL_Scancode leftKey;
 	SDL_Scancode rightKey;
+	SDL_Scancode arrowLeftKey;
+	SDL_Scancode arrowRightKey;
 };
