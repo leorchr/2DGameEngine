@@ -166,7 +166,8 @@ void Physics::mergeFruits()
 		circlesToRemove[i]->getOwner().setState(Actor::ActorState::Dead);
 		removeCircle(circlesToRemove[i]);
 	}
-	if (nextFruit.getRadius() != 0.0f) {
+	Fruit watermelonData = Fruits::watermelon;
+	if (nextFruit.getRadius() != 0.0f && fruit.getRadius() != watermelonData.getRadius()) {
 		game.spawnFruit(Fruit(nextFruit), spawnPos);
 	}
 }
