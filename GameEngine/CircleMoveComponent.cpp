@@ -1,7 +1,5 @@
 #include "CircleMoveComponent.h"
 #include "Actor.h"
-#include <iostream>
-using namespace std;
 
 CircleMoveComponent::CircleMoveComponent(Actor* ownerP, float radiusP, int updateOrderP)
 	:Component(ownerP, updateOrderP)
@@ -16,14 +14,13 @@ void CircleMoveComponent::updatePosition(float dt)
 {
 	Vector2 velocity = currentPosition - lastPosition;
 	lastPosition = currentPosition;
-	if (velocity.y < -0.2f) { // validייייייייי
+	if (velocity.y < -0.2f) {
 		velocity.y = 0.0f;
 	}
 	if (abs(velocity.x) > 0.7f) { 
 		velocity.x = 0.0f;
 	}
-	if (velocity.length() > 2.8f) { // validייייייייי
-		//cout << "Current Velocity: " << velocity.length() << endl;
+	if (velocity.length() > 2.8f) {
 		velocity = Vector2::zero;
 	}
 	currentPosition += velocity + acceleration * dt * dt;

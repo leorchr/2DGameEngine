@@ -4,8 +4,6 @@
 #include "CircleActor.h"
 #include "Game.h"
 #include <algorithm>
-#include <iostream>
-using namespace std;
 
 void Physics::addCircle(CircleMoveComponent* circle)
 {
@@ -83,9 +81,9 @@ void Physics::applyConstraint()
 			circle->setCurrentPosition(Vector2(circle->getCurrentPosition().x, bottomBorder - circle->getRadius()));
 		}
 
-		if (circle->getCurrentPosition().y < topBorder + circle->getRadius())
+		if (circle->getCurrentPosition().y < topBorder + circle->getRadius() - 100.0f)
 		{
-			//circle->setCurrentPosition(Vector2(circle->getCurrentPosition().x, bottomBorder + circle->getRadius()));
+			circle->getOwner().getGame().gameOver();
 		}
 
 		if (circle->getCurrentPosition().x < leftBorder + circle->getRadius())

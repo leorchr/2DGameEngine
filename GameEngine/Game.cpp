@@ -7,11 +7,14 @@
 #include "CircleActor.h"
 #include "Color.h"
 #include <algorithm>
+#include <stdlib.h>
+#include <time.h>
 
 vector<Fruit>Game::fruits = { Fruits::cherry, Fruits::strawberry, Fruits::dekopon, Fruits::orange, Fruits::apple };
 
 bool Game::initialize()
 {
+	srand(time(NULL));
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
 	bool isInputInit = inputSystem.initialize();
@@ -37,6 +40,11 @@ void Game::spawnFruit(Fruit fruitP, Vector2 posP)
 {
 	CircleActor* circle = new CircleActor(posP, fruitP);
 	addCircle(circle);
+}
+
+void Game::gameOver()
+{
+	isRunning = false;
 }
 
 void Game::processInput()

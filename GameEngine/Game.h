@@ -49,6 +49,7 @@ public:
 	void removeCircle(CircleActor* circle);
 	void spawnFruit(Fruit fruitP, Vector2 posP);
 	static vector<Fruit> fruits;
+	void gameOver();
 
 private:
 	void processInput();
