@@ -4,6 +4,8 @@
 #include "CircleActor.h"
 #include "Game.h"
 #include <algorithm>
+#include <iostream>
+using namespace std;
 
 void Physics::addCircle(CircleMoveComponent* circle)
 {
@@ -79,6 +81,11 @@ void Physics::applyConstraint()
 		if (circle->getCurrentPosition().y > bottomBorder - circle->getRadius())
 		{
 			circle->setCurrentPosition(Vector2(circle->getCurrentPosition().x, bottomBorder - circle->getRadius()));
+			Vector2 velocity = Vector2(circle->getCurrentPosition().x, bottomBorder - circle->getRadius()) - circle->getCurrentPosition();
+			if (velocity.length() > 3.0f) {
+				//cout << velocity.length() << endl;
+				circle->setVelocity(Vector2(0.0f, 0.0f), getStepDeltaTime());
+			}
 		}
 
 		if (circle->getCurrentPosition().y < topBorder + circle->getRadius())
@@ -89,13 +96,21 @@ void Physics::applyConstraint()
 		if (circle->getCurrentPosition().x < leftBorder + circle->getRadius())
 		{
 			circle->setCurrentPosition(Vector2(leftBorder + circle->getRadius(), circle->getCurrentPosition().y));
-			circle->setVelocity(Vector2(0.0f, circle->getVelocity().y), getStepDeltaTime());
+			Vector2 velocity = Vector2(leftBorder + circle->getRadius(), circle->getCurrentPosition().y) - circle->getCurrentPosition();
+			if (velocity.length() > 3.0f) {
+				//cout << velocity.length() << endl;
+				circle->setVelocity(Vector2(0.0f, 0.0f), getStepDeltaTime());
+			}
 		}
 
 		if (circle->getCurrentPosition().x > rightBorder - circle->getRadius())
 		{
 			circle->setCurrentPosition(Vector2(rightBorder - circle->getRadius(), circle->getCurrentPosition().y));
-			circle->setVelocity(Vector2(0.0f, circle->getVelocity().y), getStepDeltaTime());
+			Vector2 velocity = Vector2(rightBorder - circle->getRadius(), circle->getCurrentPosition().y) - circle->getCurrentPosition();
+			if (velocity.length() > 3.0f) {
+				//cout << velocity.length() << endl;
+				circle->setVelocity(Vector2(0.0f, 0.0f), getStepDeltaTime());
+			}
 		}
 	}
 }
@@ -120,9 +135,19 @@ void Physics::solveCollisions()
 				const Vector2 normal = collisionDir / distance;
 				const float delta = radiusSum - distance;
 
+				Vector2 lVelocity = (lCircle->getCurrentPosition() + normal * delta / 2.0f) - lCircle->getCurrentPosition();
+				Vector2 rVelocity = (rCircle->getCurrentPosition() - normal * delta / 2.0f) - rCircle->getCurrentPosition();
+
+
 				lCircle->setCurrentPosition(lCircle->getCurrentPosition() + normal * delta / 2.0f);
 				rCircle->setCurrentPosition(rCircle->getCurrentPosition() - normal * delta / 2.0f);
 
+				if (lVelocity.length() > 3.0f || rVelocity.length() > 3.0f)
+				{
+					cout << lVelocity.length() << " " << rVelocity.length() << endl;
+					lCircle->setVelocity(Vector2(0.0f, 0.0f), getStepDeltaTime());
+					rCircle->setVelocity(Vector2(0.0f, 0.0f), getStepDeltaTime());
+				}
 				checkSameFruits(lCircle, rCircle);
 			}
 		}
