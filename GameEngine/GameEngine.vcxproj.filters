@@ -232,13 +232,46 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Res\Apple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Border.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Cherry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="Res\Cloud.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Res\Circle.png">
+    <Image Include="Res\Dekopon.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Res\Fruit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Grape.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Melon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Orange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Peach.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Pear.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Pineapple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Strawberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Watermelon.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

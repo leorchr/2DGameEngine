@@ -25,8 +25,8 @@ Renderer::~Renderer()
 bool Renderer::initialize(Window& window)
 {
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
-	SDL_RenderSetLogicalSize(SDLRenderer, WINDOW_WIDTH, WINDOW_HEIGHT);
+	//SDL_SetWindowFullscreen(window.getSDLWindow(), SDL_WINDOW_FULLSCREEN_DESKTOP);
+	//SDL_RenderSetLogicalSize(SDLRenderer, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	if (!SDLRenderer)
 	{
@@ -43,13 +43,12 @@ bool Renderer::initialize(Window& window)
 
 void Renderer::beginDraw()
 {
-	SDL_SetRenderDrawColor(SDLRenderer, 100, 100, 100, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, 155, 130, 105, 255);
 	SDL_RenderClear(SDLRenderer);
 }
 
 void Renderer::draw()
 {
-	drawRect(Rectangle(WINDOW_WIDTH/2 - 350.0f, 80.0f, 700.0f, 920.0f));
 	drawCircles();
 	drawSprites();
 }

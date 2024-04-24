@@ -198,9 +198,20 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\Circle.png" />
+    <Image Include="Res\Apple.png" />
+    <Image Include="Res\Border.png" />
+    <Image Include="Res\Cherry.png" />
     <Image Include="Res\Cloud.png" />
+    <Image Include="Res\Dekopon.png" />
     <Image Include="Res\Fruit.png" />
+    <Image Include="Res\Grape.png" />
+    <Image Include="Res\Melon.png" />
+    <Image Include="Res\Orange.png" />
+    <Image Include="Res\Peach.png" />
+    <Image Include="Res\Pear.png" />
+    <Image Include="Res\Pineapple.png" />
+    <Image Include="Res\Strawberry.png" />
+    <Image Include="Res\Watermelon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
