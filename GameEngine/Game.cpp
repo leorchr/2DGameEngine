@@ -32,6 +32,7 @@ bool Game::initialize()
 void Game::load()
 {
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud", 190, 190);
+	Assets::loadTexture(renderer, "Res\\LineTrail.png", "Line");
 	Assets::loadTexture(renderer, "Res\\Border.png", "Border");
 	Assets::loadTexture(renderer, "Res\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
 	Assets::loadTexture(renderer, "Res\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);

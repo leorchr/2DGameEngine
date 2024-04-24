@@ -14,5 +14,6 @@ private:
 	class ControllerMoveComponent* moveComponent;
 	class ControllerInputComponent* inputComponent;
 	class SpriteComponent* spriteComponent;
+	class SpriteComponent* spriteComponent2;
 	float speedX;
 };

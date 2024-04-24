@@ -205,6 +205,7 @@
     <Image Include="Res\Dekopon.png" />
     <Image Include="Res\Fruit.png" />
     <Image Include="Res\Grape.png" />
+    <Image Include="Res\LineTrail.png" />
     <Image Include="Res\Melon.png" />
     <Image Include="Res\Orange.png" />
     <Image Include="Res\Peach.png" />
