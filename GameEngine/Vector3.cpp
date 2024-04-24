@@ -1,3 +1,4 @@
+#include "Maths.h"
 #include "Vector3.h"
 
 const Vector3 Vector3::zero(0.0f, 0.0f, 0.f);

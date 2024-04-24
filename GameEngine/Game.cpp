@@ -1,14 +1,22 @@
-#include "Game.h"
 #include "Actor.h"
-#include "Timer.h"
+#include "Actor.h"
 #include "Assets.h"
-#include "Actor.h"
-#include "Rectangle.h"
 #include "CircleActor.h"
-#include "Color.h"
+#include "CircleComponent.h"
+#include "ControllerActor.h"
+#include "Fruit.h"
+#include "Game.h"
+#include "InputSystem.h"
+#include "Timer.h"
+#include "Vector2.h"
+#include "Window.h"
 #include <algorithm>
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
+#include <SDL.h>
+#include <SDL_events.h>
+#include <SDL_scancode.h>
+#include <vector>
 
 vector<Fruit>Game::fruits = { Fruits::cherry, Fruits::strawberry, Fruits::dekopon, Fruits::orange, Fruits::apple };
 

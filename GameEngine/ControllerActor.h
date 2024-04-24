@@ -1,7 +1,7 @@
 #pragma once
 #include "Actor.h"
-#include "ControllerMoveComponent.h"
 #include "ControllerInputComponent.h"
+#include "ControllerMoveComponent.h"
 #include "SpriteComponent.h"
 
 class ControllerActor : public Actor

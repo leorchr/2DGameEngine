@@ -1,6 +1,7 @@
 #pragma once
-#include "Vector3.h"
 #include "Color.h"
+#include "Vector3.h"
+#include <vector>
 
 struct Fruit {
 public:

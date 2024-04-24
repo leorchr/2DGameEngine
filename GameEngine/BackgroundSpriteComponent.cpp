@@ -1,5 +1,12 @@
-#include "BackgroundSpriteComponent.h"
 #include "Actor.h"
+#include "BackgroundSpriteComponent.h"
+#include "Rectangle.h"
+#include "Renderer.h"
+#include "SpriteComponent.h"
+#include "Texture.h"
+#include "Vector2.h"
+#include "Window.h"
+#include <vector>
 
 BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP) :
 	SpriteComponent(ownerP, *texturesP[0], drawOrderP),

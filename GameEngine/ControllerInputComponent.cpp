@@ -1,9 +1,13 @@
+#include "Actor.h"
+#include "CircleActor.h"
 #include "ControllerInputComponent.h"
-#include <SDL_scancode.h>
-#include "Game.h"
+#include "ControllerMoveComponent.h"
 #include "Fruit.h"
-#include <iostream>
-using namespace std;
+#include "Game.h"
+#include "InputSystem.h"
+#include "Vector2.h"
+#include <cstdlib>
+#include <SDL_scancode.h>
 
 ControllerInputComponent::ControllerInputComponent(Actor* ownerP, float speedXP, float offsetP, float timeNextInputP) :
 	ControllerMoveComponent(ownerP),

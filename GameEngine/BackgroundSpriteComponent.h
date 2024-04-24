@@ -1,5 +1,9 @@
 #pragma once
+#include "Actor.h"
+#include "Renderer.h"
 #include "SpriteComponent.h"
+#include "Texture.h"
+#include "Vector2.h"
 #include <vector>
 using std::vector;
 

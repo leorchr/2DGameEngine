@@ -1,6 +1,8 @@
 #pragma once
-#include <vector>
+#include "Actor.h"
 #include "SpriteComponent.h"
+#include "Texture.h"
+#include <vector>
 using std::vector;
 
 class AnimSpriteComponent : public SpriteComponent

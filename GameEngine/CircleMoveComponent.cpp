@@ -1,5 +1,8 @@
-#include "CircleMoveComponent.h"
 #include "Actor.h"
+#include "CircleMoveComponent.h"
+#include "Component.h"
+#include "Vector2.h"
+#include <cstdlib>
 
 CircleMoveComponent::CircleMoveComponent(Actor* ownerP, float radiusP, int updateOrderP)
 	:Component(ownerP, updateOrderP)

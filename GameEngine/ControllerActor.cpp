@@ -1,6 +1,11 @@
-#include "ControllerActor.h"
-#include "Window.h"
+#include "Actor.h"
 #include "Assets.h"
+#include "ControllerActor.h"
+#include "ControllerInputComponent.h"
+#include "ControllerMoveComponent.h"
+#include "SpriteComponent.h"
+#include "Vector2.h"
+#include "Window.h"
 
 ControllerActor::ControllerActor(float speedXP, float offsetP) :
 	Actor(),

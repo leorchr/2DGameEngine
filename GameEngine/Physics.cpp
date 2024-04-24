@@ -1,9 +1,10 @@
-#include "Physics.h"
-#include "Window.h"
 #include "Actor.h"
 #include "CircleActor.h"
+#include "CircleMoveComponent.h"
+#include "Fruit.h"
 #include "Game.h"
-#include <algorithm>
+#include "Physics.h"
+#include "Vector2.h"
 
 void Physics::addCircle(CircleMoveComponent* circle)
 {

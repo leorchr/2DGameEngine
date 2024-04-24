@@ -1,5 +1,8 @@
-#include "CircleComponent.h"
 #include "Actor.h"
+#include "CircleComponent.h"
+#include "Component.h"
+#include "Renderer.h"
+#include "Vector3.h"
 #include "Game.h"
 
 CircleComponent::CircleComponent(Actor* ownerP, float radiusP, Vector3 colorP, int drawOrderP) :

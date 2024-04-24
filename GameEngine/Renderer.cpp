@@ -1,11 +1,18 @@
-#include "Renderer.h"
-#include "Log.h"
-#include "Texture.h"
-#include "Maths.h"
-#include "SpriteComponent.h"
+#include "Actor.h"
 #include "CircleComponent.h"
-#include "Color.h"
+#include "Log.h"
+#include "Maths.h"
+#include "Rectangle.h"
+#include "Renderer.h"
+#include "SpriteComponent.h"
+#include "Texture.h"
+#include "Vector2.h"
+#include "Vector3.h"
+#include "Window.h"
 #include <SDL_image.h>
+#include <SDL_rect.h>
+#include <SDL_render.h>
+#include <SDL_video.h>
 
 Renderer::Renderer() : SDLRenderer(nullptr)
 {

@@ -1,9 +1,9 @@
 #pragma once
 #include "Actor.h"
-#include "Vector3.h"
 #include "CircleComponent.h"
 #include "CircleMoveComponent.h"
 #include "Fruit.h"
+#include "Vector2.h"
 
 class CircleActor : public Actor
 {

@@ -1,8 +1,12 @@
 #include "InputSystem.h"
-#include <SDL_keyboard.h>
-#include <cstring>
-#include <SDL_mouse.h>
 #include "Maths.h"
+#include "Vector2.h"
+#include <SDL_events.h>
+#include <SDL_gamecontroller.h>
+#include <SDL_keyboard.h>
+#include <SDL_mouse.h>
+#include <SDL_scancode.h>
+#include <SDL_stdinc.h>
 
 InputSystem::InputSystem() : 
 	inputState(),

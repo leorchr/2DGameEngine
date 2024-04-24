@@ -1,17 +1,15 @@
 #pragma once
-#include <vector>
 #include "Actor.h"
 #include "CircleActor.h"
-#include "SpriteComponent.h"
-#include "Window.h"
-#include "Renderer.h"
-#include "Vector2.h"
-#include "Vector3.h"
 #include "CircleActor.h"
 #include "ControllerActor.h"
-#include "Physics.h"
-#include "InputSystem.h"
 #include "Fruit.h"
+#include "InputSystem.h"
+#include "Physics.h"
+#include "Renderer.h"
+#include "Vector2.h"
+#include "Window.h"
+#include <vector>
 using std::vector;
 
 class Game

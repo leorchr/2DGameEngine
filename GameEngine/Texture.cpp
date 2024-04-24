@@ -1,6 +1,10 @@
-#include "Texture.h"
 #include "Log.h"
+#include "Renderer.h"
+#include "Texture.h"
 #include <SDL_image.h>
+#include <SDL_render.h>
+#include <SDL_surface.h>
+#include <string>
 
 Texture::Texture() : filename(""), width(0), height(0), SDLTexture(nullptr)
 {

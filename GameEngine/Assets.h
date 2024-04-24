@@ -1,7 +1,8 @@
 #pragma once
+#include "Renderer.h"
+#include "Texture.h"
 #include <map>
 #include <string>
-#include "Texture.h"
 using std::map;
 using std::string;
 

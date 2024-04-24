@@ -1,7 +1,8 @@
+#include "Actor.h"
+#include "Component.h"
 #include "ControllerMoveComponent.h"
 #include "Maths.h"
-#include "Actor.h"
-#include "Window.h"
+#include "Vector2.h"
 
 ControllerMoveComponent::ControllerMoveComponent(Actor* ownerP, int updateOrderP)
 	: Component(ownerP, updateOrderP), speedX(0.0f)

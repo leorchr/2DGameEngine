@@ -1,6 +1,6 @@
 #pragma once
-#include <random>
 #include "Vector2.h"
+#include <random>
 
 class Random
 {

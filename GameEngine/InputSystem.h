@@ -1,8 +1,10 @@
 #pragma once
+#include "ControllerState.h"
 #include "KeyboardState.h"
 #include "MouseState.h"
-#include "ControllerState.h"
+#include "Vector2.h"
 #include <SDL_events.h>
+#include <SDL_gamecontroller.h>
 
 enum class ButtonState
 {

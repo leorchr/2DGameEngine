@@ -1,10 +1,10 @@
 #pragma once
+#include "Actor.h"
 #include "Rectangle.h"
-#include <SDL.h>
-#include "Window.h"
 #include "Vector2.h"
 #include "Vector3.h"
-#include "Actor.h"
+#include "Window.h"
+#include <SDL.h>
 
 class Renderer
 {

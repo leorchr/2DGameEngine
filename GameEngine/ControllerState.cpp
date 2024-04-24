@@ -1,5 +1,7 @@
 #include "ControllerState.h"
 #include "InputSystem.h"
+#include "Vector2.h"
+#include <SDL_gamecontroller.h>
 
 
 ControllerState::ControllerState() :

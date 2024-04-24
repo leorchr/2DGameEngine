@@ -1,6 +1,7 @@
 #include "Log.h"
-#include <SDL_log.h>
 #include <SDL_error.h>
+#include <SDL_log.h>
+#include <string>
 
 void Log::info(const string& message) {
 	SDL_Log(message.c_str());

@@ -1,8 +1,8 @@
 #pragma once
+#include "Actor.h"
 #include "Component.h"
-#include "Vector2.h"
-#include "Vector3.h"
 #include "Renderer.h"
+#include "Vector3.h"
 
 class CircleComponent : public Component
 {

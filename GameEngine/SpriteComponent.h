@@ -1,5 +1,7 @@
 #pragma once
+#include "Actor.h"
 #include "Component.h"
+#include "Renderer.h"
 #include "Texture.h"
 
 class SpriteComponent : public Component

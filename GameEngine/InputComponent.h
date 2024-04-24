@@ -1,6 +1,7 @@
 #pragma once
+#include "Actor.h"
+#include "InputSystem.h"
 #include "MoveComponent.h"
-#include <SDL_stdinc.h>
 #include <SDL_scancode.h>
 
 class InputComponent : public MoveComponent

@@ -1,4 +1,9 @@
+#include "Actor.h"
 #include "CircleActor.h"
+#include "CircleComponent.h"
+#include "CircleMoveComponent.h"
+#include "Fruit.h"
+#include "Vector2.h"
 #include "Game.h"
 
 CircleActor::CircleActor(Vector2 positionP, const Fruit& fruitP) :

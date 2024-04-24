@@ -1,5 +1,7 @@
-#include "Window.h"
 #include "Log.h"
+#include "Window.h"
+#include <SDL.h>
+#include <SDL_video.h>
 
 bool Window::initialize() {
 	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO || SDL_INIT_GAMECONTROLLER);

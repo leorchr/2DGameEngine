@@ -1,5 +1,6 @@
 #pragma once
 #include "CircleMoveComponent.h"
+#include "Vector2.h"
 #include <vector>
 using std::vector;
 

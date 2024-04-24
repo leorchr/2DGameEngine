@@ -1,5 +1,5 @@
-#include "MouseState.h"
 #include "InputSystem.h"
+#include "MouseState.h"
 #include <SDL_mouse.h>
 
 bool MouseState::getButtonValue(int button) const

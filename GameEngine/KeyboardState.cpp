@@ -1,5 +1,6 @@
-#include "KeyboardState.h"
 #include "InputSystem.h"
+#include "KeyboardState.h"
+#include <SDL_scancode.h>
 
 bool KeyboardState::getKeyValue(SDL_Scancode key) const
 {
