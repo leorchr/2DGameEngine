@@ -200,6 +200,7 @@
   <ItemGroup>
     <Image Include="Res\Circle.png" />
     <Image Include="Res\Cloud.png" />
+    <Image Include="Res\Fruit.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

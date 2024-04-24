@@ -32,17 +32,17 @@ bool Game::initialize()
 void Game::load()
 {
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Strawberry");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Grape");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Dekopon");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Orange");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Apple");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Pear");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Peach");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Pineapple");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Melon");
-	Assets::loadTexture(renderer, "Res\\Circle.png", "Watermelon");
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Grape", Fruits::fruitList[2].getRadius() * 2, Fruits::fruitList[2].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Dekopon", Fruits::fruitList[3].getRadius() * 2, Fruits::fruitList[3].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Orange", Fruits::fruitList[4].getRadius() * 2, Fruits::fruitList[4].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Apple", Fruits::fruitList[5].getRadius() * 2, Fruits::fruitList[5].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Pear", Fruits::fruitList[6].getRadius() * 2, Fruits::fruitList[6].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Peach", Fruits::fruitList[7].getRadius() * 2, Fruits::fruitList[7].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Fruit.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
 
 	setNextFruit();
 	controller = new ControllerActor(200.0f, 100.0f);
@@ -73,8 +73,8 @@ void Game::setNextFruit()
 	nextFruit = fruits[rand() % fruits.size()];
 	nextFruitDisplay = new Actor();
 	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 300.0f));
-	CircleComponent* cc = new CircleComponent(nextFruitDisplay, nextFruit.getRadius(), nextFruit.getColor());
-	//SpriteComponent* sc = new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
+	CircleComponent* cc = new CircleComponent(nextFruitDisplay, nextFruit.getRadius(), nextFruit.getColor()); //old circle
+	SpriteComponent* sc = new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
 }
 
 

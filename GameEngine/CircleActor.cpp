@@ -18,7 +18,7 @@ CircleActor::CircleActor(Vector2 positionP, const Fruit& fruitP) :
 	setPosition(positionP);
 	circleComponent = new CircleComponent(this, fruit.getRadius(), fruit.getColor());
 	moveComponent = new CircleMoveComponent(this, radius);
-	spriteComponent = new SpriteComponent(this, Assets::getTexture("Circle"), 100);
+	spriteComponent = new SpriteComponent(this, Assets::getTexture(fruit.getName()), 100);
 	getGame().getPhysics().addCircle(moveComponent);
 }
 
