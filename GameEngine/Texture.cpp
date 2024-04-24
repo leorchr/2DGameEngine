@@ -22,7 +22,7 @@ void Texture::unload()
 	}
 }
 
-bool Texture::load(Renderer& renderer, const string& filenameP)
+bool Texture::load(Renderer& renderer, const string& filenameP, int widthP, int heightP)
 {
 	filename = filenameP;
 	// Load from file
@@ -32,8 +32,16 @@ bool Texture::load(Renderer& renderer, const string& filenameP)
 		Log::error(LogCategory::Application, "Failed to load texture file " + filename);
 		return false;
 	}
-	width = surf->w;
-	height = surf->h;
+	if (widthP > 0 && heightP > 0)
+	{
+		width = widthP;
+		height = heightP;
+	}
+	else
+	{
+		width = surf->w;
+		height = surf->h;
+	}
 
 	// Create texture from surface
 	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surf);

@@ -4,9 +4,9 @@
 
 std::map<std::string, Texture> Assets::textures;
 
-Texture Assets::loadTexture(Renderer& renderer, const string& filename, const string& name)
+Texture Assets::loadTexture(Renderer& renderer, const string& filename, const string& name, int width, int height)
 {
-    textures[name] = loadTextureFromFile(renderer, filename.c_str());
+    textures[name] = loadTextureFromFile(renderer, filename.c_str(), width, height);
     return textures[name];
 }
 
@@ -29,9 +29,9 @@ void Assets::clear()
     textures.clear();
 }
 
-Texture Assets::loadTextureFromFile(Renderer& renderer, const string& filename)
+Texture Assets::loadTextureFromFile(Renderer& renderer, const string& filename, int width, int height)
 {
     Texture texture;
-    texture.load(renderer, filename);
+    texture.load(renderer, filename, width, height);
     return texture;
 }

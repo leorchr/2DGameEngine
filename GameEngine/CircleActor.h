@@ -3,6 +3,7 @@
 #include "CircleComponent.h"
 #include "CircleMoveComponent.h"
 #include "Fruit.h"
+#include "SpriteComponent.h"
 #include "Vector2.h"
 
 class CircleActor : public Actor
@@ -18,6 +19,7 @@ public:
 private:
 	class CircleComponent* circleComponent;
 	class CircleMoveComponent* moveComponent;
+	class SpriteComponent* spriteComponent;
 	float radius;
 	Fruit fruit;
 };

@@ -32,6 +32,17 @@ bool Game::initialize()
 void Game::load()
 {
 	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Strawberry");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Grape");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Dekopon");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Orange");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Apple");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Pear");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Peach");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Pineapple");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Melon");
+	Assets::loadTexture(renderer, "Res\\Circle.png", "Watermelon");
 
 	setNextFruit();
 	controller = new ControllerActor(200.0f, 100.0f);
@@ -63,6 +74,7 @@ void Game::setNextFruit()
 	nextFruitDisplay = new Actor();
 	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 300.0f));
 	CircleComponent* cc = new CircleComponent(nextFruitDisplay, nextFruit.getRadius(), nextFruit.getColor());
+	//SpriteComponent* sc = new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
 }
 
 
