@@ -19,7 +19,7 @@ ControllerActor::ControllerActor(float speedXP, float offsetP) :
 	moveComponent = new ControllerMoveComponent(this);
 	inputComponent = new ControllerInputComponent(this, speedXP, offsetP, 0.5f);
 	spriteComponent = new SpriteComponent(this, Assets::getTexture("Cloud"), 102);
-	spriteComponent2 = new SpriteComponent(this, Assets::getTexture("Line"), 100, Vector2(0,45));
+	spriteComponent2 = new SpriteComponent(this, Assets::getTexture("Line"), 100, Vector2(Assets::getTexture("Line").getWidth()/2, 45));
 }
 
 ControllerActor::~ControllerActor(){}
