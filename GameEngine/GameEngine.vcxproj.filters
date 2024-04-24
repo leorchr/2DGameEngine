@@ -48,7 +48,7 @@
     <ClCompile Include="ControllerActor.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="CircleActor.cpp">
+    <ClCompile Include="FruitActor.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>
     <ClCompile Include="BackgroundSpriteComponent.cpp">
@@ -161,7 +161,7 @@
     <ClInclude Include="SpriteComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="CircleActor.h">
+    <ClInclude Include="FruitActor.h">
       <Filter>Header Files\Actors</Filter>
     </ClInclude>
     <ClInclude Include="ControllerActor.h">

@@ -1,7 +1,6 @@
 #pragma once
 #include "Actor.h"
-#include "CircleActor.h"
-#include "CircleActor.h"
+#include "FruitActor.h"
 #include "ControllerActor.h"
 #include "Fruit.h"
 #include "InputSystem.h"
@@ -43,8 +42,8 @@ public:
 	Physics& getPhysics() { return physics; }
 
 	//Game specific
-	void addCircle(CircleActor* circle);
-	void removeCircle(CircleActor* circle);
+	void addCircle(FruitActor* circle);
+	void removeCircle(FruitActor* circle);
 	void spawnFruit(Fruit fruitP, Vector2 posP);
 	static vector<Fruit> fruits;
 	void gameOver();
@@ -68,7 +67,7 @@ private:
 
 	//Simulation variables
 	ControllerActor* controller;
-	vector<CircleActor*> circles;
+	vector<FruitActor*> circles;
 	float timeBetweenSpawn;
 	float baseTimeBetweenSpawn;
 	float spawnSpeed;

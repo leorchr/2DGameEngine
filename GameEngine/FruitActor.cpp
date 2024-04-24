@@ -1,12 +1,12 @@
 #include "Actor.h"
 #include "Assets.h"
-#include "CircleActor.h"
+#include "FruitActor.h"
 #include "CircleMoveComponent.h"
 #include "Fruit.h"
 #include "Vector2.h"
 #include "Game.h"
 
-CircleActor::CircleActor(Vector2 positionP, const Fruit& fruitP) :
+FruitActor::FruitActor(Vector2 positionP, const Fruit& fruitP) :
 	Actor(),
 	moveComponent(nullptr),
 	spriteComponent(nullptr)
@@ -19,4 +19,4 @@ CircleActor::CircleActor(Vector2 positionP, const Fruit& fruitP) :
 	getGame().getPhysics().addCircle(moveComponent);
 }
 
-CircleActor::~CircleActor(){}
+FruitActor::~FruitActor(){}

@@ -1,8 +1,8 @@
 #include "Actor.h"
-#include "CircleActor.h"
 #include "ControllerInputComponent.h"
 #include "ControllerMoveComponent.h"
 #include "Fruit.h"
+#include "FruitActor.h"
 #include "Game.h"
 #include "InputSystem.h"
 #include "Vector2.h"
@@ -57,7 +57,7 @@ void ControllerInputComponent::processInput(const struct InputState& inputState)
 		if(time <= 0){
 			Fruit fruit = getOwner().getGame().getNextFruit();
 			getOwner().getGame().setNextFruit();
-			CircleActor* circle = new CircleActor(owner.getPosition(), fruit);
+			FruitActor* circle = new FruitActor(Vector2(owner.getPosition().x, owner.getPosition().y + fruit.getRadius() - 20), fruit);
 			owner.getGame().getPhysics().setObjectVelocity(*circle->getMoveComponent(), Vector2(rand() % 5, 50.0f));
 			owner.getGame().addCircle(circle);
 			time = timeNextInput;

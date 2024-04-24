@@ -14,7 +14,7 @@ ControllerActor::ControllerActor(float speedXP, float offsetP) :
 	inputComponent(nullptr),
 	spriteComponent(nullptr)
 {
-	setPosition(Vector2(WINDOW_WIDTH/2, 80.0f));
+	setPosition(Vector2(WINDOW_WIDTH/2, 115.0f));
 	moveComponent = new ControllerMoveComponent(this);
 	inputComponent = new ControllerInputComponent(this, speedXP, offsetP, 0.5f);
 	spriteComponent = new SpriteComponent(this, Assets::getTexture("Cloud"), 102);

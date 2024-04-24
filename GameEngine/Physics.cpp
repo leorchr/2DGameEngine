@@ -1,5 +1,5 @@
 #include "Actor.h"
-#include "CircleActor.h"
+#include "FruitActor.h"
 #include "CircleMoveComponent.h"
 #include "Fruit.h"
 #include "Game.h"
@@ -130,8 +130,8 @@ void Physics::solveCollisions()
 
 bool Physics::checkSameFruits(CircleMoveComponent* lCircle, CircleMoveComponent* rCircle)
 {
-	CircleActor* lCircleActor = static_cast<CircleActor*>(&lCircle->getOwner());
-	CircleActor* rCircleActor = static_cast<CircleActor*>(&rCircle->getOwner());
+	FruitActor* lCircleActor = static_cast<FruitActor*>(&lCircle->getOwner());
+	FruitActor* rCircleActor = static_cast<FruitActor*>(&rCircle->getOwner());
 	if (lCircleActor->getFruit().getRadius() == rCircleActor->getFruit().getRadius())
 	{
 		if (std::find(circlesToRemove.begin(), circlesToRemove.end(), lCircle) == circlesToRemove.end() && std::find(circlesToRemove.begin(), circlesToRemove.end(), rCircle) == circlesToRemove.end()) {
@@ -147,7 +147,7 @@ void Physics::mergeFruits()
 {
 	if (circlesToRemove.size() == 0)return;
 
-	CircleActor* fruitActor = static_cast<CircleActor*>(&circlesToRemove[0]->getOwner());
+	FruitActor* fruitActor = static_cast<FruitActor*>(&circlesToRemove[0]->getOwner());
 	Fruit fruit = fruitActor->getFruit();
 	Fruit nextFruit;
 	auto iter = std::find(Fruits::fruitList.begin(), Fruits::fruitList.end(), fruit);

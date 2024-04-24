@@ -1,7 +1,7 @@
 #include "Actor.h"
 #include "Actor.h"
 #include "Assets.h"
-#include "CircleActor.h"
+#include "FruitActor.h"
 #include "CircleComponent.h"
 #include "ControllerActor.h"
 #include "Fruit.h"
@@ -31,7 +31,7 @@ bool Game::initialize()
 
 void Game::load()
 {
-	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud");
+	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud", 190, 190);
 	Assets::loadTexture(renderer, "Res\\Border.png", "Border");
 	Assets::loadTexture(renderer, "Res\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
 	Assets::loadTexture(renderer, "Res\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
@@ -62,7 +62,7 @@ void Game::load()
 
 void Game::spawnFruit(Fruit fruitP, Vector2 posP)
 {
-	CircleActor* circle = new CircleActor(posP, fruitP);
+	FruitActor* circle = new FruitActor(posP, fruitP);
 	addCircle(circle);
 }
 
@@ -218,12 +218,12 @@ void Game::removeActor(Actor* actor)
 	}
 }
 
-void Game::addCircle(CircleActor* circle)
+void Game::addCircle(FruitActor* circle)
 {
 	circles.emplace_back(circle);
 }
 
-void Game::removeCircle(CircleActor* circle)
+void Game::removeCircle(FruitActor* circle)
 {
 	auto iter = std::find(begin(circles), end(circles), circle);
 	circles.erase(iter);

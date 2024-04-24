@@ -5,11 +5,11 @@
 #include "SpriteComponent.h"
 #include "Vector2.h"
 
-class CircleActor : public Actor
+class FruitActor : public Actor
 {
 public:
-	CircleActor(Vector2 positionP, const Fruit& fruitP);
-	~CircleActor();
+	FruitActor(Vector2 positionP, const Fruit& fruitP);
+	~FruitActor();
 	float getRadius() { return radius; }
 	CircleMoveComponent* getMoveComponent() { return moveComponent; }
 	Fruit getFruit() const { return fruit; }
