@@ -51,7 +51,8 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Textures\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
 	Assets::loadTexture(renderer, "Res\\Textures\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
 	Assets::loadTexture(renderer, "Res\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Bubble.png", "Bubble" , 350, 350);
+	Assets::loadTexture(renderer, "Res\\Textures\\Bubble.png", "Bubble", 350, 350);
+	Assets::loadTexture(renderer, "Res\\Textures\\EvolutionCircle.png", "Evolution" , 350, 350);
 	Assets::loadFont("Res\\Fonts\\Cute-Dino.ttf", "Dino");
 
 
@@ -87,8 +88,8 @@ void Game::load()
 	new UIMovementComponent(bubble2);
 
 	Actor* bubble3 = new Actor();
-	new SpriteComponent(bubble3, Assets::getTexture("Bubble"), 101);
-	bubble3->setPosition(Vector2(1565, 800));
+	new SpriteComponent(bubble3, Assets::getTexture("Evolution"), 101);
+	bubble3->setPosition(Vector2(1565, 825));
 	new UIMovementComponent(bubble3);
 
 	// Create the controller actor
@@ -124,7 +125,7 @@ void Game::setNextFruit()
 	if (nextFruitDisplay != nullptr) nextFruitDisplay->setState(Actor::ActorState::Dead);
 	nextFruit = fruits[rand() % fruits.size()];
 	nextFruitDisplay = new Actor();
-	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 220.0f));
+	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 605.0f, WINDOW_HEIGHT/2 - 240.0f));
 	new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
 	new UIMovementComponent(nextFruitDisplay);
 }
@@ -132,7 +133,7 @@ void Game::setNextFruit()
 void Game::addScore(int scoreP)
 {
 	score += scoreP;
-	int offsetX = (std::to_string(score).length() - 1) * (-10);
+	int offsetX = (std::to_string(score).length() - 1) * (-15);
 	scorePointsT->setOffsetPosition(Vector2(offsetX, 0));
 	scorePointsT->setTitle(std::to_string(score), Vector3(121, 36, 36), 60);
 }

@@ -304,6 +304,9 @@
     <Image Include="Res\Textures\Bubble.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="Res\Textures\EvolutionCircle.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Res\Fonts\Carlito-Regular.ttf">
