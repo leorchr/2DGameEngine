@@ -71,8 +71,8 @@ void Game::load()
 	nextFruitT = new UIScreen(Vector2(1450, 120));
 	nextFruitT->setTitle("Suivant", Vector3(121, 36, 36), 60);
 
-	circleT = new UIScreen(Vector2(1450, 550));
-	circleT->setTitle("Cerle de", Vector3(121, 36, 36), 60);
+	circleT = new UIScreen(Vector2(1432, 550));
+	circleT->setTitle("Cercle de", Vector3(121, 36, 36), 60);
 
 	evolutionT = new UIScreen(Vector2(1415, 620));
 	evolutionT->setTitle("l'evolution", Vector3(121, 36, 36), 60);
