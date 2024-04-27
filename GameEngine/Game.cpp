@@ -54,8 +54,21 @@ void Game::load()
 	SpriteComponent* sc = new SpriteComponent(border, Assets::getTexture("Border"), 101);
 	border->setPosition(Vector2(WINDOW_WIDTH / 2 - 350 + 700/2, 80 + 920/2));
 
-	UIScreen* bonjour = new UIScreen();
-	bonjour->setTitle("SCORE", Vector3(121,36,36), 60);
+	UIScreen* score = new UIScreen();
+	score->setTitlePosition(Vector2(200, 200));
+	score->setTitle("Score", Vector3(121,36,36), 60);
+
+	UIScreen* next = new UIScreen();
+	next->setTitlePosition(Vector2(1450, 200));
+	next->setTitle("Suivant", Vector3(121, 36, 36), 60);
+
+	UIScreen* cercle = new UIScreen();
+	cercle->setTitlePosition(Vector2(1450, 600));
+	cercle->setTitle("Cerle de", Vector3(121, 36, 36), 60);
+
+	UIScreen* evolution = new UIScreen();
+	evolution->setTitlePosition(Vector2(1415, 670));
+	evolution->setTitle("l'evolution", Vector3(121, 36, 36), 60);
 
 	setNextFruit();
 	controller = new ControllerActor(200.0f, 100.0f);
@@ -85,7 +98,7 @@ void Game::setNextFruit()
 	if (nextFruitDisplay != nullptr) nextFruitDisplay->setState(Actor::ActorState::Dead);
 	nextFruit = fruits[rand() % fruits.size()];
 	nextFruitDisplay = new Actor();
-	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 300.0f));
+	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 150.0f));
 	//CircleComponent* cc = new CircleComponent(nextFruitDisplay, nextFruit.getRadius(), nextFruit.getColor()); //old circle
 	SpriteComponent* sc = new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
 }

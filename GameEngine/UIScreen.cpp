@@ -6,7 +6,7 @@
 
 UIScreen::UIScreen() :
 	title(nullptr),
-	titlePosition(200.0f, 200.0f),
+	titlePosition(Vector2::zero),
 	state(UIState::Active),
 	font(Assets::getFont("Dino"))
 {
@@ -32,6 +32,12 @@ void UIScreen::setTitle(const string& titleP, const Vector3& color,	int pointSiz
 	}
 	title = font.renderText(titleP, color, pointSize);
 }
+
+void UIScreen::setTitlePosition(const Vector2& position)
+{
+	titlePosition = position;
+}
+
 void UIScreen::update(float dt)
 {
 }
