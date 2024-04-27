@@ -160,6 +160,8 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="UIMovementComponent.cpp" />
+    <ClCompile Include="UIMovementComponent.h" />
     <ClCompile Include="UIScreen.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />

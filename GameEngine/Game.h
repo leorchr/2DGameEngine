@@ -70,7 +70,7 @@ private:
 	vector<Actor*> pendingActors;
 	vector<class UIScreen*> UIStack;
 
-	//Simulation variables
+	//Game Specific attributes
 	ControllerActor* controller;
 	vector<FruitActor*> circles;
 	float timeBetweenSpawn;
@@ -80,4 +80,9 @@ private:
 
 	Fruit nextFruit;
 	Actor* nextFruitDisplay;
+
+	UIScreen* scoreT;
+	UIScreen* nextFruitT;
+	UIScreen* circleT;
+	UIScreen* evolutionT;
 };

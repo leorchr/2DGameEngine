@@ -14,11 +14,10 @@ enum class UIState
 class UIScreen
 {
 public:
-	UIScreen();
+	UIScreen(Vector2 position);
 	virtual ~UIScreen();
 	UIState getState() const { return state; }
 	void setTitle(const string& titleP, const Vector3& color = Vector3(255, 255, 255), int pointSize = 40);
-	void setTitlePosition(const Vector2& position);
 	virtual void update(float deltaTime);
 	virtual void draw();
 	virtual void processInput(const class InputState& inputState);
@@ -28,5 +27,6 @@ protected:
 	class Font& font;
 	class Texture* title;
 	Vector2 titlePosition;
+	Vector2 basePosition;
 	UIState state;
 };

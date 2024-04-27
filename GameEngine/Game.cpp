@@ -9,6 +9,7 @@
 #include "Game.h"
 #include "InputSystem.h"
 #include "Timer.h"
+#include "UIMovementComponent.h"
 #include "UIScreen.h"
 #include "Vector2.h"
 #include "Window.h"
@@ -19,6 +20,7 @@
 #include <SDL_events.h>
 #include <SDL_scancode.h>
 #include <vector>
+#include "SpriteComponent.h"
 
 vector<Fruit>Game::fruits = { Fruits::cherry, Fruits::strawberry, Fruits::dekopon, Fruits::orange, Fruits::apple };
 
@@ -50,35 +52,38 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
 	Assets::loadFont("Res\\Fonts\\Cute-Dino.ttf", "Dino");
 
+
+	// Create UI
 	Actor* border = new Actor();
 	SpriteComponent* sc = new SpriteComponent(border, Assets::getTexture("Border"), 101);
 	border->setPosition(Vector2(WINDOW_WIDTH / 2 - 350 + 700/2, 80 + 920/2));
 
-	UIScreen* score = new UIScreen();
-	score->setTitlePosition(Vector2(200, 200));
-	score->setTitle("Score", Vector3(121,36,36), 60);
+	scoreT = new UIScreen(Vector2(200, 200));
+	scoreT->setTitle("Score", Vector3(121,36,36), 60);
 
-	UIScreen* next = new UIScreen();
-	next->setTitlePosition(Vector2(1450, 200));
-	next->setTitle("Suivant", Vector3(121, 36, 36), 60);
+	nextFruitT = new UIScreen(Vector2(1450, 200));
+	nextFruitT->setTitle("Suivant", Vector3(121, 36, 36), 60);
 
-	UIScreen* cercle = new UIScreen();
-	cercle->setTitlePosition(Vector2(1450, 600));
-	cercle->setTitle("Cerle de", Vector3(121, 36, 36), 60);
+	circleT = new UIScreen(Vector2(1450, 600));
+	circleT->setTitle("Cerle de", Vector3(121, 36, 36), 60);
 
-	UIScreen* evolution = new UIScreen();
-	evolution->setTitlePosition(Vector2(1415, 670));
-	evolution->setTitle("l'evolution", Vector3(121, 36, 36), 60);
+	evolutionT = new UIScreen(Vector2(1415, 670));
+	evolutionT->setTitle("l'evolution", Vector3(121, 36, 36), 60);
 
-	setNextFruit();
+	// Create the controller actor
 	controller = new ControllerActor(200.0f, 100.0f);
 	baseTimeBetweenSpawn = 1.0f;
 	timeBetweenSpawn = 1.0f;
 	spawnSpeed = 30.0f;
+
+	// Set up simulation variables
 	getPhysics().setLeftBorder(WINDOW_WIDTH/2 - 340.0f);
 	getPhysics().setRightBorder(WINDOW_WIDTH / 2 + 340.0f);
 	getPhysics().setBottomBorder(WINDOW_HEIGHT - 90.0f);
 	getPhysics().setTopBorder(80.0f);
+
+	// Spawn initial fruit
+	setNextFruit();
 }
 
 void Game::spawnFruit(Fruit fruitP, Vector2 posP)
@@ -99,10 +104,9 @@ void Game::setNextFruit()
 	nextFruit = fruits[rand() % fruits.size()];
 	nextFruitDisplay = new Actor();
 	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 150.0f));
-	//CircleComponent* cc = new CircleComponent(nextFruitDisplay, nextFruit.getRadius(), nextFruit.getColor()); //old circle
 	SpriteComponent* sc = new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
+	UIMovementComponent* uic = new UIMovementComponent(nextFruitDisplay);
 }
-
 
 void Game::processInput()
 {
@@ -160,7 +164,7 @@ void Game::update(float dt)
 			ui->update(dt);
 		}
 	}
-	
+
 	// Delete dead actors
 	vector<Actor*> deadActors;
 	for (auto actor : actors)
