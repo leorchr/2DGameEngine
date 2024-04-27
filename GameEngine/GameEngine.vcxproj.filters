@@ -144,9 +144,6 @@
     <ClCompile Include="UIScreen.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="UIMovementComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClCompile>
     <ClCompile Include="UIMovementComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -254,6 +251,21 @@
     <ClInclude Include="UIScreen.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="UIMovementComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Res\Textures\Apple.png">
@@ -307,6 +319,9 @@
     <Image Include="Res\Textures\EvolutionCircle.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="Res\SuikaGame.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Res\Fonts\Carlito-Regular.ttf">
@@ -315,5 +330,10 @@
     <Font Include="Res\Fonts\Cute-Dino.ttf">
       <Filter>Resource Files\Fonts</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameEngine.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
