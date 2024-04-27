@@ -22,11 +22,15 @@ public:
 	virtual void draw();
 	virtual void processInput(const class InputState& inputState);
 	void close();
+	void setOffsetPosition(const Vector2& offset);
+	Vector2 getOffsetPosition() const { return offsetPosition; }
+
 protected:
 	void drawTexture(class Texture* texture, const Vector2& offset = Vector2::zero);
 	class Font& font;
 	class Texture* title;
 	Vector2 titlePosition;
 	Vector2 basePosition;
+	Vector2 offsetPosition;
 	UIState state;
 };

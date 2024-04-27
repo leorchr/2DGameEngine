@@ -53,6 +53,7 @@ public:
 	void gameOver();
 	Fruit getNextFruit() { return nextFruit; }
 	void setNextFruit();
+	void addScore(int scoreP);
 
 private:
 	void processInput();
@@ -82,7 +83,10 @@ private:
 	Actor* nextFruitDisplay;
 
 	UIScreen* scoreT;
+	UIScreen* scorePointsT;
 	UIScreen* nextFruitT;
 	UIScreen* circleT;
 	UIScreen* evolutionT;
+
+	int score;
 };

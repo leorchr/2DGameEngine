@@ -204,22 +204,9 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\Apple.png" />
-    <Image Include="Res\Border.png" />
-    <Image Include="Res\Cherry.png" />
-    <Image Include="Res\Cloud.png" />
-    <Image Include="Res\Dekopon.png" />
-    <Image Include="Res\Fruit.png" />
-    <Image Include="Res\Grape.png" />
-    <Image Include="Res\LineTrail.png" />
-    <Image Include="Res\Melon.png" />
-    <Image Include="Res\Orange.png" />
-    <Image Include="Res\Peach.png" />
-    <Image Include="Res\Pear.png" />
-    <Image Include="Res\Pineapple.png" />
-    <Image Include="Res\Strawberry.png" />
     <Image Include="Res\Textures\Apple.png" />
     <Image Include="Res\Textures\Border.png" />
+    <Image Include="Res\Textures\Bubble.png" />
     <Image Include="Res\Textures\Cherry.png" />
     <Image Include="Res\Textures\Cloud.png" />
     <Image Include="Res\Textures\Dekopon.png" />
@@ -233,7 +220,6 @@
     <Image Include="Res\Textures\Pineapple.png" />
     <Image Include="Res\Textures\Strawberry.png" />
     <Image Include="Res\Textures\Watermelon.png" />
-    <Image Include="Res\Watermelon.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Res\Fonts\Carlito-Regular.ttf" />

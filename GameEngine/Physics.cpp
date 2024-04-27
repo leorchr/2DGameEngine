@@ -156,6 +156,7 @@ void Physics::mergeFruits()
 	}
 
 	Game& game = circlesToRemove[0]->getOwner().getGame();
+	game.addScore(fruit.getScore());
 
 	Vector2 position = circlesToRemove[0]->getCurrentPosition();
 	Vector2 position2 = circlesToRemove[1]->getCurrentPosition();

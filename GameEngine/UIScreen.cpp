@@ -8,6 +8,7 @@ UIScreen::UIScreen(Vector2 position) :
 	title(nullptr),
 	titlePosition(position),
 	basePosition(position),
+	offsetPosition(position),
 	state(UIState::Active),
 	font(Assets::getFont("Dino"))
 {
@@ -37,7 +38,7 @@ void UIScreen::setTitle(const string& titleP, const Vector3& color,	int pointSiz
 void UIScreen::update(float dt)
 {
     float time = SDL_GetTicks() / 400.0f;
-	titlePosition = basePosition + Vector2(0, sin(time) * 20);
+	titlePosition = offsetPosition + Vector2(0, sin(time) * 20);
 }
 
 void UIScreen::draw()
@@ -47,13 +48,21 @@ void UIScreen::draw()
 		drawTexture(title, titlePosition);
 	}
 }
+
 void UIScreen::processInput(const InputState& inputState)
 {
 }
+
 void UIScreen::close()
 {
 	state = UIState::Closing;
 }
+
+void UIScreen::setOffsetPosition(const Vector2& offset)
+{
+	offsetPosition = basePosition + offset;
+}
+
 void UIScreen::drawTexture(Texture* texture, const Vector2& offset)
 {
 	// Use SDL to render the texture on the screen
@@ -65,5 +74,4 @@ void UIScreen::drawTexture(Texture* texture, const Vector2& offset)
 	destRect.y = static_cast<int>(offset.y);
 	SDL_QueryTexture(texture->toSDLTexture(), nullptr, nullptr, &destRect.w, &destRect.h);
 	SDL_RenderCopy(renderer, texture->toSDLTexture(), nullptr, &destRect);
-
 }

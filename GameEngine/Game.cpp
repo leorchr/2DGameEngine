@@ -8,6 +8,7 @@
 #include "Fruit.h"
 #include "Game.h"
 #include "InputSystem.h"
+#include "Physics.h"
 #include "Timer.h"
 #include "UIMovementComponent.h"
 #include "UIScreen.h"
@@ -50,6 +51,7 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Textures\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
 	Assets::loadTexture(renderer, "Res\\Textures\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
 	Assets::loadTexture(renderer, "Res\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Bubble.png", "Bubble" , 350, 350);
 	Assets::loadFont("Res\\Fonts\\Cute-Dino.ttf", "Dino");
 
 
@@ -58,17 +60,36 @@ void Game::load()
 	SpriteComponent* sc = new SpriteComponent(border, Assets::getTexture("Border"), 101);
 	border->setPosition(Vector2(WINDOW_WIDTH / 2 - 350 + 700/2, 80 + 920/2));
 
-	scoreT = new UIScreen(Vector2(200, 200));
+	scoreT = new UIScreen(Vector2(200, 210));
 	scoreT->setTitle("Score", Vector3(121,36,36), 60);
 
-	nextFruitT = new UIScreen(Vector2(1450, 200));
+	score = 0;
+	scorePointsT = new UIScreen(Vector2(260, 375));
+	scorePointsT->setTitle(std::to_string(score), Vector3(121, 36, 36), 60);
+
+	nextFruitT = new UIScreen(Vector2(1450, 120));
 	nextFruitT->setTitle("Suivant", Vector3(121, 36, 36), 60);
 
-	circleT = new UIScreen(Vector2(1450, 600));
+	circleT = new UIScreen(Vector2(1450, 550));
 	circleT->setTitle("Cerle de", Vector3(121, 36, 36), 60);
 
-	evolutionT = new UIScreen(Vector2(1415, 670));
+	evolutionT = new UIScreen(Vector2(1415, 620));
 	evolutionT->setTitle("l'evolution", Vector3(121, 36, 36), 60);
+
+	Actor* bubble1 = new Actor();
+	new SpriteComponent(bubble1, Assets::getTexture("Bubble"), 101);
+	bubble1->setPosition(Vector2(285, 400));
+	new UIMovementComponent(bubble1);
+
+	Actor* bubble2 = new Actor();
+	new SpriteComponent(bubble2, Assets::getTexture("Bubble"), 101);
+	bubble2->setPosition(Vector2(1565, 300));
+	new UIMovementComponent(bubble2);
+
+	Actor* bubble3 = new Actor();
+	new SpriteComponent(bubble3, Assets::getTexture("Bubble"), 101);
+	bubble3->setPosition(Vector2(1565, 800));
+	new UIMovementComponent(bubble3);
 
 	// Create the controller actor
 	controller = new ControllerActor(200.0f, 100.0f);
@@ -77,9 +98,9 @@ void Game::load()
 	spawnSpeed = 30.0f;
 
 	// Set up simulation variables
-	getPhysics().setLeftBorder(WINDOW_WIDTH/2 - 340.0f);
-	getPhysics().setRightBorder(WINDOW_WIDTH / 2 + 340.0f);
-	getPhysics().setBottomBorder(WINDOW_HEIGHT - 90.0f);
+	getPhysics().setLeftBorder(WINDOW_WIDTH/2 - 340);
+	getPhysics().setRightBorder(WINDOW_WIDTH / 2 + 340);
+	getPhysics().setBottomBorder(WINDOW_HEIGHT - 90);
 	getPhysics().setTopBorder(80.0f);
 
 	// Spawn initial fruit
@@ -103,9 +124,17 @@ void Game::setNextFruit()
 	if (nextFruitDisplay != nullptr) nextFruitDisplay->setState(Actor::ActorState::Dead);
 	nextFruit = fruits[rand() % fruits.size()];
 	nextFruitDisplay = new Actor();
-	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 150.0f));
-	SpriteComponent* sc = new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
-	UIMovementComponent* uic = new UIMovementComponent(nextFruitDisplay);
+	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 600.0f, WINDOW_HEIGHT/2 - 220.0f));
+	new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
+	new UIMovementComponent(nextFruitDisplay);
+}
+
+void Game::addScore(int scoreP)
+{
+	score += scoreP;
+	int offsetX = (std::to_string(score).length() - 1) * (-10);
+	scorePointsT->setOffsetPosition(Vector2(offsetX, 0));
+	scorePointsT->setTitle(std::to_string(score), Vector3(121, 36, 36), 60);
 }
 
 void Game::processInput()
