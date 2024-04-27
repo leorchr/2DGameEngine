@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Game Specific">
       <UniqueIdentifier>{717e36df-df54-43b1-80b3-03ee571dbea9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{23add1a8-48e0-4559-a4fd-640b5dae473d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{0715a88b-4b81-455f-b0da-64b604b13c38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimSpriteComponent.cpp">
@@ -131,6 +137,12 @@
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScreen.cpp">
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +242,12 @@
     <ClInclude Include="Fruit.h">
       <Filter>Header Files\Game Specific</Filter>
     </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScreen.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Res\Apple.png">
@@ -277,5 +295,58 @@
     <Image Include="Res\LineTrail.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Res\Textures\Apple.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Border.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Cherry.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Cloud.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Dekopon.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Fruit.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Grape.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\LineTrail.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Melon.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Orange.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Peach.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Pear.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Pineapple.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Strawberry.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Res\Textures\Watermelon.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Res\Fonts\Carlito-Regular.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="Res\Fonts\Cute-Dino.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

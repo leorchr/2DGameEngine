@@ -6,6 +6,7 @@
 #include "InputSystem.h"
 #include "Physics.h"
 #include "Renderer.h"
+#include "UIScreen.h"
 #include "Vector2.h"
 #include "Window.h"
 #include <vector>
@@ -41,6 +42,9 @@ public:
 	Renderer& getRenderer() { return renderer; }
 	Physics& getPhysics() { return physics; }
 
+	const vector<class UIScreen*>& getUIStack() { return UIStack; }
+	void pushUI(class UIScreen* screen);
+
 	//Game specific
 	void addCircle(FruitActor* circle);
 	void removeCircle(FruitActor* circle);
@@ -64,6 +68,7 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
+	vector<class UIScreen*> UIStack;
 
 	//Simulation variables
 	ControllerActor* controller;

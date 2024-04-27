@@ -4,10 +4,12 @@
 #include "FruitActor.h"
 #include "CircleComponent.h"
 #include "ControllerActor.h"
+#include "Font.h"
 #include "Fruit.h"
 #include "Game.h"
 #include "InputSystem.h"
 #include "Timer.h"
+#include "UIScreen.h"
 #include "Vector2.h"
 #include "Window.h"
 #include <algorithm>
@@ -26,29 +28,34 @@ bool Game::initialize()
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
 	bool isInputInit = inputSystem.initialize();
-	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
+	bool isFontInit = Font::initialize();
+	return isWindowInit && isRendererInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
 {
-	Assets::loadTexture(renderer, "Res\\Cloud.png", "Cloud", 190, 190);
-	Assets::loadTexture(renderer, "Res\\LineTrail.png", "Line");
-	Assets::loadTexture(renderer, "Res\\Border.png", "Border");
-	Assets::loadTexture(renderer, "Res\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Grape.png", "Grape", Fruits::fruitList[2].getRadius() * 2, Fruits::fruitList[2].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Dekopon.png", "Dekopon", Fruits::fruitList[3].getRadius() * 2, Fruits::fruitList[3].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Orange.png", "Orange", Fruits::fruitList[4].getRadius() * 2, Fruits::fruitList[4].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Apple.png", "Apple", Fruits::fruitList[5].getRadius() * 2, Fruits::fruitList[5].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Pear.png", "Pear", Fruits::fruitList[6].getRadius() * 2, Fruits::fruitList[6].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Peach.png", "Peach", Fruits::fruitList[7].getRadius() * 2, Fruits::fruitList[7].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Cloud.png", "Cloud", 190, 190);
+	Assets::loadTexture(renderer, "Res\\Textures\\LineTrail.png", "Line");
+	Assets::loadTexture(renderer, "Res\\Textures\\Border.png", "Border");
+	Assets::loadTexture(renderer, "Res\\Textures\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Grape.png", "Grape", Fruits::fruitList[2].getRadius() * 2, Fruits::fruitList[2].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Dekopon.png", "Dekopon", Fruits::fruitList[3].getRadius() * 2, Fruits::fruitList[3].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Orange.png", "Orange", Fruits::fruitList[4].getRadius() * 2, Fruits::fruitList[4].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Apple.png", "Apple", Fruits::fruitList[5].getRadius() * 2, Fruits::fruitList[5].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Pear.png", "Pear", Fruits::fruitList[6].getRadius() * 2, Fruits::fruitList[6].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Peach.png", "Peach", Fruits::fruitList[7].getRadius() * 2, Fruits::fruitList[7].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
+	Assets::loadTexture(renderer, "Res\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
+	Assets::loadFont("Res\\Fonts\\Cute-Dino.ttf", "Dino");
 
 	Actor* border = new Actor();
 	SpriteComponent* sc = new SpriteComponent(border, Assets::getTexture("Border"), 101);
 	border->setPosition(Vector2(WINDOW_WIDTH / 2 - 350 + 700/2, 80 + 920/2));
+
+	UIScreen* bonjour = new UIScreen();
+	bonjour->setTitle("SCORE", Vector3(121,36,36), 60);
 
 	setNextFruit();
 	controller = new ControllerActor(200.0f, 100.0f);
@@ -132,6 +139,15 @@ void Game::update(float dt)
 	}
 	pendingActors.clear();
 
+	// Update UI screens
+	for (auto ui : UIStack)
+	{
+		if (ui->getState() == UIState::Active)
+		{
+			ui->update(dt);
+		}
+	}
+	
 	// Delete dead actors
 	vector<Actor*> deadActors;
 	for (auto actor : actors)
@@ -144,6 +160,21 @@ void Game::update(float dt)
 	for (auto deadActor : deadActors)
 	{
 		delete deadActor;
+	}
+
+	// Delete any UIScreens that are closed
+	auto iter = UIStack.begin();
+	while (iter != UIStack.end())
+	{
+		if ((*iter)->getState() == UIState::Closing)
+		{
+			delete* iter;
+			iter = UIStack.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 
@@ -186,6 +217,7 @@ void Game::close()
 	inputSystem.close();
 	renderer.close();
 	window.close();
+	Font::close();
 	SDL_Quit();
 }
 
@@ -217,6 +249,11 @@ void Game::removeActor(Actor* actor)
 		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
+}
+
+void Game::pushUI(UIScreen* screen)
+{
+	UIStack.emplace_back(screen);
 }
 
 void Game::addCircle(FruitActor* circle)

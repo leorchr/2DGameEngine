@@ -61,3 +61,12 @@ void Texture::updateInfo(int& widthOut, int& heightOut)
 	widthOut = width;
 	heightOut = height;
 }
+
+void Texture::createFromSurface(Renderer& renderer, SDL_Surface* surface)
+{
+	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surface);
+	if (!SDLTexture)
+	{
+		Log::error(LogCategory::Render, "Failed to convert surface to texture for " + filename);
+	}
+}

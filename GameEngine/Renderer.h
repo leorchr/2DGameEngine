@@ -4,6 +4,7 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Window.h"
+#include "UIScreen.h"
 #include <SDL.h>
 
 class Renderer
@@ -36,6 +37,7 @@ public:
 	void drawSprites();
 	void drawCircles();
 	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void drawUI();
 
 	SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }
 	void close();

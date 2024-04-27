@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\External\SDL2-2.30.2\lib\x64;$(SolutionDir)\External\SDL2_image-2.8.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,7 +112,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -136,6 +136,7 @@
     <ClCompile Include="AnimSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="FruitActor.cpp" />
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="CircleMoveComponent.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="UIScreen.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="AnimSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="FruitActor.h" />
     <ClInclude Include="CircleComponent.h" />
     <ClInclude Include="CircleMoveComponent.h" />
@@ -193,6 +196,7 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="UIScreen.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Window.h" />
@@ -212,7 +216,26 @@
     <Image Include="Res\Pear.png" />
     <Image Include="Res\Pineapple.png" />
     <Image Include="Res\Strawberry.png" />
+    <Image Include="Res\Textures\Apple.png" />
+    <Image Include="Res\Textures\Border.png" />
+    <Image Include="Res\Textures\Cherry.png" />
+    <Image Include="Res\Textures\Cloud.png" />
+    <Image Include="Res\Textures\Dekopon.png" />
+    <Image Include="Res\Textures\Fruit.png" />
+    <Image Include="Res\Textures\Grape.png" />
+    <Image Include="Res\Textures\LineTrail.png" />
+    <Image Include="Res\Textures\Melon.png" />
+    <Image Include="Res\Textures\Orange.png" />
+    <Image Include="Res\Textures\Peach.png" />
+    <Image Include="Res\Textures\Pear.png" />
+    <Image Include="Res\Textures\Pineapple.png" />
+    <Image Include="Res\Textures\Strawberry.png" />
+    <Image Include="Res\Textures\Watermelon.png" />
     <Image Include="Res\Watermelon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Res\Fonts\Carlito-Regular.ttf" />
+    <Font Include="Res\Fonts\Cute-Dino.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
