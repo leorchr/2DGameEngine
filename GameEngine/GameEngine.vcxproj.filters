@@ -257,6 +257,9 @@
     <ClInclude Include="Header Files\Maths\Vector2.h">
       <Filter>Header Files\Maths</Filter>
     </ClInclude>
+    <ClInclude Include="Resource Files\Icone\resource.h">
+      <Filter>Resource Files\Icone</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resource Files\Fonts\Carlito-Regular.ttf">
