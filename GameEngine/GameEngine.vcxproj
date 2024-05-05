@@ -71,12 +71,18 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(SolutionDir)\GameEngine\Header Files\Actors;$(SolutionDir)\GameEngine\Header Files\Components;$(SolutionDir)\GameEngine\Header Files\Engine;$(SolutionDir)\GameEngine\Header Files\Game Specific;$(SolutionDir)\GameEngine\Header Files\Maths;$(SolutionDir)\GameEngine\Source Files\Actors;$(SolutionDir)\GameEngine\Source Files\Components;$(SolutionDir)\GameEngine\Source Files\Engine;$(SolutionDir)\GameEngine\Source Files\Maths;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\External\SDL2-2.30.2\lib\x64;$(SolutionDir)\External\SDL2_image-2.8.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(SolutionDir)\GameEngine\Header Files\Actors;$(SolutionDir)\GameEngine\Header Files\Components;$(SolutionDir)\GameEngine\Header Files\Engine;$(SolutionDir)\GameEngine\Header Files\Game Specific;$(SolutionDir)\GameEngine\Header Files\Maths;$(SolutionDir)\GameEngine\Source Files\Actors;$(SolutionDir)\GameEngine\Source Files\Components;$(SolutionDir)\GameEngine\Source Files\Engine;$(SolutionDir)\GameEngine\Source Files\Maths;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\External\SDL2-2.30.2\lib\x64;$(SolutionDir)\External\SDL2_image-2.8.2\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(SolutionDir)\GameEngine\Header Files\Actors;$(SolutionDir)\GameEngine\Header Files\Components;$(SolutionDir)\GameEngine\Header Files\Engine;$(SolutionDir)\GameEngine\Header Files\Game Specific;$(SolutionDir)\GameEngine\Header Files\Maths;$(SolutionDir)\GameEngine\Source Files\Actors;$(SolutionDir)\GameEngine\Source Files\Components;$(SolutionDir)\GameEngine\Source Files\Engine;$(SolutionDir)\GameEngine\Source Files\Maths;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)\External\SDL2-2.30.2\include;$(SolutionDir)\External\SDL2_image-2.8.2\include;$(SolutionDir)\External\SDL2_ttf-2.22.0\include;$(SolutionDir)\GameEngine\Header Files\Actors;$(SolutionDir)\GameEngine\Header Files\Components;$(SolutionDir)\GameEngine\Header Files\Engine;$(SolutionDir)\GameEngine\Header Files\Game Specific;$(SolutionDir)\GameEngine\Header Files\Maths;$(SolutionDir)\GameEngine\Source Files\Actors;$(SolutionDir)\GameEngine\Source Files\Components;$(SolutionDir)\GameEngine\Source Files\Engine;$(SolutionDir)\GameEngine\Source Files\Maths;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -137,104 +143,122 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="AnimSpriteComponent.cpp" />
-    <ClCompile Include="Assets.cpp" />
-    <ClCompile Include="BackgroundSpriteComponent.cpp" />
-    <ClCompile Include="Font.cpp" />
-    <ClCompile Include="FruitActor.cpp" />
-    <ClCompile Include="CircleComponent.cpp" />
-    <ClCompile Include="CircleMoveComponent.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ControllerActor.cpp" />
-    <ClCompile Include="ControllerInputComponent.cpp" />
-    <ClCompile Include="ControllerMoveComponent.cpp" />
-    <ClCompile Include="ControllerState.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="InputComponent.cpp" />
-    <ClCompile Include="InputSystem.cpp" />
-    <ClCompile Include="KeyboardState.cpp" />
-    <ClCompile Include="Log.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MouseState.cpp" />
-    <ClCompile Include="MoveComponent.cpp" />
-    <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="SpriteComponent.cpp" />
-    <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="UIMovementComponent.cpp" />
-    <ClCompile Include="UIScreen.cpp" />
-    <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="Vector3.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Source Files\Actors\ControllerActor.cpp" />
+    <ClCompile Include="Source Files\Actors\FruitActor.cpp" />
+    <ClCompile Include="Source Files\Components\AnimSpriteComponent.cpp" />
+    <ClCompile Include="Source Files\Components\BackgroundSpriteComponent.cpp" />
+    <ClCompile Include="Source Files\Components\CircleComponent.cpp" />
+    <ClCompile Include="Source Files\Components\CircleMoveComponent.cpp" />
+    <ClCompile Include="Source Files\Components\ControllerInputComponent.cpp" />
+    <ClCompile Include="Source Files\Components\ControllerMoveComponent.cpp" />
+    <ClCompile Include="Source Files\Components\InputComponent.cpp" />
+    <ClCompile Include="Source Files\Components\MoveComponent.cpp" />
+    <ClCompile Include="Source Files\Components\Rectangle.cpp" />
+    <ClCompile Include="Source Files\Components\SpriteComponent.cpp" />
+    <ClCompile Include="Source Files\Components\UIMovementComponent.cpp" />
+    <ClCompile Include="Source Files\Engine\Actor.cpp" />
+    <ClCompile Include="Source Files\Engine\Assets.cpp" />
+    <ClCompile Include="Source Files\Engine\Component.cpp" />
+    <ClCompile Include="Source Files\Engine\ControllerState.cpp" />
+    <ClCompile Include="Source Files\Engine\Font.cpp" />
+    <ClCompile Include="Source Files\Engine\Game.cpp" />
+    <ClCompile Include="Source Files\Engine\InputSystem.cpp" />
+    <ClCompile Include="Source Files\Engine\KeyboardState.cpp" />
+    <ClCompile Include="Source Files\Engine\Log.cpp" />
+    <ClCompile Include="Source Files\Engine\Main.cpp" />
+    <ClCompile Include="Source Files\Engine\MouseState.cpp" />
+    <ClCompile Include="Source Files\Engine\Physics.cpp" />
+    <ClCompile Include="Source Files\Engine\Renderer.cpp" />
+    <ClCompile Include="Source Files\Engine\Texture.cpp" />
+    <ClCompile Include="Source Files\Engine\Timer.cpp" />
+    <ClCompile Include="Source Files\Engine\UIScreen.cpp" />
+    <ClCompile Include="Source Files\Engine\Window.cpp" />
+    <ClCompile Include="Source Files\Maths\Random.cpp" />
+    <ClCompile Include="Source Files\Maths\Vector2.cpp" />
+    <ClCompile Include="Source Files\Maths\Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="AnimSpriteComponent.h" />
-    <ClInclude Include="Assets.h" />
-    <ClInclude Include="BackgroundSpriteComponent.h" />
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="FruitActor.h" />
-    <ClInclude Include="CircleComponent.h" />
-    <ClInclude Include="CircleMoveComponent.h" />
-    <ClInclude Include="Color.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ControllerActor.h" />
-    <ClInclude Include="ControllerInputComponent.h" />
-    <ClInclude Include="ControllerMoveComponent.h" />
-    <ClInclude Include="ControllerState.h" />
-    <ClInclude Include="Fruit.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="InputComponent.h" />
-    <ClInclude Include="InputSystem.h" />
-    <ClInclude Include="KeyboardState.h" />
-    <ClInclude Include="Log.h" />
-    <ClInclude Include="Maths.h" />
-    <ClInclude Include="MouseState.h" />
-    <ClInclude Include="MoveComponent.h" />
-    <ClInclude Include="Physics.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="SpriteComponent.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="UIMovementComponent.h" />
-    <ClInclude Include="UIScreen.h" />
-    <ClInclude Include="Vector2.h" />
-    <ClInclude Include="Vector3.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Header Files\Actors\ControllerActor.h" />
+    <ClInclude Include="Header Files\Actors\FruitActor.h" />
+    <ClInclude Include="Header Files\Components\AnimSpriteComponent.h" />
+    <ClInclude Include="Header Files\Components\BackgroundSpriteComponent.h" />
+    <ClInclude Include="Header Files\Components\CircleComponent.h" />
+    <ClInclude Include="Header Files\Components\CircleMoveComponent.h" />
+    <ClInclude Include="Header Files\Components\ControllerInputComponent.h" />
+    <ClInclude Include="Header Files\Components\ControllerMoveComponent.h" />
+    <ClInclude Include="Header Files\Components\InputComponent.h" />
+    <ClInclude Include="Header Files\Components\MoveComponent.h" />
+    <ClInclude Include="Header Files\Components\Rectangle.h" />
+    <ClInclude Include="Header Files\Components\SpriteComponent.h" />
+    <ClInclude Include="Header Files\Components\UIMovementComponent.h" />
+    <ClInclude Include="Header Files\Engine\Actor.h" />
+    <ClInclude Include="Header Files\Engine\Assets.h" />
+    <ClInclude Include="Header Files\Engine\Component.h" />
+    <ClInclude Include="Header Files\Engine\ControllerState.h" />
+    <ClInclude Include="Header Files\Engine\Font.h" />
+    <ClInclude Include="Header Files\Engine\Game.h" />
+    <ClInclude Include="Header Files\Engine\InputSystem.h" />
+    <ClInclude Include="Header Files\Engine\KeyboardState.h" />
+    <ClInclude Include="Header Files\Engine\Log.h" />
+    <ClInclude Include="Header Files\Engine\MouseState.h" />
+    <ClInclude Include="Header Files\Engine\Physics.h" />
+    <ClInclude Include="Header Files\Engine\Renderer.h" />
+    <ClInclude Include="Header Files\Engine\Texture.h" />
+    <ClInclude Include="Header Files\Engine\Timer.h" />
+    <ClInclude Include="Header Files\Engine\UIScreen.h" />
+    <ClInclude Include="Header Files\Engine\Window.h" />
+    <ClInclude Include="Header Files\Game Specific\Color.h" />
+    <ClInclude Include="Header Files\Game Specific\Fruit.h" />
+    <ClInclude Include="Header Files\Maths\Maths.h" />
+    <ClInclude Include="Header Files\Maths\Random.h" />
+    <ClInclude Include="Header Files\Maths\Vector2.h" />
+    <ClInclude Include="Header Files\Maths\Vector3.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\SuikaGame.ico" />
-    <Image Include="Res\Textures\Apple.png" />
-    <Image Include="Res\Textures\Border.png" />
-    <Image Include="Res\Textures\Bubble.png" />
-    <Image Include="Res\Textures\Cherry.png" />
-    <Image Include="Res\Textures\Cloud.png" />
-    <Image Include="Res\Textures\Dekopon.png" />
-    <Image Include="Res\Textures\EvolutionCircle.png" />
-    <Image Include="Res\Textures\Fruit.png" />
-    <Image Include="Res\Textures\Grape.png" />
-    <Image Include="Res\Textures\LineTrail.png" />
-    <Image Include="Res\Textures\Melon.png" />
-    <Image Include="Res\Textures\Orange.png" />
-    <Image Include="Res\Textures\Peach.png" />
-    <Image Include="Res\Textures\Pear.png" />
-    <Image Include="Res\Textures\Pineapple.png" />
-    <Image Include="Res\Textures\Strawberry.png" />
-    <Image Include="Res\Textures\Watermelon.png" />
+    <Content Include="Resource Files\Fonts\Carlito-Regular.ttf" />
+    <Content Include="Resource Files\Fonts\Cute-Dino.ttf" />
+    <Content Include="Resource Files\SuikaGame.ico" />
+    <Content Include="Resource Files\Textures\Apple.png" />
+    <Content Include="Resource Files\Textures\Border.png" />
+    <Content Include="Resource Files\Textures\Bubble.png" />
+    <Content Include="Resource Files\Textures\Cherry.png" />
+    <Content Include="Resource Files\Textures\Cloud.png" />
+    <Content Include="Resource Files\Textures\Dekopon.png" />
+    <Content Include="Resource Files\Textures\EvolutionCircle.png" />
+    <Content Include="Resource Files\Textures\Fruit.png" />
+    <Content Include="Resource Files\Textures\Grape.png" />
+    <Content Include="Resource Files\Textures\LineTrail.png" />
+    <Content Include="Resource Files\Textures\Melon.png" />
+    <Content Include="Resource Files\Textures\Orange.png" />
+    <Content Include="Resource Files\Textures\Peach.png" />
+    <Content Include="Resource Files\Textures\Pear.png" />
+    <Content Include="Resource Files\Textures\Pineapple.png" />
+    <Content Include="Resource Files\Textures\Strawberry.png" />
+    <Content Include="Resource Files\Textures\Watermelon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Res\Fonts\Carlito-Regular.ttf" />
-    <Font Include="Res\Fonts\Cute-Dino.ttf" />
+    <Font Include="Resource Files\Fonts\Carlito-Regular.ttf" />
+    <Font Include="Resource Files\Fonts\Cute-Dino.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="GameEngine.rc" />
+    <Image Include="Resource Files\SuikaGame.ico" />
+    <Image Include="Resource Files\Textures\Apple.png" />
+    <Image Include="Resource Files\Textures\Border.png" />
+    <Image Include="Resource Files\Textures\Bubble.png" />
+    <Image Include="Resource Files\Textures\Cherry.png" />
+    <Image Include="Resource Files\Textures\Cloud.png" />
+    <Image Include="Resource Files\Textures\Dekopon.png" />
+    <Image Include="Resource Files\Textures\EvolutionCircle.png" />
+    <Image Include="Resource Files\Textures\Fruit.png" />
+    <Image Include="Resource Files\Textures\Grape.png" />
+    <Image Include="Resource Files\Textures\LineTrail.png" />
+    <Image Include="Resource Files\Textures\Melon.png" />
+    <Image Include="Resource Files\Textures\Orange.png" />
+    <Image Include="Resource Files\Textures\Peach.png" />
+    <Image Include="Resource Files\Textures\Pear.png" />
+    <Image Include="Resource Files\Textures\Pineapple.png" />
+    <Image Include="Resource Files\Textures\Strawberry.png" />
+    <Image Include="Resource Files\Textures\Watermelon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

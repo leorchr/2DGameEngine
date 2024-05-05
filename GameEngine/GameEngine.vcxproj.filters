@@ -48,283 +48,275 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnimSpriteComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ControllerActor.cpp">
+    <ClCompile Include="Source Files\Actors\ControllerActor.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="FruitActor.cpp">
+    <ClCompile Include="Source Files\Actors\FruitActor.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="BackgroundSpriteComponent.cpp">
+    <ClCompile Include="Source Files\Components\AnimSpriteComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="CircleComponent.cpp">
+    <ClCompile Include="Source Files\Components\BackgroundSpriteComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="CircleMoveComponent.cpp">
+    <ClCompile Include="Source Files\Components\CircleMoveComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="ControllerInputComponent.cpp">
+    <ClCompile Include="Source Files\Components\CircleComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="ControllerMoveComponent.cpp">
+    <ClCompile Include="Source Files\Components\ControllerInputComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
+    <ClCompile Include="Source Files\Components\ControllerMoveComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MoveComponent.cpp">
+    <ClCompile Include="Source Files\Components\InputComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteComponent.cpp">
+    <ClCompile Include="Source Files\Components\MoveComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Random.cpp">
+    <ClCompile Include="Source Files\Components\Rectangle.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Components\SpriteComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Components\UIMovementComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Actor.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Assets.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Component.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\ControllerState.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Font.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Game.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\InputSystem.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\KeyboardState.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Log.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Main.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\MouseState.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Physics.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Renderer.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Texture.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Timer.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\UIScreen.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Engine\Window.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Maths\Vector3.cpp">
       <Filter>Source Files\Maths</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
+    <ClCompile Include="Source Files\Maths\Random.cpp">
       <Filter>Source Files\Maths</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3.cpp">
+    <ClCompile Include="Source Files\Maths\Vector2.cpp">
       <Filter>Source Files\Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Assets.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="ControllerState.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="InputSystem.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyboardState.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseState.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="UIScreen.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="UIMovementComponent.cpp">
-      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimSpriteComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="BackgroundSpriteComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="CircleComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="CircleMoveComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerInputComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerMoveComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="FruitActor.h">
+    <ClInclude Include="Header Files\Actors\ControllerActor.h">
       <Filter>Header Files\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="ControllerActor.h">
+    <ClInclude Include="Header Files\Actors\FruitActor.h">
       <Filter>Header Files\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Header Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Header Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.h">
-      <Filter>Header Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerState.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="InputSystem.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardState.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseState.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="InputComponent.h">
+    <ClInclude Include="Header Files\Components\AnimSpriteComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Rectangle.h">
+    <ClInclude Include="Header Files\Components\BackgroundSpriteComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Maths.h">
-      <Filter>Header Files\Maths</Filter>
+    <ClInclude Include="Header Files\Components\CircleComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Color.h">
+    <ClInclude Include="Header Files\Components\CircleMoveComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\ControllerInputComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\ControllerMoveComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\InputComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\MoveComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\Rectangle.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\SpriteComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Components\UIMovementComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Actor.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Assets.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Component.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\ControllerState.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Font.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Game.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\InputSystem.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\KeyboardState.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Log.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\MouseState.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Physics.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Renderer.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Texture.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Timer.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\UIScreen.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Engine\Window.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game Specific\Color.h">
       <Filter>Header Files\Game Specific</Filter>
     </ClInclude>
-    <ClInclude Include="Fruit.h">
+    <ClInclude Include="Header Files\Game Specific\Fruit.h">
       <Filter>Header Files\Game Specific</Filter>
     </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Header Files\Engine</Filter>
+    <ClInclude Include="Header Files\Maths\Maths.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="UIScreen.h">
-      <Filter>Header Files\Engine</Filter>
+    <ClInclude Include="Header Files\Maths\Vector3.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="UIMovementComponent.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="Header Files\Maths\Random.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="Header Files\Maths\Vector2.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\Textures\Apple.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Border.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Cherry.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Cloud.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Dekopon.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Fruit.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Grape.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\LineTrail.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Melon.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Orange.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Peach.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Pear.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Pineapple.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Strawberry.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Watermelon.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\Bubble.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\Textures\EvolutionCircle.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Res\SuikaGame.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="Res\Fonts\Carlito-Regular.ttf">
+    <Font Include="Resource Files\Fonts\Carlito-Regular.ttf">
       <Filter>Resource Files\Fonts</Filter>
     </Font>
-    <Font Include="Res\Fonts\Cute-Dino.ttf">
+    <Font Include="Resource Files\Fonts\Cute-Dino.ttf">
       <Filter>Resource Files\Fonts</Filter>
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="GameEngine.rc">
+    <Image Include="Resource Files\Textures\Apple.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Border.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Bubble.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Cherry.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Cloud.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Dekopon.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\EvolutionCircle.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Fruit.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Grape.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\LineTrail.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Melon.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Orange.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Peach.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Pear.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Pineapple.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Strawberry.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\Textures\Watermelon.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resource Files\SuikaGame.ico">
       <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    </Image>
   </ItemGroup>
 </Project>

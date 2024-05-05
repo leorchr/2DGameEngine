@@ -37,23 +37,23 @@ bool Game::initialize()
 
 void Game::load()
 {
-	Assets::loadTexture(renderer, "Res\\Textures\\Cloud.png", "Cloud", 190, 190);
-	Assets::loadTexture(renderer, "Res\\Textures\\LineTrail.png", "Line");
-	Assets::loadTexture(renderer, "Res\\Textures\\Border.png", "Border");
-	Assets::loadTexture(renderer, "Res\\Textures\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Grape.png", "Grape", Fruits::fruitList[2].getRadius() * 2, Fruits::fruitList[2].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Dekopon.png", "Dekopon", Fruits::fruitList[3].getRadius() * 2, Fruits::fruitList[3].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Orange.png", "Orange", Fruits::fruitList[4].getRadius() * 2, Fruits::fruitList[4].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Apple.png", "Apple", Fruits::fruitList[5].getRadius() * 2, Fruits::fruitList[5].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Pear.png", "Pear", Fruits::fruitList[6].getRadius() * 2, Fruits::fruitList[6].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Peach.png", "Peach", Fruits::fruitList[7].getRadius() * 2, Fruits::fruitList[7].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
-	Assets::loadTexture(renderer, "Res\\Textures\\Bubble.png", "Bubble", 350, 350);
-	Assets::loadTexture(renderer, "Res\\Textures\\EvolutionCircle.png", "Evolution" , 350, 350);
-	Assets::loadFont("Res\\Fonts\\Cute-Dino.ttf", "Dino");
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Cloud.png", "Cloud", 190, 190);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\LineTrail.png", "Line");
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Border.png", "Border");
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Grape.png", "Grape", Fruits::fruitList[2].getRadius() * 2, Fruits::fruitList[2].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Dekopon.png", "Dekopon", Fruits::fruitList[3].getRadius() * 2, Fruits::fruitList[3].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Orange.png", "Orange", Fruits::fruitList[4].getRadius() * 2, Fruits::fruitList[4].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Apple.png", "Apple", Fruits::fruitList[5].getRadius() * 2, Fruits::fruitList[5].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Pear.png", "Pear", Fruits::fruitList[6].getRadius() * 2, Fruits::fruitList[6].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Peach.png", "Peach", Fruits::fruitList[7].getRadius() * 2, Fruits::fruitList[7].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Bubble.png", "Bubble", 350, 350);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\EvolutionCircle.png", "Evolution" , 350, 350);
+	Assets::loadFont("Resource Files\\Fonts\\Cute-Dino.ttf", "Dino");
 
 
 	// Create UI
