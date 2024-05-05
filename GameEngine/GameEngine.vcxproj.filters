@@ -46,6 +46,9 @@
     <Filter Include="Resource Files\Fonts">
       <UniqueIdentifier>{0715a88b-4b81-455f-b0da-64b604b13c38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Icone">
+      <UniqueIdentifier>{f2eb975f-d44e-4d71-aca4-2d8568aebccd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\Actors\ControllerActor.cpp">
@@ -315,8 +318,8 @@
     <Image Include="Resource Files\Textures\Watermelon.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
-    <Image Include="Resource Files\SuikaGame.ico">
-      <Filter>Resource Files</Filter>
+    <Image Include="Resource Files\Icone\SuikaGame.ico">
+      <Filter>Resource Files\Icone</Filter>
     </Image>
   </ItemGroup>
 </Project>

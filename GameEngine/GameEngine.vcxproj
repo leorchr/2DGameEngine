@@ -215,33 +215,11 @@
     <ClInclude Include="Header Files\Maths\Vector3.h" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resource Files\Fonts\Carlito-Regular.ttf" />
-    <Content Include="Resource Files\Fonts\Cute-Dino.ttf" />
-    <Content Include="Resource Files\SuikaGame.ico" />
-    <Content Include="Resource Files\Textures\Apple.png" />
-    <Content Include="Resource Files\Textures\Border.png" />
-    <Content Include="Resource Files\Textures\Bubble.png" />
-    <Content Include="Resource Files\Textures\Cherry.png" />
-    <Content Include="Resource Files\Textures\Cloud.png" />
-    <Content Include="Resource Files\Textures\Dekopon.png" />
-    <Content Include="Resource Files\Textures\EvolutionCircle.png" />
-    <Content Include="Resource Files\Textures\Fruit.png" />
-    <Content Include="Resource Files\Textures\Grape.png" />
-    <Content Include="Resource Files\Textures\LineTrail.png" />
-    <Content Include="Resource Files\Textures\Melon.png" />
-    <Content Include="Resource Files\Textures\Orange.png" />
-    <Content Include="Resource Files\Textures\Peach.png" />
-    <Content Include="Resource Files\Textures\Pear.png" />
-    <Content Include="Resource Files\Textures\Pineapple.png" />
-    <Content Include="Resource Files\Textures\Strawberry.png" />
-    <Content Include="Resource Files\Textures\Watermelon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Font Include="Resource Files\Fonts\Carlito-Regular.ttf" />
     <Font Include="Resource Files\Fonts\Cute-Dino.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resource Files\SuikaGame.ico" />
+    <Image Include="Resource Files\Icone\SuikaGame.ico" />
     <Image Include="Resource Files\Textures\Apple.png" />
     <Image Include="Resource Files\Textures\Border.png" />
     <Image Include="Resource Files\Textures\Bubble.png" />
