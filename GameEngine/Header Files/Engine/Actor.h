@@ -26,10 +26,12 @@ public:
 	const Vector2 getPosition() const { return position; }
 	const float getScale() const { return scale; }
 	const float getRotation() const { return rotation; }
-
+	const float getId() const {return id; }
+ 
 	void setPosition(Vector2 positionP);
 	void setScale(float scaleP);
 	void setRotation(float rotationP);
+	void setId(int id);
 	void setState(ActorState stateP);
 	Vector2 getForward() const;
 
@@ -42,11 +44,12 @@ public:
 	void removeComponent(Component* component);
 
 private:
+	static int ActorsCreated;
 	Game& game;
 	ActorState state;
 	Vector2 position;
 	float scale;
 	float rotation;	// Rotation in radians
-
+	int id;
 	vector<Component*> components;
 };

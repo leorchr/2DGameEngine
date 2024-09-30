@@ -1,16 +1,10 @@
 #include "Actor.h"
-#include "Actor.h"
 #include "Assets.h"
-#include "FruitActor.h"
-#include "CircleComponent.h"
-#include "ControllerActor.h"
+#include "Boids.h"
 #include "Font.h"
-#include "Fruit.h"
 #include "Game.h"
 #include "InputSystem.h"
-#include "Physics.h"
 #include "Timer.h"
-#include "UIMovementComponent.h"
 #include "UIScreen.h"
 #include "Vector2.h"
 #include "Window.h"
@@ -21,9 +15,6 @@
 #include <SDL_events.h>
 #include <SDL_scancode.h>
 #include <vector>
-#include "SpriteComponent.h"
-
-vector<Fruit>Game::fruits = { Fruits::cherry, Fruits::strawberry, Fruits::dekopon, Fruits::orange, Fruits::apple };
 
 bool Game::initialize()
 {
@@ -37,105 +28,18 @@ bool Game::initialize()
 
 void Game::load()
 {
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Cloud.png", "Cloud", 190, 190);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\LineTrail.png", "Line");
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Border.png", "Border");
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Cherry.png", "Cherry", Fruits::fruitList[0].getRadius() * 2, Fruits::fruitList[0].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Strawberry.png", "Strawberry", Fruits::fruitList[1].getRadius() * 2, Fruits::fruitList[1].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Grape.png", "Grape", Fruits::fruitList[2].getRadius() * 2, Fruits::fruitList[2].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Dekopon.png", "Dekopon", Fruits::fruitList[3].getRadius() * 2, Fruits::fruitList[3].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Orange.png", "Orange", Fruits::fruitList[4].getRadius() * 2, Fruits::fruitList[4].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Apple.png", "Apple", Fruits::fruitList[5].getRadius() * 2, Fruits::fruitList[5].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Pear.png", "Pear", Fruits::fruitList[6].getRadius() * 2, Fruits::fruitList[6].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Peach.png", "Peach", Fruits::fruitList[7].getRadius() * 2, Fruits::fruitList[7].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Pineapple.png", "Pineapple", Fruits::fruitList[8].getRadius() * 2, Fruits::fruitList[8].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Melon.png", "Melon", Fruits::fruitList[9].getRadius() * 2, Fruits::fruitList[9].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Watermelon.png", "Watermelon", Fruits::fruitList[10].getRadius() * 2, Fruits::fruitList[10].getRadius() * 2);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Bubble.png", "Bubble", 350, 350);
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\EvolutionCircle.png", "Evolution" , 350, 350);
-	Assets::loadFont("Resource Files\\Fonts\\Cute-Dino.ttf", "Dino");
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\Pineapple.png", "Pineapple", 50, 50);
 
-
-	// Create UI
-	Actor* border = new Actor();
-	SpriteComponent* sc = new SpriteComponent(border, Assets::getTexture("Border"), 101);
-	border->setPosition(Vector2(WINDOW_WIDTH / 2 - 350 + 700/2, 80 + 920/2));
-
-	scoreT = new UIScreen(Vector2(200, 210));
-	scoreT->setTitle("Score", Vector3(121,36,36), 60);
-
-	score = 0;
-	scorePointsT = new UIScreen(Vector2(260, 375));
-	scorePointsT->setTitle(std::to_string(score), Vector3(121, 36, 36), 60);
-
-	nextFruitT = new UIScreen(Vector2(1450, 120));
-	nextFruitT->setTitle("Suivant", Vector3(121, 36, 36), 60);
-
-	circleT = new UIScreen(Vector2(1432, 550));
-	circleT->setTitle("Cercle de", Vector3(121, 36, 36), 60);
-
-	evolutionT = new UIScreen(Vector2(1415, 620));
-	evolutionT->setTitle("l'evolution", Vector3(121, 36, 36), 60);
-
-	Actor* bubble1 = new Actor();
-	new SpriteComponent(bubble1, Assets::getTexture("Bubble"), 101);
-	bubble1->setPosition(Vector2(285, 400));
-	new UIMovementComponent(bubble1);
-
-	Actor* bubble2 = new Actor();
-	new SpriteComponent(bubble2, Assets::getTexture("Bubble"), 101);
-	bubble2->setPosition(Vector2(1565, 300));
-	new UIMovementComponent(bubble2);
-
-	Actor* bubble3 = new Actor();
-	new SpriteComponent(bubble3, Assets::getTexture("Evolution"), 101);
-	bubble3->setPosition(Vector2(1565, 825));
-	new UIMovementComponent(bubble3);
-
-	// Create the controller actor
-	controller = new ControllerActor(200.0f, 100.0f);
-	baseTimeBetweenSpawn = 1.0f;
-	timeBetweenSpawn = 1.0f;
-	spawnSpeed = 30.0f;
-
-	// Set up simulation variables
-	getPhysics().setLeftBorder(WINDOW_WIDTH/2 - 340);
-	getPhysics().setRightBorder(WINDOW_WIDTH / 2 + 340);
-	getPhysics().setBottomBorder(WINDOW_HEIGHT - 90);
-	getPhysics().setTopBorder(80.0f);
-
-	// Spawn initial fruit
-	setNextFruit();
-}
-
-void Game::spawnFruit(Fruit fruitP, Vector2 posP)
-{
-	FruitActor* circle = new FruitActor(posP, fruitP);
-	addCircle(circle);
-}
-
-void Game::gameOver()
-{
-	isRunning = false;
-}
-
-void Game::setNextFruit()
-{
-	nextFruit = fruits[rand() % fruits.size()];
-	if (nextFruitDisplay != nullptr) nextFruitDisplay->setState(Actor::ActorState::Dead);
-	nextFruit = fruits[rand() % fruits.size()];
-	nextFruitDisplay = new Actor();
-	nextFruitDisplay->setPosition(Vector2(WINDOW_WIDTH/2 + 605.0f, WINDOW_HEIGHT/2 - 240.0f));
-	new SpriteComponent(nextFruitDisplay, Assets::getTexture(nextFruit.getName()));
-	new UIMovementComponent(nextFruitDisplay);
-}
-
-void Game::addScore(int scoreP)
-{
-	score += scoreP;
-	int offsetX = (std::to_string(score).length() - 1) * (-15);
-	scorePointsT->setOffsetPosition(Vector2(offsetX, 0));
-	scorePointsT->setTitle(std::to_string(score), Vector3(121, 36, 36), 60);
+	
+	srand (time(NULL));
+	for(int i = 0; i < 100; i++)
+	{
+		Boids* temp = new Boids();
+		Vector2 pos = Vector2(rand() % WINDOW_WIDTH + 200,rand() % WINDOW_HEIGHT + 200);
+		//Vector2 pos = Vector2(rand() % 200 + 25,rand() % 200 + 25);
+		temp->setPosition(pos);
+		boids.emplace_back(temp->getBoidsMoveComponent());
+	}
 }
 
 void Game::processInput()
@@ -169,8 +73,6 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	physics.computePhysics(dt);
-
 	// Update actors 
 	isUpdatingActors = true;
 	for (auto actor : actors)
@@ -301,15 +203,4 @@ void Game::removeActor(Actor* actor)
 void Game::pushUI(UIScreen* screen)
 {
 	UIStack.emplace_back(screen);
-}
-
-void Game::addCircle(FruitActor* circle)
-{
-	circles.emplace_back(circle);
-}
-
-void Game::removeCircle(FruitActor* circle)
-{
-	auto iter = std::find(begin(circles), end(circles), circle);
-	circles.erase(iter);
 }

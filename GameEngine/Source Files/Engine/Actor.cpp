@@ -4,15 +4,21 @@
 #include "InputSystem.h"
 #include "Maths.h"
 #include "Vector2.h"
+#include <stdlib.h>
+
+int Actor::ActorsCreated = 0;
 
 Actor::Actor() :
+	game(Game::instance()),
 	state(Actor::ActorState::Active),
 	position(Vector2::zero),
 	scale(1.0f),
 	rotation(0.0f),
-	game(Game::instance())
+	id(0)
 {
 	game.addActor(this);
+	id = ActorsCreated;
+	ActorsCreated++;
 }
 
 Actor::~Actor()
@@ -39,6 +45,11 @@ void Actor::setScale(float scaleP)
 void Actor::setRotation(float rotationP)
 {
 	rotation = rotationP;
+}
+
+void Actor::setId(int id)
+{
+	this->id = id;
 }
 
 void Actor::setState(ActorState stateP)

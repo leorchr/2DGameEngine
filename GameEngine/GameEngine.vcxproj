@@ -143,13 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source Files\Actors\ControllerActor.cpp" />
-    <ClCompile Include="Source Files\Actors\FruitActor.cpp" />
+    <ClCompile Include="Source Files\Actors\Boids.cpp" />
     <ClCompile Include="Source Files\Components\AnimSpriteComponent.cpp" />
     <ClCompile Include="Source Files\Components\BackgroundSpriteComponent.cpp" />
+    <ClCompile Include="Source Files\Components\BoidsMoveComponent.cpp" />
     <ClCompile Include="Source Files\Components\CircleComponent.cpp" />
     <ClCompile Include="Source Files\Components\CircleMoveComponent.cpp" />
-    <ClCompile Include="Source Files\Components\ControllerInputComponent.cpp" />
     <ClCompile Include="Source Files\Components\ControllerMoveComponent.cpp" />
     <ClCompile Include="Source Files\Components\InputComponent.cpp" />
     <ClCompile Include="Source Files\Components\MoveComponent.cpp" />
@@ -167,7 +166,6 @@
     <ClCompile Include="Source Files\Engine\Log.cpp" />
     <ClCompile Include="Source Files\Engine\Main.cpp" />
     <ClCompile Include="Source Files\Engine\MouseState.cpp" />
-    <ClCompile Include="Source Files\Engine\Physics.cpp" />
     <ClCompile Include="Source Files\Engine\Renderer.cpp" />
     <ClCompile Include="Source Files\Engine\Texture.cpp" />
     <ClCompile Include="Source Files\Engine\Timer.cpp" />
@@ -178,13 +176,12 @@
     <ClCompile Include="Source Files\Maths\Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header Files\Actors\ControllerActor.h" />
-    <ClInclude Include="Header Files\Actors\FruitActor.h" />
+    <ClInclude Include="Header Files\Actors\Boids.h" />
     <ClInclude Include="Header Files\Components\AnimSpriteComponent.h" />
     <ClInclude Include="Header Files\Components\BackgroundSpriteComponent.h" />
+    <ClInclude Include="Header Files\Components\BoidsMoveComponent.h" />
     <ClInclude Include="Header Files\Components\CircleComponent.h" />
     <ClInclude Include="Header Files\Components\CircleMoveComponent.h" />
-    <ClInclude Include="Header Files\Components\ControllerInputComponent.h" />
     <ClInclude Include="Header Files\Components\ControllerMoveComponent.h" />
     <ClInclude Include="Header Files\Components\InputComponent.h" />
     <ClInclude Include="Header Files\Components\MoveComponent.h" />
@@ -201,7 +198,6 @@
     <ClInclude Include="Header Files\Engine\KeyboardState.h" />
     <ClInclude Include="Header Files\Engine\Log.h" />
     <ClInclude Include="Header Files\Engine\MouseState.h" />
-    <ClInclude Include="Header Files\Engine\Physics.h" />
     <ClInclude Include="Header Files\Engine\Renderer.h" />
     <ClInclude Include="Header Files\Engine\Texture.h" />
     <ClInclude Include="Header Files\Engine\Timer.h" />
