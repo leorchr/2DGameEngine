@@ -27,11 +27,13 @@ public:
 	const float getScale() const { return scale; }
 	const float getRotation() const { return rotation; }
 	const float getId() const {return id; }
+	const int getSize() const {return size;}
  
 	void setPosition(Vector2 positionP);
 	void setScale(float scaleP);
 	void setRotation(float rotationP);
 	void setId(int id);
+	void setSize(int size);
 	void setState(ActorState stateP);
 	Vector2 getForward() const;
 
@@ -51,5 +53,6 @@ private:
 	float scale;
 	float rotation;	// Rotation in radians
 	int id;
+	int size;
 	vector<Component*> components;
 };

@@ -28,15 +28,15 @@ bool Game::initialize()
 
 void Game::load()
 {
-	Assets::loadTexture(renderer, "Resource Files\\Textures\\Pineapple.png", "Pineapple", 50, 50);
+	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "WhiteFish", 50, 50);
 
 	
 	srand (time(NULL));
 	for(int i = 0; i < 100; i++)
 	{
 		Boids* temp = new Boids();
-		Vector2 pos = Vector2(rand() % WINDOW_WIDTH + 200,rand() % WINDOW_HEIGHT + 200);
-		//Vector2 pos = Vector2(rand() % 200 + 25,rand() % 200 + 25);
+		//Vector2 pos = Vector2(rand() % WINDOW_WIDTH,rand() % WINDOW_HEIGHT);
+		Vector2 pos = Vector2(rand() % 1200 + 25,rand() % 700 + 25);
 		temp->setPosition(pos);
 		boids.emplace_back(temp->getBoidsMoveComponent());
 	}

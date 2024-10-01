@@ -14,7 +14,8 @@ Actor::Actor() :
 	position(Vector2::zero),
 	scale(1.0f),
 	rotation(0.0f),
-	id(0)
+	id(0),
+	size(0)
 {
 	game.addActor(this);
 	id = ActorsCreated;
@@ -50,6 +51,11 @@ void Actor::setRotation(float rotationP)
 void Actor::setId(int id)
 {
 	this->id = id;
+}
+
+void Actor::setSize(int size)
+{
+	this->size = size;
 }
 
 void Actor::setState(ActorState stateP)

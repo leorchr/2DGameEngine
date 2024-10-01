@@ -44,6 +44,11 @@ struct Vector2
 		return Vector2(left.x + right.x, left.y + right.y);
 	}
 
+	friend Vector2 operator+(const Vector2& left, const float& right)
+	{
+		return Vector2(left.x + right, left.y + right);
+	}
+
 	Vector2& operator-=(const Vector2& right)
 	{
 		x -= right.x;

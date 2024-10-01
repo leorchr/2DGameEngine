@@ -6,14 +6,10 @@
 Boids::Boids() :
     Actor(),
     sprite(nullptr),
-    moveComponent(nullptr),
-    size(0)
+    moveComponent(nullptr)
 {
-    sprite = new SpriteComponent(this, Assets::getTexture("Pineapple"), 101);
-    size = Assets::getTexture("Pineapple").getWidth();
-    moveComponent = new BoidsMoveComponent(this);
-    moveComponent->setSpeedX(50);
-    moveComponent->setSpeedY(50);    
+    sprite = new SpriteComponent(this, Assets::getTexture("WhiteFish"), 101);
+    moveComponent = new BoidsMoveComponent(this, 10,Vector2(1,1), 1200,30,0.6f, 100, 0.3f, 50, 0.05f, 0.5f);
 }
 
 void Boids::updateActor(float dt)
