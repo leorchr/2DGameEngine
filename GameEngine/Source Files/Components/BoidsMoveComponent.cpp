@@ -9,7 +9,9 @@
 #include "Game.h"
 #include <iostream>
 
-BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 fwd, int speed, int separationDist, float separationFactor, int maxPerceiveDistance, float alignementFactor, int cohesionRadius, float groupementFactor, float maxSteerValue)
+BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 fwd, int speed, int separationDist,
+                                       float separationFactor, int maxPerceiveDistance, float alignementFactor,
+                                       int cohesionRadius, float groupementFactor, float maxSteerValue, int mouseRange, float mouseImpact, Group groupName)
 	: Component(ownerP, updateOrderP),
 	forward(fwd),
 	speed(speed),
@@ -19,7 +21,10 @@ BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 
 	alignementFactor(alignementFactor),
 	cohesionRadius(cohesionRadius),
 	groupementFactor(groupementFactor),
-	maxSteerValue(maxSteerValue)
+	maxSteerValue(maxSteerValue),
+	mouseRange(mouseRange),
+	mouseImpact(mouseImpact),
+	groupName(groupName)
 {
 
 }
@@ -28,6 +33,10 @@ void BoidsMoveComponent::update(float dt)
 	Vector2 separation = separate(Game::instance().getBoids());
 	Vector2 alignement = align(Game::instance().getBoids());
 	Vector2 groupement = group(Game::instance().getBoids());
+	
+	int mouseX,mouseY;
+	SDL_GetGlobalMouseState(&mouseX,&mouseY);
+	Vector2 mouse = bait(mouseX,mouseY);
 
 	Vector2 dir = forward;
 	
@@ -35,11 +44,12 @@ void BoidsMoveComponent::update(float dt)
 	dir+=separation * separationFactor;
 	dir+=alignement * alignementFactor;
 	dir+=groupement * groupementFactor;
+	dir+=mouse * mouseImpact;
 	dir.normalize();
 
 	
 	
-	forward = dir + handleSteer(forward,dir);
+	forward += handleSteer(forward,dir);
 	
 	if (!Maths::nearZero(forward.x))
 	{
@@ -96,6 +106,7 @@ Vector2 BoidsMoveComponent::separate(vector<BoidsMoveComponent*> others)
 		{
 			continue;
 		}
+		if(groupName != others[i]->getGroupName()) continue;
 		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
 		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
 		
@@ -108,10 +119,10 @@ Vector2 BoidsMoveComponent::separate(vector<BoidsMoveComponent*> others)
 			sum+=distVector2;
 			count++;
 		}
-		// if(count >= 9)
-		// {
-		// 	break;
-		// }
+		if(count >= 9)
+		{
+		 	break;
+		}
 	}
 
 	
@@ -131,7 +142,7 @@ Vector2 BoidsMoveComponent::align(vector<BoidsMoveComponent*> others)
 		{
 			continue;
 		}
-		
+		if(groupName != others[i]->getGroupName()) continue;
 		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
 		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
 		Vector2 distVector2 = posSelf - posBoid;
@@ -141,6 +152,10 @@ Vector2 BoidsMoveComponent::align(vector<BoidsMoveComponent*> others)
 		{
 			sum+=others[i]->getForward();
 			count++;
+		}
+		if(count >= 9)
+		{
+			break;
 		}
 	}
 	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
@@ -158,7 +173,7 @@ Vector2 BoidsMoveComponent::group(vector<BoidsMoveComponent*> others)
 		{
 			continue;
 		}
-		
+		if(groupName != others[i]->getGroupName()) continue;
 		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
 		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
 		Vector2 distVector2 = posSelf - posBoid;
@@ -168,6 +183,10 @@ Vector2 BoidsMoveComponent::group(vector<BoidsMoveComponent*> others)
 		{
 			sum+=others[i]->getOwner().getPosition();
 			count++;
+		}
+		if(count >= 9)
+		{
+			break;
 		}
 	}
 	Vector2 result = sum/count;
@@ -179,4 +198,19 @@ Vector2 BoidsMoveComponent::group(vector<BoidsMoveComponent*> others)
 Vector2 BoidsMoveComponent::handleSteer(Vector2& oldValue, Vector2& newValue)
 {
 	return (newValue - oldValue) * maxSteerValue;
+}
+
+Vector2 BoidsMoveComponent::bait(int mouseX, int mouseY)
+{
+	Vector2 dist = Vector2(mouseX,mouseY) - owner.getPosition();
+	if(dist.length() < mouseRange)
+	{
+		dist.normalize();
+		dist = Vector2(-dist.x,-dist.y);
+		return dist;
+	}
+	else
+	{
+		return Vector2::zero;
+	}
 }

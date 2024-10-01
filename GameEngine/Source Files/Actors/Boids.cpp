@@ -3,19 +3,28 @@
 #include "Vector2.h"
 #include <cstdlib>
 
-Boids::Boids() :
+Boids::Boids(Group groupP) :
     Actor(),
     sprite(nullptr),
     moveComponent(nullptr),
-    time(0)
+    group(groupP)
 {
-    sprite = new SpriteComponent(this, Assets::getTexture("WhiteFish"), 101);
-    moveComponent = new BoidsMoveComponent(this, 10,Vector2(1,1), 1200,30,0.6f, 100, 0.3f, 50, 0.05f, 0.5f);
+    switch(group)
+    {
+    case Group::RED :
+        sprite = new SpriteComponent(this, Assets::getTexture("RedFish"), 101);
+        break;
+    case Group::GREEN :
+        sprite = new SpriteComponent(this, Assets::getTexture("GreenFish"), 101);
+        break;
+    case Group::BLUE :
+        sprite = new SpriteComponent(this, Assets::getTexture("BlueFish"), 101);
+    }
+
+    moveComponent = new BoidsMoveComponent(this, 10,Vector2(1,1), 500,30,0.6f, 100, 0.3f, 50, 0.05f, 0.5f, 200, 1.0f, group);
 }
 
 void Boids::updateActor(float dt)
 {
-    time += dt;
-    SDL_SetTextureColorMod(sprite->getTexture().toSDLTexture(), 0,0,((Maths::cos(time*5)/2)+0.5f)*100);
 }
 
