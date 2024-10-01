@@ -8,13 +8,14 @@ enum Group{ RED, GREEN, BLUE };
 class Boids : public Actor
 {
 public:
-    Boids(Group groupP);
+    Boids(Group groupP, float preyFactor);
 
     void updateActor(float dt) override;
     BoidsMoveComponent* getBoidsMoveComponent() const { return moveComponent;}
 private:
     SpriteComponent* sprite;
     BoidsMoveComponent* moveComponent;
-    Group group;    
+    Group group;
+    float preyFactor;
 };
 

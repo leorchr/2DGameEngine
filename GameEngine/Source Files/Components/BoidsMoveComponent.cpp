@@ -1,5 +1,6 @@
 ﻿#include "Actor.h"
 #include "BoidsMoveComponent.h"
+#include "Boids.h"
 
 #include <ostream>
 
@@ -11,7 +12,8 @@
 
 BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 fwd, int speed, int separationDist,
                                        float separationFactor, int maxPerceiveDistance, float alignementFactor,
-                                       int cohesionRadius, float groupementFactor, float maxSteerValue, int mouseRange, float mouseImpact, Group groupName)
+                                       int cohesionRadius, float groupementFactor, float maxSteerValue, int mouseRange, float mouseImpact, Group groupName,
+                                       int eatRange, float eatFactor, int preyRange)
 	: Component(ownerP, updateOrderP),
 	forward(fwd),
 	speed(speed),
@@ -24,6 +26,9 @@ BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 
 	maxSteerValue(maxSteerValue),
 	mouseRange(mouseRange),
 	mouseImpact(mouseImpact),
+	eatRange(eatRange),
+	eatFactor(eatFactor),
+	preyRange(preyRange),
 	groupName(groupName)
 {
 
@@ -33,6 +38,7 @@ void BoidsMoveComponent::update(float dt)
 	Vector2 separation = separate(Game::instance().getBoids());
 	Vector2 alignement = align(Game::instance().getBoids());
 	Vector2 groupement = group(Game::instance().getBoids());
+	Vector2 prey = eat(Game::instance().getBoids());
 	
 	int mouseX,mouseY;
 	SDL_GetGlobalMouseState(&mouseX,&mouseY);
@@ -45,6 +51,8 @@ void BoidsMoveComponent::update(float dt)
 	dir+=alignement * alignementFactor;
 	dir+=groupement * groupementFactor;
 	dir+=mouse * mouseImpact;
+	dir+=prey * eatFactor;
+
 	dir.normalize();
 
 	
@@ -213,4 +221,61 @@ Vector2 BoidsMoveComponent::bait(int mouseX, int mouseY)
 	{
 		return Vector2::zero;
 	}
+}
+
+Vector2 BoidsMoveComponent::eat(vector<BoidsMoveComponent*> others)
+{
+	size_t length = others.size();
+	Vector2 sum{0.0f,0.0f};
+	int count = 0;
+	for(int i = 0; i < length; i++)
+	{
+		if(others[i]->owner.getId() == owner.getId())
+		{
+			continue;
+		}
+		
+		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
+		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
+		Vector2 distVector2 = posSelf - posBoid;
+		float dist = distVector2.length();
+		if(dist < preyRange)
+		{
+			distVector2.normalize();
+			
+			if(groupName == Group::RED && others[i]->getGroupName() == Group::GREEN)
+			{
+				sum+=distVector2;
+			}
+			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
+			{
+				sum+=distVector2;
+			}
+			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
+			{
+				sum+=distVector2;
+			}
+		}
+
+		
+		if(dist < eatRange)
+		{
+			if(groupName == Group::RED && others[i]->getGroupName() == Group::GREEN)
+			{
+				others[i]->getOwner().setScale(others[i]->getOwner().getScale()*0.9f);
+				owner.setScale(owner.getScale()*1.03f);
+			}
+			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
+			{
+				others[i]->getOwner().setScale(others[i]->getOwner().getScale()*0.9f);
+				owner.setScale(owner.getScale()*1.03f);
+			}
+			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
+			{
+				others[i]->getOwner().setScale(others[i]->getOwner().getScale()*0.9f);
+				owner.setScale(owner.getScale()*1.03f);
+			}
+		}
+	}
+	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
 }
