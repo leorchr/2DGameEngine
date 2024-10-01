@@ -21,6 +21,7 @@ public:
 	int getTexWidth() const { return texWidth; }
 	int getTexHeight() const { return texHeight; }
 	Vector2 getOriginX() const { return position; }
+	Texture getTexture() const { return texture; }
 
 protected:
 	Texture texture;

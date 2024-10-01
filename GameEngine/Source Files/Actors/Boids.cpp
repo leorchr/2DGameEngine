@@ -6,7 +6,8 @@
 Boids::Boids() :
     Actor(),
     sprite(nullptr),
-    moveComponent(nullptr)
+    moveComponent(nullptr),
+    time(0)
 {
     sprite = new SpriteComponent(this, Assets::getTexture("WhiteFish"), 101);
     moveComponent = new BoidsMoveComponent(this, 10,Vector2(1,1), 1200,30,0.6f, 100, 0.3f, 50, 0.05f, 0.5f);
@@ -14,6 +15,7 @@ Boids::Boids() :
 
 void Boids::updateActor(float dt)
 {
-    
+    time += dt;
+    SDL_SetTextureColorMod(sprite->getTexture().toSDLTexture(), 0,0,((Maths::cos(time*5)/2)+0.5f)*100);
 }
 

@@ -13,4 +13,5 @@ public:
 private:
     SpriteComponent* sprite;
     BoidsMoveComponent* moveComponent;
+    float time;
 };
