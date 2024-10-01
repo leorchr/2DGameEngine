@@ -3,29 +3,32 @@
 #include "Vector2.h"
 #include <cstdlib>
 
-Boids::Boids(Group groupP, float preyFactor) :
+Parameters Boids::parameters;
+
+Boids::Boids(Group group) :
     Actor(),
     sprite(nullptr),
     moveComponent(nullptr),
-    group(groupP),
-    preyFactor(preyFactor)
+    group(group),
+    preyFactor(0)
 {
     switch(group)
     {
     case Group::RED :
         sprite = new SpriteComponent(this, Assets::getTexture("RedFish"), 101);
+        preyFactor = 0.1f;
         break;
     case Group::GREEN :
         sprite = new SpriteComponent(this, Assets::getTexture("GreenFish"), 101);
+        preyFactor = 0.5f;
         break;
     case Group::BLUE :
         sprite = new SpriteComponent(this, Assets::getTexture("BlueFish"), 101);
+        preyFactor = 1.0f;
     }
-    moveComponent = new BoidsMoveComponent(this, 10,Vector2(1,1), 400,30,0.6f, 100, 0.3f, 50, 0.05f, 0.5f, 200, 1.0f, group, 5, preyFactor, 30);
-
+    
+    moveComponent = new BoidsMoveComponent(this, 10, parameters.direction,
+        parameters.speed, parameters.maxSteerValue, parameters.separationDist, parameters.separationFactor,
+        parameters.maxPerceiveDistance, parameters.alignementFactor, parameters.cohesionRadius, parameters.groupementFactor,
+        parameters.eatRange, parameters.preyRange, parameters.mouseRange, parameters.mouseImpact, parameters.shouldBait, preyFactor, group);
 }
-
-void Boids::updateActor(float dt)
-{
-}
-

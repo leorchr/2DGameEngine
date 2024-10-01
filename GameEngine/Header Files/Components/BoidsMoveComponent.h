@@ -4,10 +4,10 @@
 class BoidsMoveComponent : public Component
 {
 public:
-	BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 forward, int speed, int separationDist,
-	                   float separationFactor, int maxPerceiveDistance, float alignementFactor, int cohesionRadius,
-	                   float groupementFactor, float maxSteerValue, int mouseRange, float mouseImpact, enum Group groupName,
-	                   int eatRange, float eatFactor, int preyRange); // By default, update before other components
+	BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 forward, int speed,
+		 float maxSteerValue, int separationDist, float separationFactor, int maxPerceiveDistance,
+		 float alignementFactor, int cohesionRadius, float groupementFactor, int eatRange,
+		 int preyRange, int mouseRange, float mouseImpact, bool shouldBait, float preyFactor, enum Group groupName);
 	BoidsMoveComponent() = delete;
 	BoidsMoveComponent(const BoidsMoveComponent&) = delete;
 	BoidsMoveComponent& operator=(const BoidsMoveComponent&) = delete;
@@ -21,24 +21,25 @@ public:
 	Vector2 bait(int mouseX, int mouseY);
 	Vector2 eat(vector<BoidsMoveComponent*> others);
 
-	Vector2 getForward(){ return forward; };
+	Vector2 getForward(){ return forward; }
 	Group getGroupName(){ return groupName; }
 
 
 private:
 	Vector2 forward;
 	int speed;
+	float maxSteerValue;
 	int separationDist;
 	float separationFactor;
 	int maxPerceiveDistance;
 	float alignementFactor;
 	int cohesionRadius;
 	float groupementFactor;
-	float maxSteerValue;
+	int eatRange;
+	int preyRange;
 	int mouseRange;
 	float mouseImpact;
-	int eatRange;
-	float eatFactor;
-	int preyRange;
+	bool shouldBait;
+	float preyFactor;
 	Group groupName;
 };

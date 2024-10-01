@@ -1,34 +1,31 @@
-﻿#include "Actor.h"
-#include "BoidsMoveComponent.h"
+﻿#include "BoidsMoveComponent.h"
+#include "Actor.h"
 #include "Boids.h"
-
-#include <ostream>
-
+#include "Game.h"
 #include "Maths.h"
 #include "Vector2.h"
 #include "Window.h"
-#include "Game.h"
-#include <iostream>
 
-BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 fwd, int speed, int separationDist,
-                                       float separationFactor, int maxPerceiveDistance, float alignementFactor,
-                                       int cohesionRadius, float groupementFactor, float maxSteerValue, int mouseRange, float mouseImpact, Group groupName,
-                                       int eatRange, float eatFactor, int preyRange)
+BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 forward, int speed,
+                                       float maxSteerValue, int separationDist, float separationFactor, int maxPerceiveDistance,
+                                       float alignementFactor, int cohesionRadius, float groupementFactor, int eatRange,
+                                       int preyRange, int mouseRange, float mouseImpact, bool shouldBait, float preyFactor, Group groupName)
 	: Component(ownerP, updateOrderP),
-	forward(fwd),
+	forward(forward),
 	speed(speed),
+	maxSteerValue(maxSteerValue),
 	separationDist(separationDist),
 	separationFactor(separationFactor),
 	maxPerceiveDistance(maxPerceiveDistance),
 	alignementFactor(alignementFactor),
 	cohesionRadius(cohesionRadius),
 	groupementFactor(groupementFactor),
-	maxSteerValue(maxSteerValue),
+	eatRange(eatRange),
+	preyRange(preyRange),
 	mouseRange(mouseRange),
 	mouseImpact(mouseImpact),
-	eatRange(eatRange),
-	eatFactor(eatFactor),
-	preyRange(preyRange),
+	shouldBait(shouldBait),
+	preyFactor(preyFactor),
 	groupName(groupName)
 {
 
@@ -51,11 +48,9 @@ void BoidsMoveComponent::update(float dt)
 	dir+=alignement * alignementFactor;
 	dir+=groupement * groupementFactor;
 	dir+=mouse * mouseImpact;
-	dir+=prey * eatFactor;
+	dir+=prey * preyFactor;
 
 	dir.normalize();
-
-	
 	
 	forward += handleSteer(forward,dir);
 	
@@ -70,8 +65,8 @@ void BoidsMoveComponent::update(float dt)
 		Vector2 newPosition = Vector2(owner.getPosition().x,owner.getPosition().y + forward.y * (dt * speed));
 		owner.setPosition(newPosition);
 	}
+	
 	getOwner().setRotation(Maths::atan2(forward.y,-forward.x));
-
 }
 
 Vector2 BoidsMoveComponent::separate(vector<BoidsMoveComponent*> others)
@@ -131,10 +126,7 @@ Vector2 BoidsMoveComponent::separate(vector<BoidsMoveComponent*> others)
 		{
 		 	break;
 		}
-	}
-
-	
-	
+	}	
 	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
 }
 
