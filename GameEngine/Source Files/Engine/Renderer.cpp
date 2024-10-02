@@ -15,6 +15,8 @@
 #include <SDL_render.h>
 #include <SDL_video.h>
 
+#include "RectangleComponent.h"
+
 Renderer::Renderer() : SDLRenderer(nullptr)
 {
 }
@@ -45,13 +47,14 @@ bool Renderer::initialize(Window& window)
 
 void Renderer::beginDraw()
 {
-	SDL_SetRenderDrawColor(SDLRenderer, 212, 210, 165, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, 33, 104, 105, 255);
 	SDL_RenderClear(SDLRenderer);
 }
 
 void Renderer::draw()
 {
 	drawCircles();
+	drawRectangles();
 	drawSprites();
 	drawUI();
 }
@@ -61,9 +64,9 @@ void Renderer::endDraw()
 	SDL_RenderPresent(SDLRenderer);
 }
 
-void Renderer::drawRect(const Rectangle& rect) const
+void Renderer::drawRect(const Rectangle& rect, Vector3 colorP) const
 {
-	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, colorP.x, colorP.y, colorP.z, 1);
 	SDL_Rect SDLRect = rect.toSDLRect();
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
@@ -124,6 +127,14 @@ void Renderer::drawCircles()
 	for (auto circle : circles)
 	{
 		circle->draw(*this);
+	}
+}
+
+void Renderer::drawRectangles()
+{
+	for (auto rectangle : rectangles)
+	{
+		rectangle->draw(*this);
 	}
 }
 
@@ -210,4 +221,22 @@ void Renderer::removeCircle(CircleComponent* circle)
 {
 	auto iter = std::find(begin(circles), end(circles), circle);
 	circles.erase(iter);
+}
+
+void Renderer::addRectangle(RectangleComponent* rectangle)
+{
+	// Insert the sprite at the right place in function of drawOrder
+	int rectangleDrawOrder = rectangle->getDrawOrder();
+	auto iter = begin(rectangles);
+	for (; iter != end(rectangles); ++iter)
+	{
+		if (rectangleDrawOrder < (*iter)->getDrawOrder()) break;
+	}
+	rectangles.insert(iter, rectangle);
+}
+
+void Renderer::removeRectangle(RectangleComponent* rectangle)
+{
+	auto iter = std::find(begin(rectangles), end(rectangles), rectangle);
+	rectangles.erase(iter);
 }

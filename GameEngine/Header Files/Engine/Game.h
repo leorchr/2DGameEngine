@@ -7,6 +7,7 @@
 #include "Window.h"
 #include "BoidsMoveComponent.h"
 #include <vector>
+#include "RectangleComponent.h"
 using std::vector;
 
 class Game
@@ -42,6 +43,7 @@ public:
 	void pushUI(class UIScreen* screen);
 
 	vector<BoidsMoveComponent*> getBoids() {return boids; }
+	vector<RectangleComponent*> getObstacles() {return rectangles;}
 
 private:
 	void processInput();
@@ -59,4 +61,5 @@ private:
 	vector<class UIScreen*> UIStack;
 
 	vector<BoidsMoveComponent*> boids;
+	vector<RectangleComponent*> rectangles;
 };

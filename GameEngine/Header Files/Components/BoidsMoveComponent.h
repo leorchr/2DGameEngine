@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Component.h"
+#include "RectangleComponent.h"
 
 class BoidsMoveComponent : public Component
 {
@@ -14,17 +15,18 @@ public:
 
 	void update(float dt) override;
 
-	Vector2 separate(vector<BoidsMoveComponent*> others);
-	Vector2 align(vector<BoidsMoveComponent*> others);
-	Vector2 group(vector<BoidsMoveComponent*> others);
+	Vector2 separate(BoidsMoveComponent* other);
+	Vector2 obstacles(vector<RectangleComponent*> others);
+	Vector2 align(BoidsMoveComponent* other);
+	Vector2 group(BoidsMoveComponent* other);
 	Vector2 handleSteer(Vector2& oldValue, Vector2& newValue);
-	Vector2 bait(int mouseX, int mouseY);
+	Vector2 bait();
 	Vector2 eat(vector<BoidsMoveComponent*> others);
+
+	void setEatingScale(BoidsMoveComponent* eater, BoidsMoveComponent* eated);
 
 	Vector2 getForward(){ return forward; }
 	Group getGroupName(){ return groupName; }
-
-
 private:
 	Vector2 forward;
 	int speed;

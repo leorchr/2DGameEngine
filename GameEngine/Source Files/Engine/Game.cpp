@@ -29,13 +29,20 @@ bool Game::initialize()
 void Game::load()
 {
 	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "RedFish", 50, 50);
-	SDL_SetTextureColorMod(Assets::getTexture("RedFish").toSDLTexture(),207,92,254);
+	SDL_SetTextureColorMod(Assets::getTexture("RedFish").toSDLTexture(),106,57,55);
 	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "GreenFish", 50, 50);
-	SDL_SetTextureColorMod(Assets::getTexture("GreenFish").toSDLTexture(),252,222,190);
+	SDL_SetTextureColorMod(Assets::getTexture("GreenFish").toSDLTexture(),174,142,128);
 	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "BlueFish", 50, 50);
-	SDL_SetTextureColorMod(Assets::getTexture("BlueFish").toSDLTexture(),151,146,227);
+	SDL_SetTextureColorMod(Assets::getTexture("BlueFish").toSDLTexture(),157,199,200);
 	
 	srand (time(NULL));
+
+	// Actor* rectangle = new Actor();
+	// RectangleComponent* rectComp = new RectangleComponent(rectangle, 350, 120, 150, 600, Vector3(59,13,17));
+	// rectangles.emplace_back(rectComp);
+	// Actor* rectangle2 = new Actor();
+	// RectangleComponent* rectComp2 = new RectangleComponent(rectangle2, 1000, 750, 450, 150, Vector3(59,13,17));
+	// rectangles.emplace_back(rectComp2);
 	
 	for(int i = 0; i < 80; i++)
 	{

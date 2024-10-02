@@ -153,6 +153,7 @@
     <ClCompile Include="Source Files\Components\InputComponent.cpp" />
     <ClCompile Include="Source Files\Components\MoveComponent.cpp" />
     <ClCompile Include="Source Files\Components\Rectangle.cpp" />
+    <ClCompile Include="Source Files\Components\RectangleComponent.cpp" />
     <ClCompile Include="Source Files\Components\SpriteComponent.cpp" />
     <ClCompile Include="Source Files\Components\UIMovementComponent.cpp" />
     <ClCompile Include="Source Files\Engine\Actor.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Header Files\Components\InputComponent.h" />
     <ClInclude Include="Header Files\Components\MoveComponent.h" />
     <ClInclude Include="Header Files\Components\Rectangle.h" />
+    <ClInclude Include="Header Files\Components\RectangleComponent.h" />
     <ClInclude Include="Header Files\Components\SpriteComponent.h" />
     <ClInclude Include="Header Files\Components\UIMovementComponent.h" />
     <ClInclude Include="Header Files\Engine\Actor.h" />

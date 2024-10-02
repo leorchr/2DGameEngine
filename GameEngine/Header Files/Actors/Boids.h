@@ -16,7 +16,7 @@ struct Parameters
     const float alignementFactor = 0.3f;
     const int cohesionRadius = 50;
     const float groupementFactor = 0.05f;
-    const int eatRange = 5;
+    const int eatRange = 20;
     const int preyRange = 100;
     const int mouseRange = 200;
     const float mouseImpact = 1.0f;

@@ -32,27 +32,62 @@ BoidsMoveComponent::BoidsMoveComponent(Actor* ownerP, int updateOrderP, Vector2 
 }
 void BoidsMoveComponent::update(float dt)
 {
-	Vector2 separation = separate(Game::instance().getBoids());
-	Vector2 alignement = align(Game::instance().getBoids());
-	Vector2 groupement = group(Game::instance().getBoids());
-	Vector2 prey = eat(Game::instance().getBoids());
+	vector<BoidsMoveComponent*> others = Game::instance().getBoids();
 	
-	int mouseX,mouseY;
-	SDL_GetGlobalMouseState(&mouseX,&mouseY);
-	Vector2 mouse = bait(mouseX,mouseY);
+	Vector2 separationValue = Vector2::zero;
+	int separationSum = 0;
+	Vector2 alignementValue = Vector2::zero;
+	int alignementSum = 0;
+	Vector2 groupementValue = Vector2::zero;
+	int groupementSum = 0;
+	
+	for(int i = 0; i < others.size(); i++)
+	{
+		if(others[i]->owner.getId() == owner.getId()) continue;
+		if(groupName != others[i]->getGroupName()) continue;
+		
+		Vector2 separationTemp = separate(others[i]);
+		if(separationTemp.x != Vector2::zero.x && separationTemp.y != Vector2::zero.y)
+		{
+			separationValue += separationTemp;
+			separationSum++;
+		}
+		Vector2 alignementTemp = align(others[i]);
+		if(alignementTemp.x != Vector2::zero.x && alignementTemp.y != Vector2::zero.y)
+		{
+			alignementValue += alignementTemp;
+			alignementSum++;
+		}
+		Vector2 groupementTemp = group(others[i]);
+		if(groupementTemp.x != Vector2::zero.x && groupementTemp.y != Vector2::zero.y)
+		{
+			groupementValue += groupementTemp;
+			groupementSum++;
+		}
+	}
+	
+	if(separationSum != 0) separationValue /= separationSum;
+	if(alignementSum != 0) alignementValue /= alignementSum;
+	if(groupementSum != 0) groupementValue /= groupementSum;
+	
+	Vector2 separation = separationValue;
+	Vector2 obstacle = obstacles(Game::instance().getObstacles());
+	Vector2 alignement = alignementValue;
+	Vector2 groupement = groupementValue;
+	Vector2 prey = eat(Game::instance().getBoids());
+	Vector2 mouse = bait();
 
 	Vector2 dir = forward;
-	
-	if(separation.length()!=0)separation.normalize();
 	dir+=separation * separationFactor;
+	dir+= obstacle * separationFactor;
 	dir+=alignement * alignementFactor;
 	dir+=groupement * groupementFactor;
 	dir+=mouse * mouseImpact;
 	dir+=prey * preyFactor;
 
 	dir.normalize();
-	
 	forward += handleSteer(forward,dir);
+	owner.setRotation(Maths::atan2(forward.y,-forward.x));
 	
 	if (!Maths::nearZero(forward.x))
 	{
@@ -65,27 +100,39 @@ void BoidsMoveComponent::update(float dt)
 		Vector2 newPosition = Vector2(owner.getPosition().x,owner.getPosition().y + forward.y * (dt * speed));
 		owner.setPosition(newPosition);
 	}
-	
-	getOwner().setRotation(Maths::atan2(forward.y,-forward.x));
 }
 
-Vector2 BoidsMoveComponent::separate(vector<BoidsMoveComponent*> others)
+Vector2 BoidsMoveComponent::separate(BoidsMoveComponent* other)
 {
-	size_t length = others.size();
+	Vector2 posBoid = other->getOwner().getPosition() + other->getOwner().getSize()/2;
+	Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
+	Vector2 distVector2 = posSelf - posBoid;
+		
+	float dist = distVector2.length();
+	if(dist < separationDist)
+	{
+		distVector2.normalize();
+		return distVector2;
+	}
+	else return Vector2::zero;
+}
+
+Vector2 BoidsMoveComponent::obstacles(vector<RectangleComponent*> others)
+{
 	Vector2 sum{0.0f,0.0f};
 	int count = 0;
 	
-	int rightWallDist = WINDOW_WIDTH - owner.getPosition().x - owner.getSize()/2;
+	int rightWallDist = WINDOW_WIDTH - owner.getPosition().x;
 	if(rightWallDist < separationDist)
 	{
-	sum+= Vector2(-1,0);
-	 	count++;
+		sum+= Vector2(-1,0);
+		count++;
 	}
-	int bottomWallDist = WINDOW_HEIGHT - owner.getPosition().y - owner.getSize()/2;
+	int bottomWallDist = WINDOW_HEIGHT - owner.getPosition().y;
 	if(bottomWallDist < separationDist)
 	{
-	 	sum+= Vector2(0,-1);
-	 	count++;
+		sum+= Vector2(0,-1);
+		count++;
 	}
 	
 	int leftWallDist = owner.getPosition().x;
@@ -101,98 +148,37 @@ Vector2 BoidsMoveComponent::separate(vector<BoidsMoveComponent*> others)
 		sum+= Vector2(0,1);
 		count++;
 	}
-	
-	
-	for(int i = 0; i < length; i++)
-	{
-		if(others[i]->owner.getId() == owner.getId())
-		{
-			continue;
-		}
-		if(groupName != others[i]->getGroupName()) continue;
-		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
-		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
-		
-		Vector2 distVector2 = posSelf - posBoid;
-		
-		float dist = distVector2.length();
-		if(dist < separationDist)
-		{
-			distVector2.normalize();
-			sum+=distVector2;
-			count++;
-		}
-		if(count >= 9)
-		{
-		 	break;
-		}
-	}	
 	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
 }
 
-Vector2 BoidsMoveComponent::align(vector<BoidsMoveComponent*> others)
+Vector2 BoidsMoveComponent::align(BoidsMoveComponent* other)
 {
-	size_t length = others.size();
-	Vector2 sum{0.0f,0.0f};
-	int count = 0;
-
-	for(int i = 0; i < length; i++)
-	{
-		if(others[i]->owner.getId() == owner.getId())
-		{
-			continue;
-		}
-		if(groupName != others[i]->getGroupName()) continue;
-		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
-		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
-		Vector2 distVector2 = posSelf - posBoid;
+	Vector2 posBoid = other->getOwner().getPosition() + other->getOwner().getSize()/2;
+	Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
+	Vector2 distVector2 = posSelf - posBoid;
 				
-		float dist = distVector2.length();
-		if(dist < maxPerceiveDistance)
-		{
-			sum+=others[i]->getForward();
-			count++;
-		}
-		if(count >= 9)
-		{
-			break;
-		}
+	float dist = distVector2.length();
+	if(dist < maxPerceiveDistance)
+	{
+		return other->getForward();
 	}
-	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
+	else return Vector2::zero;
 }
 
-Vector2 BoidsMoveComponent::group(vector<BoidsMoveComponent*> others)
+Vector2 BoidsMoveComponent::group(BoidsMoveComponent* other)
 {
-	size_t length = others.size();
-	Vector2 sum{0.0f,0.0f};
-	int count = 0;
-
-	for(int i = 0; i < length; i++)
-	{
-		if(others[i]->owner.getId() == owner.getId())
-		{
-			continue;
-		}
-		if(groupName != others[i]->getGroupName()) continue;
-		Vector2 posBoid = others[i]->getOwner().getPosition() + others[i]->getOwner().getSize()/2;
-		Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
-		Vector2 distVector2 = posSelf - posBoid;
+	Vector2 posBoid = other->getOwner().getPosition() + other->getOwner().getSize()/2;
+	Vector2 posSelf = owner.getPosition() + owner.getSize()/2;
+	Vector2 distVector2 = posSelf - posBoid;
 				
-		float dist = distVector2.length();
-		if(dist < cohesionRadius)
-		{
-			sum+=others[i]->getOwner().getPosition();
-			count++;
-		}
-		if(count >= 9)
-		{
-			break;
-		}
+	float dist = distVector2.length();
+	if(dist < cohesionRadius)
+	{
+		Vector2 dirResult = owner.getPosition() + owner.getSize()/2 - other->getOwner().getPosition();
+		dirResult.normalize();
+		return dirResult;
 	}
-	Vector2 result = sum/count;
-	Vector2 dirResult = owner.getPosition() + owner.getSize()/2 - result;
-	dirResult.normalize();
-	return count > 0 ? dirResult : Vector2(0.0f,0.0f);
+	else return Vector2::zero;	
 }
 
 Vector2 BoidsMoveComponent::handleSteer(Vector2& oldValue, Vector2& newValue)
@@ -200,8 +186,10 @@ Vector2 BoidsMoveComponent::handleSteer(Vector2& oldValue, Vector2& newValue)
 	return (newValue - oldValue) * maxSteerValue;
 }
 
-Vector2 BoidsMoveComponent::bait(int mouseX, int mouseY)
+Vector2 BoidsMoveComponent::bait()
 {
+	int mouseX,mouseY;
+	SDL_GetGlobalMouseState(&mouseX,&mouseY);
 	Vector2 dist = Vector2(mouseX,mouseY) - owner.getPosition();
 	if(dist.length() < mouseRange)
 	{
@@ -238,14 +226,17 @@ Vector2 BoidsMoveComponent::eat(vector<BoidsMoveComponent*> others)
 			if(groupName == Group::RED && others[i]->getGroupName() == Group::GREEN)
 			{
 				sum+=distVector2;
+				count++;
 			}
 			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
 			{
 				sum+=distVector2;
+				count++;
 			}
 			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
 			{
 				sum+=distVector2;
+				count++;
 			}
 		}
 
@@ -254,20 +245,23 @@ Vector2 BoidsMoveComponent::eat(vector<BoidsMoveComponent*> others)
 		{
 			if(groupName == Group::RED && others[i]->getGroupName() == Group::GREEN)
 			{
-				others[i]->getOwner().setScale(others[i]->getOwner().getScale()*0.9f);
-				owner.setScale(owner.getScale()*1.03f);
+				setEatingScale(this, others[i]);
 			}
 			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
 			{
-				others[i]->getOwner().setScale(others[i]->getOwner().getScale()*0.9f);
-				owner.setScale(owner.getScale()*1.03f);
+				setEatingScale(this, others[i]);
 			}
 			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
 			{
-				others[i]->getOwner().setScale(others[i]->getOwner().getScale()*0.9f);
-				owner.setScale(owner.getScale()*1.03f);
+				setEatingScale(this, others[i]);
 			}
 		}
 	}
 	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
+}
+
+void BoidsMoveComponent::setEatingScale(BoidsMoveComponent* eater, BoidsMoveComponent* eated)
+{
+	if(eater->getOwner().getScale() < 1.5f)	eater->getOwner().setScale(eater->getOwner().getScale() * 1.03f);
+	if(eated->getOwner().getScale() > 0.5f)	eated->getOwner().setScale(eated->getOwner().getScale() * 0.97f);
 }
