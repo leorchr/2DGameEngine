@@ -7,7 +7,7 @@ enum Group{ RED, GREEN, BLUE };
 
 struct Parameters
 {
-    const Vector2 direction = Vector2(1,1);
+    Vector2 direction = Vector2(1,1);
     const int speed = 400;
     const float maxSteerValue = 0.5f;
     const int separationDist = 30;
@@ -16,11 +16,11 @@ struct Parameters
     const float alignementFactor = 0.3f;
     const int cohesionRadius = 50;
     const float groupementFactor = 0.05f;
-    const int eatRange = 20;
+    const int eatRange = 10;
     const int preyRange = 100;
     const int mouseRange = 200;
-    const float mouseImpact = 1.0f;
-    const bool shouldBait = true;
+    const float mouseImpact = 0.5f;
+    const bool shouldBait = false;
 };
 
 class Boids : public Actor
@@ -30,6 +30,7 @@ public:
      Boids(Group group);
     static Parameters parameters;
     BoidsMoveComponent* getBoidsMoveComponent() const { return moveComponent;}
+    void setGroup(enum Group groupName);
     
 private:
     

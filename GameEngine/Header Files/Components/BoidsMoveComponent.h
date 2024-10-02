@@ -23,7 +23,7 @@ public:
 	Vector2 bait();
 	Vector2 eat(vector<BoidsMoveComponent*> others);
 
-	void setEatingScale(BoidsMoveComponent* eater, BoidsMoveComponent* eated);
+	void setGroup();
 
 	Vector2 getForward(){ return forward; }
 	Group getGroupName(){ return groupName; }

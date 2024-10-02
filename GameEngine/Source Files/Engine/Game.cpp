@@ -47,7 +47,7 @@ void Game::load()
 	for(int i = 0; i < 80; i++)
 	{
 		Boids* temp = new Boids(Group::RED);
-		Vector2 pos = Vector2(rand() % 1200 + 25,rand() % 700 + 25);
+		Vector2 pos = Vector2(rand() % (WINDOW_WIDTH-25) + 25,rand() % (WINDOW_HEIGHT-25) + 25);
 		temp->setPosition(pos);
 		boids.emplace_back(temp->getBoidsMoveComponent());
 	}
@@ -55,8 +55,7 @@ void Game::load()
 	for(int i = 0; i < 80; i++)
 	{
 		Boids* temp = new Boids(Group::GREEN);
-		//Vector2 pos = Vector2(rand() % WINDOW_WIDTH,rand() % WINDOW_HEIGHT);
-		Vector2 pos = Vector2(rand() % 1200 + 25,rand() % 700 + 25);
+		Vector2 pos = Vector2(rand() % (WINDOW_WIDTH-25) + 25,rand() % (WINDOW_HEIGHT-25) + 25);
 		temp->setPosition(pos);
 		boids.emplace_back(temp->getBoidsMoveComponent());
 	}
@@ -64,8 +63,7 @@ void Game::load()
 	for(int i = 0; i < 80; i++)
 	{
 		Boids* temp = new Boids(Group::BLUE);
-		//Vector2 pos = Vector2(rand() % WINDOW_WIDTH,rand() % WINDOW_HEIGHT);
-		Vector2 pos = Vector2(rand() % 1200 + 25,rand() % 700 + 25);
+		Vector2 pos = Vector2(rand() % (WINDOW_WIDTH-25) + 25,rand() % (WINDOW_HEIGHT-25) + 25);
 		temp->setPosition(pos);
 		boids.emplace_back(temp->getBoidsMoveComponent());
 	}

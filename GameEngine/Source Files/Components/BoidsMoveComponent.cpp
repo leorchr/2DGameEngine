@@ -193,8 +193,10 @@ Vector2 BoidsMoveComponent::bait()
 	Vector2 dist = Vector2(mouseX,mouseY) - owner.getPosition();
 	if(dist.length() < mouseRange)
 	{
+		int b = 0;
+		shouldBait ? b = 1 : b = -1;
 		dist.normalize();
-		dist = Vector2(-dist.x,-dist.y);
+		dist = Vector2(dist.x*b,dist.y*b);
 		return dist;
 	}
 	else
@@ -225,17 +227,17 @@ Vector2 BoidsMoveComponent::eat(vector<BoidsMoveComponent*> others)
 			
 			if(groupName == Group::RED && others[i]->getGroupName() == Group::GREEN)
 			{
-				sum+=distVector2;
+				sum-=distVector2;
 				count++;
 			}
 			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
 			{
-				sum+=distVector2;
+				sum-=distVector2;
 				count++;
 			}
 			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
 			{
-				sum+=distVector2;
+				sum-=distVector2;
 				count++;
 			}
 		}
@@ -245,23 +247,38 @@ Vector2 BoidsMoveComponent::eat(vector<BoidsMoveComponent*> others)
 		{
 			if(groupName == Group::RED && others[i]->getGroupName() == Group::GREEN)
 			{
-				setEatingScale(this, others[i]);
+				others[i]->setGroup();
 			}
 			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
 			{
-				setEatingScale(this, others[i]);
+				others[i]->setGroup();
 			}
 			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
 			{
-				setEatingScale(this, others[i]);
+				others[i]->setGroup();
 			}
 		}
 	}
 	return count > 0 ? sum/count : Vector2(0.0f,0.0f);
 }
 
-void BoidsMoveComponent::setEatingScale(BoidsMoveComponent* eater, BoidsMoveComponent* eated)
+void BoidsMoveComponent::setGroup()
 {
-	if(eater->getOwner().getScale() < 1.5f)	eater->getOwner().setScale(eater->getOwner().getScale() * 1.03f);
-	if(eated->getOwner().getScale() > 0.5f)	eated->getOwner().setScale(eated->getOwner().getScale() * 0.97f);
+	switch (groupName)
+	{
+	case Group::RED:
+		groupName = Group::BLUE;
+		preyFactor = 1.0f;
+		break;
+	case Group::GREEN:
+		groupName = Group::RED;
+		preyFactor = 0.1f;
+		break;
+	case Group::BLUE:
+		groupName = Group::GREEN;
+		preyFactor = 0.5f;
+		break;
+	}
+	auto actor = static_cast<Boids*>(&owner);
+	actor->setGroup(groupName);
 }
