@@ -29,11 +29,11 @@ bool Game::initialize()
 void Game::load()
 {
 	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "RedFish", 50, 50);
-	SDL_SetTextureColorMod(Assets::getTexture("RedFish").toSDLTexture(),106,57,55);
+	SDL_SetTextureColorMod(Assets::getTexture("RedFish").toSDLTexture(),246,249,58);
 	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "GreenFish", 50, 50);
-	SDL_SetTextureColorMod(Assets::getTexture("GreenFish").toSDLTexture(),174,142,128);
+	SDL_SetTextureColorMod(Assets::getTexture("GreenFish").toSDLTexture(),178,248,152);
 	Assets::loadTexture(renderer, "Resource Files\\Textures\\WhiteFish.png", "BlueFish", 50, 50);
-	SDL_SetTextureColorMod(Assets::getTexture("BlueFish").toSDLTexture(),157,199,200);
+	SDL_SetTextureColorMod(Assets::getTexture("BlueFish").toSDLTexture(),252,230,252);
 	
 	srand (time(NULL));
 

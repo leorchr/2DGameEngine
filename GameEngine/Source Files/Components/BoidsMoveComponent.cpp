@@ -79,7 +79,7 @@ void BoidsMoveComponent::update(float dt)
 
 	Vector2 dir = forward;
 	dir+=separation * separationFactor;
-	dir+= obstacle * separationFactor;
+	dir+=obstacle * separationFactor;
 	dir+=alignement * alignementFactor;
 	dir+=groupement * groupementFactor;
 	dir+=mouse * mouseImpact;
@@ -230,14 +230,9 @@ Vector2 BoidsMoveComponent::eat(vector<BoidsMoveComponent*> others)
 				sum-=distVector2;
 				count++;
 			}
-			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::BLUE)
+			if(groupName == Group::GREEN && others[i]->getGroupName() == Group::RED)
 			{
-				sum-=distVector2;
-				count++;
-			}
-			if(groupName == Group::BLUE && others[i]->getGroupName() == Group::RED)
-			{
-				sum-=distVector2;
+				sum=distVector2;
 				count++;
 			}
 		}
